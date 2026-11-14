@@ -1,0 +1,120 @@
+"""Official NASA Space Apps Challenge 12 benchmark targets with verified J2000 ICRS astrometry."""
+
+from app.models import TargetPreset
+
+
+# All reference positions verified via SIMBAD (ep=J2000 ICRS) on 2026-11-14
+PRESETS: dict[str, TargetPreset] = {
+    "barnards-star": TargetPreset(
+        slug="barnards-star",
+        name="Barnard's Star",
+        kind="mover",
+        ra_deg=269.4520769586,
+        dec_deg=4.6933649666,
+        ref_epoch=2000.0,
+        pmra_masyr=-801.551,
+        pmdec_masyr=10362.394,
+        coord_note="Gaia DR3 ICRS J2000 propagated to 2026 (moved ~270\" north since J2000).",
+        default_fov=0.05,
+        default_lens="motion",
+        mission_title="Catch the Fastest Moving Star in the Sky",
+        summary="A nearby red dwarf racing north at ~10.4 arcseconds per year across three SPHEREx passes.",
+        mission_steps=[
+            "Open Motion Finder to subtract Pass 1 (2025) from Pass 3 (2026).",
+            "Spot the sharp red/cyan dipole right at center: ~1.8 SPHEREx pixels (~11\") of northward leap in 13 months.",
+            "Click the dipole to plot its smooth M-dwarf near-infrared spectrum (0.75–5.0 um).",
+        ],
+        what_to_expect="Stationary background stars cancel out cleanly while Barnard's Star appears as a bright positive/negative pair.",
+    ),
+    "eps-indi-b": TargetPreset(
+        slug="eps-indi-b",
+        name="Epsilon Indi B (Ba/Bb)",
+        kind="binary_bd",
+        ra_deg=331.0441465885,
+        dec_deg=-56.7828441951,
+        ref_epoch=2000.0,
+        pmra_masyr=3981.977,
+        pmdec_masyr=-2466.832,
+        coord_note="True binary brown-dwarf position (~6.7' ESE of parent star Epsilon Indi A), propagated ~122\" from J2000 to 2026.",
+        default_fov=0.05,
+        default_lens="coldglow",
+        mission_title="Hunt a Cool Binary Brown Dwarf Pair",
+        summary="Two T-type brown dwarfs orbiting ~1,460 AU from Epsilon Indi A, captured across 4 SPHEREx passes.",
+        mission_steps=[
+            "Use Cold Glow (3.8–5.0 um) or Variable Watch to isolate the binary companion near center.",
+            "Switch to Motion Finder across Passes 1 to 4 (~525 days) to see its ~6.7\" east-southeast proper-motion shift.",
+            "Turn on Gaia DR3 overlays to verify the proper-motion vector matches the dipole direction.",
+        ],
+        what_to_expect="A crisp moving sub-stellar source with cold methane/water spectral features.",
+        caveat="Ba and Bb are only ~0.7\" apart; at SPHEREx's 6.15\"/pixel scale they blend as one unresolved point source.",
+    ),
+    "wise-0855": TargetPreset(
+        slug="wise-0855",
+        name="WISE 0855",
+        kind="mover",
+        ra_deg=133.81890825,
+        dec_deg=-7.24704800,
+        ref_epoch=2000.0,
+        pmra_masyr=-8123.7,
+        pmdec_masyr=673.2,
+        coord_note="Kirkpatrick+2021 ICRS J2000 propagated to 2026 (~212\" WNW from J2000, ~126\" west of NASA's 2010 WISE coordinate).",
+        default_fov=0.05,
+        default_lens="coldglow",
+        mission_title="Search for a ~250 K Rogue World in 4–5 um Glow",
+        summary="One of the coldest known planetary-mass brown dwarfs (~7.2 ly away, ~8.1\"/yr motion).",
+        mission_steps=[
+            "Notice that in shorter bands (D1–D3), cold ~250 K brown dwarfs practically disappear.",
+            "Switch to Cold Glow (D5–D6: 3.8–5.0 um) to inspect stacked emission near the center crosshairs.",
+            "Toggle AllWISE / Aladin inset to compare where it sat in 2010 vs its propagated 2026 position.",
+        ],
+        what_to_expect="Strongest sensitivity in D5/D6 thermal wavelengths around 4.1–4.7 um.",
+        caveat="WISE 0855 is extremely faint (~18.5 mag W1 / ~15.7 mag W2); detection in stacked D5–D6 SPHEREx passes sits near the survey sensitivity floor.",
+    ),
+    "rw-aurigae": TargetPreset(
+        slug="rw-aurigae",
+        name="RW Aurigae",
+        kind="variable",
+        ra_deg=76.9565260346,
+        dec_deg=30.4014381739,
+        ref_epoch=2000.0,
+        pmra_masyr=7.23,
+        pmdec_masyr=-20.33,
+        coord_note="SIMBAD ICRS J2000 propagated cleanly to 2026.",
+        default_fov=0.05,
+        default_lens="variable",
+        mission_title="Watch a Young Star Eclipsed by Its Own Dust Disk",
+        summary="A binary T Tauri system whose circumstellar dust warps periodically dim its infrared light.",
+        mission_steps=[
+            "Play Variable Watch (locked stretch across all 3 passes) to compare brightness over ~380 days.",
+            "Look at the brightness sparkline or open Motion Finder: unlike movers, a variable fades or flares in place without shifting into a dipole.",
+            "Click RW Aurigae to view its dusty infrared excess rising cleanly toward 3–5 um.",
+        ],
+        what_to_expect="Monopole brightness change at fixed coordinates + bright infrared dust emission.",
+    ),
+    "r-draconis": TargetPreset(
+        slug="r-draconis",
+        name="R Draconis",
+        kind="variable",
+        ra_deg=248.1676108330,
+        dec_deg=66.7549794172,
+        ref_epoch=2000.0,
+        pmra_masyr=-20.643,
+        pmdec_masyr=6.149,
+        coord_note="Verified SIMBAD ICRS J2000 (16h32m40.23s +66d45m17.9s) with 551 DR1+QR3 exposures.",
+        default_fov=0.1,
+        default_lens="variable",
+        mission_title="Track a Pulsating Mira Red Giant Over a Year",
+        summary="A giant cool star that physically swells and cools every ~245 days across 3 SPHEREx passes (~426 days).",
+        mission_steps=[
+            "Press Space to blink across Passes 1–3 with locked contrast in Variable Watch.",
+            "Watch R Draconis swing smoothly in brightness while neighboring stars remain steady.",
+            "Extract its spectrum and look for deep stellar H2O / CO molecular absorption bands around 2.7 and 4.7 um.",
+        ],
+        what_to_expect="Large-amplitude stationary infrared pulsation + rich molecular red-giant spectrum.",
+    ),
+}
+
+
+def list_presets() -> list[TargetPreset]:
+    """Return all 5 benchmark targets in recommended showcase order."""
+    return list(PRESETS.values())

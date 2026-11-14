@@ -1,0 +1,166 @@
+export type TargetKind = "mover" | "variable" | "binary_bd";
+export type LensId = "motion" | "coldglow" | "variable" | "rgb" | "visits";
+export type StretchFn = "asinh" | "linear" | "log";
+export type OverlaySource = "preset" | "live" | "unavailable";
+
+export interface TargetPreset {
+  slug: string;
+  name: string;
+  kind: TargetKind;
+  ra_deg: number;
+  dec_deg: number;
+  ref_epoch: number;
+  pmra_masyr?: number | null;
+  pmdec_masyr?: number | null;
+  coord_note?: string | null;
+  default_fov: number;
+  default_lens: LensId;
+  mission_title: string;
+  summary: string;
+  mission_steps: string[];
+  what_to_expect: string;
+  caveat?: string | null;
+  has_preset_bundle: boolean;
+}
+
+export interface SurveyPass {
+  index: number;
+  mjd_start: number;
+  mjd_end: number;
+  mjd_mid: number;
+  n_exposures: number;
+  label: string;
+}
+
+export interface StretchHint {
+  p_lo: number;
+  p_hi: number;
+}
+
+export interface FrameMeta {
+  id: string;
+  kind: "visit" | "coadd" | "diff" | "coldglow" | "rgb";
+  pass_index: number;
+  pass_label: string;
+  detector?: number | null;
+  mjd: number;
+  date_utc: string;
+  wavelength_um?: number | null;
+  obs_ids: string[];
+  flag_summary: Record<string, number>;
+  n_inputs: number;
+  stretch_hint: StretchHint;
+  ref_pass_index?: number | null;
+  mean_flux_center?: number | null;
+}
+
+export interface GridSpec {
+  ra0: number;
+  dec0: number;
+  fov_deg: number;
+  npix: number;
+  pixscale_arcsec: number;
+  ctype: [string, string];
+  north_up: boolean;
+}
+
+export interface TargetRef {
+  ra: number;
+  dec: number;
+  name?: string | null;
+  slug?: string | null;
+  mjd_ref?: number | null;
+}
+
+export interface ProductInfo {
+  name: string;
+  url: string;
+  n_frames: number;
+  planes_per_frame: number;
+  has_flags: boolean;
+  bytes: number;
+}
+
+export interface CitationEntry {
+  label: string;
+  doi?: string | null;
+  url?: string | null;
+  text: string;
+}
+
+export interface SessionManifest {
+  session_id: string;
+  source: "preset" | "live";
+  target: TargetRef;
+  grid: GridSpec;
+  passes: SurveyPass[];
+  products: Record<string, ProductInfo>;
+  frames: Record<string, FrameMeta[]>;
+  warnings: string[];
+  citations: CitationEntry[];
+  created_utc: string;
+  pipeline_version: string;
+}
+
+export interface SpectrumPoint {
+  wavelength_um: number;
+  flux_mjysr: number;
+  err: number;
+  detector: number;
+  mjd: number;
+  obs_id: string;
+  flagged: boolean;
+}
+
+export interface SpectrumResult {
+  ra: number;
+  dec: number;
+  points: SpectrumPoint[];
+  aperture_arcsec: number;
+  n_used: number;
+  n_rejected: number;
+  note?: string | null;
+}
+
+export interface GaiaSource {
+  source_id: string;
+  ra: number;
+  dec: number;
+  g_mag?: number | null;
+  pmra?: number | null;
+  pmdec?: number | null;
+  ra_at_mjd: number;
+  dec_at_mjd: number;
+}
+
+export interface AllwiseSource {
+  designation: string;
+  ra: number;
+  dec: number;
+  w1?: number | null;
+  w2?: number | null;
+}
+
+export interface OverlaySet {
+  gaia: GaiaSource[];
+  allwise: AllwiseSource[];
+  source: OverlaySource;
+  mjd_ref: number;
+  note?: string | null;
+}
+
+export interface ProgressEvent {
+  stage: "resolve" | "query" | "plan" | "fetch" | "process" | "done" | "error";
+  message: string;
+  done: number;
+  total: number;
+  session_id?: string | null;
+  error_code?: string | null;
+}
+
+export interface HealthStatus {
+  irsa_ok: boolean;
+  cache_entries: number;
+  presets_ready: string[];
+  version: string;
+}

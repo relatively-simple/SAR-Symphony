@@ -1,0 +1,3323 @@
+{
+  "session_id": "wise-0855",
+  "source": "preset",
+  "target": {
+    "ra": 133.760098,
+    "dec": -7.24221,
+    "name": "WISE 0855",
+    "slug": "wise-0855",
+    "mjd_ref": 60987.4943
+  },
+  "grid": {
+    "ra0": 133.7600984877219,
+    "dec0": -7.242209618789349,
+    "fov_deg": 0.05,
+    "npix": 29,
+    "pixscale_arcsec": 6.15,
+    "ctype": [
+      "RA---TAN",
+      "DEC--TAN"
+    ],
+    "north_up": true
+  },
+  "passes": [
+    {
+      "index": 0,
+      "mjd_start": 60800.7006945,
+      "mjd_end": 60801.51932,
+      "mjd_mid": 60801.11000725,
+      "n_exposures": 30,
+      "label": "Pass 1 · May 2025"
+    },
+    {
+      "index": 1,
+      "mjd_start": 60979.723343499994,
+      "mjd_end": 61022.3687715,
+      "mjd_mid": 61001.046057499996,
+      "n_exposures": 128,
+      "label": "Pass 2 · Oct–Dec 2025"
+    },
+    {
+      "index": 2,
+      "mjd_start": 61151.1985995,
+      "mjd_end": 61174.287884,
+      "mjd_mid": 61162.743241749995,
+      "n_exposures": 100,
+      "label": "Pass 3 · Apr–May 2026"
+    }
+  ],
+  "products": {
+    "pass_coadds": {
+      "name": "pass_coadds",
+      "url": "/api/sessions/wise-0855/frames/pass_coadds.sfp",
+      "n_frames": 18,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 91184
+    },
+    "diffs": {
+      "name": "diffs",
+      "url": "/api/sessions/wise-0855/frames/diffs.sfp",
+      "n_frames": 12,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 60920
+    },
+    "coldglow": {
+      "name": "coldglow",
+      "url": "/api/sessions/wise-0855/frames/coldglow.sfp",
+      "n_frames": 3,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 15282
+    },
+    "rgb": {
+      "name": "rgb",
+      "url": "/api/sessions/wise-0855/frames/rgb.sfp",
+      "n_frames": 3,
+      "planes_per_frame": 3,
+      "has_flags": true,
+      "bytes": 35454
+    },
+    "visits": {
+      "name": "visits",
+      "url": "/api/sessions/wise-0855/frames/visits.sfp",
+      "n_frames": 84,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 426648
+    }
+  },
+  "frames": {
+    "pass_coadds": [
+      {
+        "id": "coadd_p0_d1",
+        "kind": "coadd",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 1,
+        "mjd": 60801.5170815,
+        "date_utc": "2025-05-06 12:24 UTC",
+        "wavelength_um": 1.029,
+        "obs_ids": [
+          "2025W19_1B_0241_1",
+          "2025W19_1B_0241_2",
+          "2025W19_1B_0241_4",
+          "2025W19_1B_0241_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 2
+        },
+        "n_inputs": 4,
+        "stretch_hint": {
+          "p_lo": -0.025341447442770004,
+          "p_hi": 0.3105503022670746
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.041010335087776184
+      },
+      {
+        "id": "coadd_p0_d2",
+        "kind": "coadd",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 2,
+        "mjd": 60801.312479399996,
+        "date_utc": "2025-05-06 07:29 UTC",
+        "wavelength_um": 1.414,
+        "obs_ids": [
+          "2025W19_1B_0181_1",
+          "2025W19_1B_0181_3",
+          "2025W19_1B_0231_2",
+          "2025W19_1B_0231_1",
+          "2025W19_1B_0231_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 13
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.01811586134135723,
+          "p_hi": 0.27618053555488586
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.038276419043540955
+      },
+      {
+        "id": "coadd_p0_d3",
+        "kind": "coadd",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 3,
+        "mjd": 60800.745995166675,
+        "date_utc": "2025-05-05 17:54 UTC",
+        "wavelength_um": 2.328,
+        "obs_ids": [
+          "2025W19_1B_0116_1",
+          "2025W19_1B_0138_1",
+          "2025W19_1B_0116_2"
+        ],
+        "flag_summary": {
+          "DICHROIC": 798
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": -0.018099354580044746,
+          "p_hi": 0.17464131116867065
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.019403381273150444
+      },
+      {
+        "id": "coadd_p0_d4",
+        "kind": "coadd",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 4,
+        "mjd": 60801.517081499995,
+        "date_utc": "2025-05-06 12:24 UTC",
+        "wavelength_um": 3.497,
+        "obs_ids": [
+          "2025W19_1B_0241_1",
+          "2025W19_1B_0241_3",
+          "2025W19_1B_0241_2",
+          "2025W19_1B_0241_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 4
+        },
+        "n_inputs": 4,
+        "stretch_hint": {
+          "p_lo": -0.014385228976607323,
+          "p_hi": 0.07640761137008667
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.006556862033903599
+      },
+      {
+        "id": "coadd_p0_d5",
+        "kind": "coadd",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 5,
+        "mjd": 60801.312479399996,
+        "date_utc": "2025-05-06 07:29 UTC",
+        "wavelength_um": 4.184,
+        "obs_ids": [
+          "2025W19_1B_0181_1",
+          "2025W19_1B_0181_3",
+          "2025W19_1B_0231_1",
+          "2025W19_1B_0231_2",
+          "2025W19_1B_0231_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 10
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.02977759763598442,
+          "p_hi": 0.06979569047689438
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.017172064632177353
+      },
+      {
+        "id": "coadd_p0_d6",
+        "kind": "coadd",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 6,
+        "mjd": 60800.745995166675,
+        "date_utc": "2025-05-05 17:54 UTC",
+        "wavelength_um": 4.944,
+        "obs_ids": [
+          "2025W19_1B_0116_2",
+          "2025W19_1B_0116_1",
+          "2025W19_1B_0138_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 3
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": -0.06034323200583458,
+          "p_hi": 0.08350473642349243
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.012904709205031395
+      },
+      {
+        "id": "coadd_p1_d1",
+        "kind": "coadd",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 1,
+        "mjd": 60980.9036175,
+        "date_utc": "2025-11-01 21:41 UTC",
+        "wavelength_um": 0.879,
+        "obs_ids": [
+          "2025W44_2B_0305_1",
+          "2025W44_2B_0321_1",
+          "2025W44_2B_0322_3",
+          "2025W45_1A_0110_1",
+          "2025W45_1A_0153_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 3
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.017045283690094948,
+          "p_hi": 0.275489866733551
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.04518925026059151
+      },
+      {
+        "id": "coadd_p1_d2",
+        "kind": "coadd",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 2,
+        "mjd": 60994.337976300005,
+        "date_utc": "2025-11-15 08:06 UTC",
+        "wavelength_um": 1.302,
+        "obs_ids": [
+          "2025W45_2A_0164_1",
+          "2025W45_2A_0278_1",
+          "2025W45_2A_0292_3",
+          "2025W46_1A_0108_1",
+          "2025W50_2A_0512_1"
+        ],
+        "flag_summary": {},
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.025173557922244072,
+          "p_hi": 0.2902369499206543
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.035322364419698715
+      },
+      {
+        "id": "coadd_p1_d3",
+        "kind": "coadd",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 3,
+        "mjd": 60997.5558749,
+        "date_utc": "2025-11-18 13:20 UTC",
+        "wavelength_um": 1.962,
+        "obs_ids": [
+          "2025W46_1A_0075_4",
+          "2025W46_2A_0214_2",
+          "2025W46_1A_0090_2",
+          "2025W46_2A_0226_3",
+          "2025W50_2A_0428_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 4
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.015547556802630424,
+          "p_hi": 0.21116644144058228
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.024570731446146965
+      },
+      {
+        "id": "coadd_p1_d4",
+        "kind": "coadd",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 4,
+        "mjd": 60980.9036175,
+        "date_utc": "2025-11-01 21:41 UTC",
+        "wavelength_um": 2.926,
+        "obs_ids": [
+          "2025W44_2B_0305_1",
+          "2025W44_2B_0321_1",
+          "2025W45_1A_0110_1",
+          "2025W44_2B_0322_3",
+          "2025W45_1A_0153_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 4
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.014227176085114479,
+          "p_hi": 0.1003962904214859
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.010376691818237305
+      },
+      {
+        "id": "coadd_p1_d5",
+        "kind": "coadd",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 5,
+        "mjd": 60994.337976300005,
+        "date_utc": "2025-11-15 08:06 UTC",
+        "wavelength_um": 4.059,
+        "obs_ids": [
+          "2025W45_2A_0164_1",
+          "2025W45_2A_0292_3",
+          "2025W45_2A_0278_1",
+          "2025W46_1A_0108_1",
+          "2025W50_2A_0512_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 10
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.026048781350255013,
+          "p_hi": 0.08035348355770111
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.018093055114150047
+      },
+      {
+        "id": "coadd_p1_d6",
+        "kind": "coadd",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 6,
+        "mjd": 60997.5558749,
+        "date_utc": "2025-11-18 13:20 UTC",
+        "wavelength_um": 4.676,
+        "obs_ids": [
+          "2025W46_1A_0075_4",
+          "2025W46_1A_0090_2",
+          "2025W46_2A_0214_2",
+          "2025W46_2A_0226_3",
+          "2025W50_2A_0428_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 9
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.04169147089123726,
+          "p_hi": 0.06987301260232925
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.015249079093337059
+      },
+      {
+        "id": "coadd_p2_d1",
+        "kind": "coadd",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 1,
+        "mjd": 61163.50248009999,
+        "date_utc": "2026-05-03 12:03 UTC",
+        "wavelength_um": 0.913,
+        "obs_ids": [
+          "2026W18_2A_0264_1",
+          "2026W18_2A_0424_4",
+          "2026W18_2A_0684_3",
+          "2026W19_1A_0227_2",
+          "2026W19_1A_0594_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 9
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.01616961881518364,
+          "p_hi": 0.24557740986347198
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.047161635011434555
+      },
+      {
+        "id": "coadd_p2_d2",
+        "kind": "coadd",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 2,
+        "mjd": 61166.5042575,
+        "date_utc": "2026-05-06 12:06 UTC",
+        "wavelength_um": 1.369,
+        "obs_ids": [
+          "2026W18_2A_0247_1",
+          "2026W18_2A_0441_1",
+          "2026W18_2A_0519_2",
+          "2026W20_1A_0214_1",
+          "2026W20_1A_1166_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 41
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.01700051687657833,
+          "p_hi": 0.27933597564697266
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.03862646594643593
+      },
+      {
+        "id": "coadd_p2_d3",
+        "kind": "coadd",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 3,
+        "mjd": 61158.3828461,
+        "date_utc": "2026-04-28 09:11 UTC",
+        "wavelength_um": 2.03,
+        "obs_ids": [
+          "2026W17_1B_0507_3",
+          "2026W17_1B_0227_2",
+          "2026W17_2A_0591_1",
+          "2026W18_2A_0065_1",
+          "2026W20_1A_0033_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 14
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.015058653429150581,
+          "p_hi": 0.19748243689537048
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.02398781292140484
+      },
+      {
+        "id": "coadd_p2_d4",
+        "kind": "coadd",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 4,
+        "mjd": 61163.5024801,
+        "date_utc": "2026-05-03 12:03 UTC",
+        "wavelength_um": 3.052,
+        "obs_ids": [
+          "2026W18_2A_0264_1",
+          "2026W18_2A_0424_4",
+          "2026W19_1A_0227_2",
+          "2026W18_2A_0684_3",
+          "2026W19_1A_0594_2"
+        ],
+        "flag_summary": {},
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.013234207406640053,
+          "p_hi": 0.10334479063749313
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.009654460474848747
+      },
+      {
+        "id": "coadd_p2_d5",
+        "kind": "coadd",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 5,
+        "mjd": 61166.5042575,
+        "date_utc": "2026-05-06 12:06 UTC",
+        "wavelength_um": 4.131,
+        "obs_ids": [
+          "2026W18_2A_0247_1",
+          "2026W18_2A_0441_1",
+          "2026W18_2A_0519_2",
+          "2026W20_1A_1166_1",
+          "2026W20_1A_0214_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 20
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.028867080807685852,
+          "p_hi": 0.07877574115991592
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.01720431260764599
+      },
+      {
+        "id": "coadd_p2_d6",
+        "kind": "coadd",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 6,
+        "mjd": 61158.3828461,
+        "date_utc": "2026-04-28 09:11 UTC",
+        "wavelength_um": 4.724,
+        "obs_ids": [
+          "2026W17_1B_0227_2",
+          "2026W17_1B_0507_3",
+          "2026W17_2A_0591_1",
+          "2026W18_2A_0065_1",
+          "2026W20_1A_0033_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 2
+        },
+        "n_inputs": 5,
+        "stretch_hint": {
+          "p_lo": -0.0392473004758358,
+          "p_hi": 0.08502297103404999
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.02451224811375141
+      }
+    ],
+    "diffs": [
+      {
+        "id": "diff_p1_minus_p0_d1",
+        "kind": "diff",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025 − Pass 1 · May 2025",
+        "detector": 1,
+        "mjd": 60980.9036175,
+        "date_utc": "2025-11-01 21:41 UTC",
+        "wavelength_um": 0.93,
+        "obs_ids": [
+          "2025W19_1B_0241_1",
+          "2025W19_1B_0241_2",
+          "2025W19_1B_0241_4",
+          "2025W19_1B_0241_3",
+          "2025W44_2B_0305_1",
+          "2025W44_2B_0321_1",
+          "2025W44_2B_0322_3",
+          "2025W45_1A_0110_1",
+          "2025W45_1A_0153_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 5
+        },
+        "n_inputs": 9,
+        "stretch_hint": {
+          "p_lo": -0.05126916784700006,
+          "p_hi": 0.05126916784700006
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      },
+      {
+        "id": "diff_p2_minus_p0_d1",
+        "kind": "diff",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026 − Pass 1 · May 2025",
+        "detector": 1,
+        "mjd": 61163.50248009999,
+        "date_utc": "2026-05-03 12:03 UTC",
+        "wavelength_um": 0.93,
+        "obs_ids": [
+          "2025W19_1B_0241_1",
+          "2025W19_1B_0241_2",
+          "2025W19_1B_0241_4",
+          "2025W19_1B_0241_3",
+          "2026W18_2A_0264_1",
+          "2026W18_2A_0424_4",
+          "2026W18_2A_0684_3",
+          "2026W19_1A_0227_2",
+          "2026W19_1A_0594_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 11
+        },
+        "n_inputs": 9,
+        "stretch_hint": {
+          "p_lo": -0.05042751409951597,
+          "p_hi": 0.05042751409951597
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      },
+      {
+        "id": "diff_p1_minus_p0_d2",
+        "kind": "diff",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025 − Pass 1 · May 2025",
+        "detector": 2,
+        "mjd": 60994.337976300005,
+        "date_utc": "2025-11-15 08:06 UTC",
+        "wavelength_um": 1.375,
+        "obs_ids": [
+          "2025W19_1B_0181_1",
+          "2025W19_1B_0181_3",
+          "2025W19_1B_0231_2",
+          "2025W19_1B_0231_1",
+          "2025W19_1B_0231_4",
+          "2025W45_2A_0164_1",
+          "2025W45_2A_0278_1",
+          "2025W45_2A_0292_3",
+          "2025W46_1A_0108_1",
+          "2025W50_2A_0512_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 13
+        },
+        "n_inputs": 10,
+        "stretch_hint": {
+          "p_lo": -0.050456907429266715,
+          "p_hi": 0.050456907429266715
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      },
+      {
+        "id": "diff_p2_minus_p0_d2",
+        "kind": "diff",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026 − Pass 1 · May 2025",
+        "detector": 2,
+        "mjd": 61166.5042575,
+        "date_utc": "2026-05-06 12:06 UTC",
+        "wavelength_um": 1.375,
+        "obs_ids": [
+          "2025W19_1B_0181_1",
+          "2025W19_1B_0181_3",
+          "2025W19_1B_0231_2",
+          "2025W19_1B_0231_1",
+          "2025W19_1B_0231_4",
+          "2026W18_2A_0247_1",
+          "2026W18_2A_0441_1",
+          "2026W18_2A_0519_2",
+          "2026W20_1A_0214_1",
+          "2026W20_1A_1166_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 53
+        },
+        "n_inputs": 10,
+        "stretch_hint": {
+          "p_lo": -0.039505791587289424,
+          "p_hi": 0.039505791587289424
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      },
+      {
+        "id": "diff_p1_minus_p0_d3",
+        "kind": "diff",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025 − Pass 1 · May 2025",
+        "detector": 3,
+        "mjd": 60997.5558749,
+        "date_utc": "2025-11-18 13:20 UTC",
+        "wavelength_um": 2.029,
+        "obs_ids": [
+          "2025W19_1B_0116_1",
+          "2025W19_1B_0138_1",
+          "2025W19_1B_0116_2",
+          "2025W46_1A_0075_4",
+          "2025W46_2A_0214_2",
+          "2025W46_1A_0090_2",
+          "2025W46_2A_0226_3",
+          "2025W50_2A_0428_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 4,
+          "DICHROIC": 798
+        },
+        "n_inputs": 8,
+        "stretch_hint": {
+          "p_lo": -0.04127732739876955,
+          "p_hi": 0.04127732739876955
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      },
+      {
+        "id": "diff_p2_minus_p0_d3",
+        "kind": "diff",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026 − Pass 1 · May 2025",
+        "detector": 3,
+        "mjd": 61158.3828461,
+        "date_utc": "2026-04-28 09:11 UTC",
+        "wavelength_um": 2.029,
+        "obs_ids": [
+          "2025W19_1B_0116_1",
+          "2025W19_1B_0138_1",
+          "2025W19_1B_0116_2",
+          "2026W17_1B_0507_3",
+          "2026W17_1B_0227_2",
+          "2026W17_2A_0591_1",
+          "2026W18_2A_0065_1",
+          "2026W20_1A_0033_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 14,
+          "DICHROIC": 798
+        },
+        "n_inputs": 8,
+        "stretch_hint": {
+          "p_lo": -0.038934632416348904,
+          "p_hi": 0.038934632416348904
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      },
+      {
+        "id": "diff_p1_minus_p0_d4",
+        "kind": "diff",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025 − Pass 1 · May 2025",
+        "detector": 4,
+        "mjd": 60980.9036175,
+        "date_utc": "2025-11-01 21:41 UTC",
+        "wavelength_um": 3.123,
+        "obs_ids": [
+          "2025W19_1B_0241_1",
+          "2025W19_1B_0241_3",
+          "2025W19_1B_0241_2",
+          "2025W19_1B_0241_4",
+          "2025W44_2B_0305_1",
+          "2025W44_2B_0321_1",
+          "2025W45_1A_0110_1",
+          "2025W44_2B_0322_3",
+          "2025W45_1A_0153_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 8
+        },
+        "n_inputs": 9,
+        "stretch_hint": {
+          "p_lo": -0.03150696732988581,
+          "p_hi": 0.03150696732988581
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      },
+      {
+        "id": "diff_p2_minus_p0_d4",
+        "kind": "diff",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026 − Pass 1 · May 2025",
+        "detector": 4,
+        "mjd": 61163.5024801,
+        "date_utc": "2026-05-03 12:03 UTC",
+        "wavelength_um": 3.123,
+        "obs_ids": [
+          "2025W19_1B_0241_1",
+          "2025W19_1B_0241_3",
+          "2025W19_1B_0241_2",
+          "2025W19_1B_0241_4",
+          "2026W18_2A_0264_1",
+          "2026W18_2A_0424_4",
+          "2026W19_1A_0227_2",
+          "2026W18_2A_0684_3",
+          "2026W19_1A_0594_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 4
+        },
+        "n_inputs": 9,
+        "stretch_hint": {
+          "p_lo": -0.028143818094860763,
+          "p_hi": 0.028143818094860763
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      },
+      {
+        "id": "diff_p1_minus_p0_d5",
+        "kind": "diff",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025 − Pass 1 · May 2025",
+        "detector": 5,
+        "mjd": 60994.337976300005,
+        "date_utc": "2025-11-15 08:06 UTC",
+        "wavelength_um": 4.115,
+        "obs_ids": [
+          "2025W19_1B_0181_1",
+          "2025W19_1B_0181_3",
+          "2025W19_1B_0231_1",
+          "2025W19_1B_0231_2",
+          "2025W19_1B_0231_4",
+          "2025W45_2A_0164_1",
+          "2025W45_2A_0292_3",
+          "2025W45_2A_0278_1",
+          "2025W46_1A_0108_1",
+          "2025W50_2A_0512_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 19
+        },
+        "n_inputs": 10,
+        "stretch_hint": {
+          "p_lo": -0.08041318416874854,
+          "p_hi": 0.08041318416874854
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      },
+      {
+        "id": "diff_p2_minus_p0_d5",
+        "kind": "diff",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026 − Pass 1 · May 2025",
+        "detector": 5,
+        "mjd": 61166.5042575,
+        "date_utc": "2026-05-06 12:06 UTC",
+        "wavelength_um": 4.115,
+        "obs_ids": [
+          "2025W19_1B_0181_1",
+          "2025W19_1B_0181_3",
+          "2025W19_1B_0231_1",
+          "2025W19_1B_0231_2",
+          "2025W19_1B_0231_4",
+          "2026W18_2A_0247_1",
+          "2026W18_2A_0441_1",
+          "2026W18_2A_0519_2",
+          "2026W20_1A_1166_1",
+          "2026W20_1A_0214_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 30
+        },
+        "n_inputs": 10,
+        "stretch_hint": {
+          "p_lo": -0.0791174267772585,
+          "p_hi": 0.0791174267772585
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      },
+      {
+        "id": "diff_p1_minus_p0_d6",
+        "kind": "diff",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025 − Pass 1 · May 2025",
+        "detector": 6,
+        "mjd": 60997.5558749,
+        "date_utc": "2025-11-18 13:20 UTC",
+        "wavelength_um": 4.707,
+        "obs_ids": [
+          "2025W19_1B_0116_2",
+          "2025W19_1B_0116_1",
+          "2025W19_1B_0138_1",
+          "2025W46_1A_0075_4",
+          "2025W46_1A_0090_2",
+          "2025W46_2A_0214_2",
+          "2025W46_2A_0226_3",
+          "2025W50_2A_0428_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 12
+        },
+        "n_inputs": 8,
+        "stretch_hint": {
+          "p_lo": -0.167484359677881,
+          "p_hi": 0.167484359677881
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      },
+      {
+        "id": "diff_p2_minus_p0_d6",
+        "kind": "diff",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026 − Pass 1 · May 2025",
+        "detector": 6,
+        "mjd": 61158.3828461,
+        "date_utc": "2026-04-28 09:11 UTC",
+        "wavelength_um": 4.707,
+        "obs_ids": [
+          "2025W19_1B_0116_2",
+          "2025W19_1B_0116_1",
+          "2025W19_1B_0138_1",
+          "2026W17_1B_0227_2",
+          "2026W17_1B_0507_3",
+          "2026W17_2A_0591_1",
+          "2026W18_2A_0065_1",
+          "2026W20_1A_0033_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 5
+        },
+        "n_inputs": 8,
+        "stretch_hint": {
+          "p_lo": -0.16126852134056388,
+          "p_hi": 0.16126852134056388
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null
+      }
+    ],
+    "coldglow": [
+      {
+        "id": "coldglow_p0",
+        "kind": "coldglow",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": null,
+        "mjd": 60801.1000478125,
+        "date_utc": "2025-05-06 02:24 UTC",
+        "wavelength_um": 4.469,
+        "obs_ids": [
+          "2025W19_1B_0181_1",
+          "2025W19_1B_0181_3",
+          "2025W19_1B_0231_1",
+          "2025W19_1B_0231_2",
+          "2025W19_1B_0231_4",
+          "2025W19_1B_0116_2",
+          "2025W19_1B_0116_1",
+          "2025W19_1B_0138_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 13
+        },
+        "n_inputs": 8,
+        "stretch_hint": {
+          "p_lo": -0.027643756940960884,
+          "p_hi": 0.06371030956506729
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.016456082463264465
+      },
+      {
+        "id": "coldglow_p1",
+        "kind": "coldglow",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": null,
+        "mjd": 60995.9469256,
+        "date_utc": "2025-11-16 22:43 UTC",
+        "wavelength_um": 4.368,
+        "obs_ids": [
+          "2025W45_2A_0164_1",
+          "2025W45_2A_0292_3",
+          "2025W45_2A_0278_1",
+          "2025W46_1A_0108_1",
+          "2025W50_2A_0512_1",
+          "2025W46_1A_0075_4",
+          "2025W46_1A_0090_2",
+          "2025W46_2A_0214_2",
+          "2025W46_2A_0226_3",
+          "2025W50_2A_0428_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 19
+        },
+        "n_inputs": 10,
+        "stretch_hint": {
+          "p_lo": -0.025662444531917572,
+          "p_hi": 0.07147783041000366
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.01722724363207817
+      },
+      {
+        "id": "coldglow_p2",
+        "kind": "coldglow",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": null,
+        "mjd": 61162.443551799995,
+        "date_utc": "2026-05-02 10:38 UTC",
+        "wavelength_um": 4.428,
+        "obs_ids": [
+          "2026W18_2A_0247_1",
+          "2026W18_2A_0441_1",
+          "2026W18_2A_0519_2",
+          "2026W20_1A_1166_1",
+          "2026W20_1A_0214_1",
+          "2026W17_1B_0227_2",
+          "2026W17_1B_0507_3",
+          "2026W17_2A_0591_1",
+          "2026W18_2A_0065_1",
+          "2026W20_1A_0033_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 22
+        },
+        "n_inputs": 10,
+        "stretch_hint": {
+          "p_lo": -0.025829652324318886,
+          "p_hi": 0.07985463738441467
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.01932132989168167
+      }
+    ],
+    "rgb": [
+      {
+        "id": "rgb_p0",
+        "kind": "rgb",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": null,
+        "mjd": 60801.191852022224,
+        "date_utc": "2025-05-06 04:36 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "2025W19_1B_0116_2",
+          "2025W19_1B_0116_1",
+          "2025W19_1B_0138_1",
+          "2025W19_1B_0241_1",
+          "2025W19_1B_0241_3",
+          "2025W19_1B_0241_2",
+          "2025W19_1B_0241_4",
+          "2025W19_1B_0181_1",
+          "2025W19_1B_0181_3",
+          "2025W19_1B_0231_2",
+          "2025W19_1B_0231_1",
+          "2025W19_1B_0231_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 20
+        },
+        "n_inputs": 12,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "rgb_p1",
+        "kind": "rgb",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": null,
+        "mjd": 60990.93248956667,
+        "date_utc": "2025-11-11 22:22 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "2025W46_1A_0075_4",
+          "2025W46_1A_0090_2",
+          "2025W46_2A_0214_2",
+          "2025W46_2A_0226_3",
+          "2025W50_2A_0428_1",
+          "2025W44_2B_0305_1",
+          "2025W44_2B_0321_1",
+          "2025W45_1A_0110_1",
+          "2025W44_2B_0322_3",
+          "2025W45_1A_0153_1",
+          "2025W45_2A_0164_1",
+          "2025W45_2A_0278_1",
+          "2025W45_2A_0292_3",
+          "2025W46_1A_0108_1",
+          "2025W50_2A_0512_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 13
+        },
+        "n_inputs": 15,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "rgb_p2",
+        "kind": "rgb",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": null,
+        "mjd": 61162.7965279,
+        "date_utc": "2026-05-02 19:07 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "2026W17_1B_0227_2",
+          "2026W17_1B_0507_3",
+          "2026W17_2A_0591_1",
+          "2026W18_2A_0065_1",
+          "2026W20_1A_0033_1",
+          "2026W18_2A_0264_1",
+          "2026W18_2A_0424_4",
+          "2026W19_1A_0227_2",
+          "2026W18_2A_0684_3",
+          "2026W19_1A_0594_2",
+          "2026W18_2A_0247_1",
+          "2026W18_2A_0441_1",
+          "2026W18_2A_0519_2",
+          "2026W20_1A_0214_1",
+          "2026W20_1A_1166_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 43
+        },
+        "n_inputs": 15,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      }
+    ],
+    "visits": [
+      {
+        "id": "visit_0_2025W19_1B_0116_1_d3",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 3,
+        "mjd": 60800.7006945,
+        "date_utc": "2025-05-05 16:49 UTC",
+        "wavelength_um": 2.364,
+        "obs_ids": [
+          "2025W19_1B_0116_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 25,
+          "SUR_ERROR": 16,
+          "NONFUNC": 14
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02474883198738098,
+          "p_hi": 0.19065473973751068
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_1_2025W19_1B_0116_1_d6",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 6,
+        "mjd": 60800.7006945,
+        "date_utc": "2025-05-05 16:49 UTC",
+        "wavelength_um": 4.967,
+        "obs_ids": [
+          "2025W19_1B_0116_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 23,
+          "OVERFLOW": 5,
+          "SUR_ERROR": 17,
+          "NONFUNC": 24
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.09202612936496735,
+          "p_hi": 0.14135760068893433
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_2_2025W19_1B_0116_2_d3",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 3,
+        "mjd": 60800.702187,
+        "date_utc": "2025-05-05 16:51 UTC",
+        "wavelength_um": 2.413,
+        "obs_ids": [
+          "2025W19_1B_0116_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 16,
+          "SUR_ERROR": 10,
+          "NONFUNC": 9,
+          "DICHROIC": 2860
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.03477757051587105,
+          "p_hi": 0.13495807349681854
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_3_2025W19_1B_0116_2_d6",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 6,
+        "mjd": 60800.702187,
+        "date_utc": "2025-05-05 16:51 UTC",
+        "wavelength_um": 5.003,
+        "obs_ids": [
+          "2025W19_1B_0116_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 17,
+          "OVERFLOW": 2,
+          "SUR_ERROR": 14,
+          "NONFUNC": 9
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.10981784015893936,
+          "p_hi": 0.17589549720287323
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_4_2025W19_1B_0138_1_d3",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 3,
+        "mjd": 60800.835104,
+        "date_utc": "2025-05-05 20:02 UTC",
+        "wavelength_um": 2.208,
+        "obs_ids": [
+          "2025W19_1B_0138_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 25,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 21,
+          "NONFUNC": 11
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.024165330454707146,
+          "p_hi": 0.16931189596652985
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_5_2025W19_1B_0138_1_d6",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 6,
+        "mjd": 60800.835104,
+        "date_utc": "2025-05-05 20:02 UTC",
+        "wavelength_um": 4.86,
+        "obs_ids": [
+          "2025W19_1B_0138_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 25,
+          "OVERFLOW": 2,
+          "SUR_ERROR": 20,
+          "NONFUNC": 20
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.09637542814016342,
+          "p_hi": 0.12268082052469254
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_6_2025W19_1B_0181_1_d2",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 2,
+        "mjd": 60801.107262499994,
+        "date_utc": "2025-05-06 02:34 UTC",
+        "wavelength_um": 1.515,
+        "obs_ids": [
+          "2025W19_1B_0181_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 15,
+          "SUR_ERROR": 10,
+          "NONFUNC": 7
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.028974393382668495,
+          "p_hi": 0.23849178850650787
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_7_2025W19_1B_0181_1_d5",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 5,
+        "mjd": 60801.107262499994,
+        "date_utc": "2025-05-06 02:34 UTC",
+        "wavelength_um": 4.295,
+        "obs_ids": [
+          "2025W19_1B_0181_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 21,
+          "OVERFLOW": 3,
+          "SUR_ERROR": 15,
+          "NONFUNC": 16
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.056487902998924255,
+          "p_hi": 0.13578948378562927
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_8_2025W19_1B_0181_3_d2",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 2,
+        "mjd": 60801.110247,
+        "date_utc": "2025-05-06 02:38 UTC",
+        "wavelength_um": 1.59,
+        "obs_ids": [
+          "2025W19_1B_0181_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 15,
+          "SUR_ERROR": 6,
+          "NONFUNC": 8
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02963561937212944,
+          "p_hi": 0.3021174371242523
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_9_2025W19_1B_0181_3_d5",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 5,
+        "mjd": 60801.110247,
+        "date_utc": "2025-05-06 02:38 UTC",
+        "wavelength_um": 4.369,
+        "obs_ids": [
+          "2025W19_1B_0181_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 17,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 15,
+          "NONFUNC": 12
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.057658031582832336,
+          "p_hi": 0.10812314599752426
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_10_2025W19_1B_0231_1_d2",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 2,
+        "mjd": 60801.446306,
+        "date_utc": "2025-05-06 10:42 UTC",
+        "wavelength_um": 1.28,
+        "obs_ids": [
+          "2025W19_1B_0231_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 15,
+          "SUR_ERROR": 9,
+          "NONFUNC": 6
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.030494986101984978,
+          "p_hi": 0.32111606001853943
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_11_2025W19_1B_0231_1_d5",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 5,
+        "mjd": 60801.446306,
+        "date_utc": "2025-05-06 10:42 UTC",
+        "wavelength_um": 4.039,
+        "obs_ids": [
+          "2025W19_1B_0231_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 22,
+          "SUR_ERROR": 15,
+          "NONFUNC": 19
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.0518825426697731,
+          "p_hi": 0.09577178955078125
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_12_2025W19_1B_0231_2_d2",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 2,
+        "mjd": 60801.4477985,
+        "date_utc": "2025-05-06 10:44 UTC",
+        "wavelength_um": 1.31,
+        "obs_ids": [
+          "2025W19_1B_0231_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 14,
+          "SUR_ERROR": 4,
+          "NONFUNC": 4
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.030749527737498283,
+          "p_hi": 0.22696007788181305
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_13_2025W19_1B_0231_2_d5",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 5,
+        "mjd": 60801.4477985,
+        "date_utc": "2025-05-06 10:44 UTC",
+        "wavelength_um": 4.074,
+        "obs_ids": [
+          "2025W19_1B_0231_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 30,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 28,
+          "NONFUNC": 9
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.04671526700258255,
+          "p_hi": 0.09026447683572769
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_14_2025W19_1B_0231_4_d2",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 2,
+        "mjd": 60801.450783,
+        "date_utc": "2025-05-06 10:49 UTC",
+        "wavelength_um": 1.373,
+        "obs_ids": [
+          "2025W19_1B_0231_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 16,
+          "SUR_ERROR": 12,
+          "NONFUNC": 7
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.028719225898385048,
+          "p_hi": 0.28769001364707947
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_15_2025W19_1B_0231_4_d5",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 5,
+        "mjd": 60801.450783,
+        "date_utc": "2025-05-06 10:49 UTC",
+        "wavelength_um": 4.145,
+        "obs_ids": [
+          "2025W19_1B_0231_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 27,
+          "SUR_ERROR": 17,
+          "NONFUNC": 17
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.05708267539739609,
+          "p_hi": 0.07648781687021255
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_16_2025W19_1B_0241_1_d1",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 1,
+        "mjd": 60801.514843,
+        "date_utc": "2025-05-06 12:21 UTC",
+        "wavelength_um": 0.993,
+        "obs_ids": [
+          "2025W19_1B_0241_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 27,
+          "SUR_ERROR": 19,
+          "NONFUNC": 9
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.0334751233458519,
+          "p_hi": 0.330191045999527
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_17_2025W19_1B_0241_1_d4",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 4,
+        "mjd": 60801.514843,
+        "date_utc": "2025-05-06 12:21 UTC",
+        "wavelength_um": 3.358,
+        "obs_ids": [
+          "2025W19_1B_0241_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 20,
+          "OVERFLOW": 5,
+          "SUR_ERROR": 21,
+          "NONFUNC": 31
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.01944488100707531,
+          "p_hi": 0.09405356645584106
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_18_2025W19_1B_0241_2_d1",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 1,
+        "mjd": 60801.5163355,
+        "date_utc": "2025-05-06 12:23 UTC",
+        "wavelength_um": 1.016,
+        "obs_ids": [
+          "2025W19_1B_0241_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 25,
+          "SUR_ERROR": 15,
+          "NONFUNC": 13
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02932184748351574,
+          "p_hi": 0.2335301786661148
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_19_2025W19_1B_0241_2_d4",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 4,
+        "mjd": 60801.5163355,
+        "date_utc": "2025-05-06 12:23 UTC",
+        "wavelength_um": 3.449,
+        "obs_ids": [
+          "2025W19_1B_0241_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 23,
+          "OVERFLOW": 4,
+          "SUR_ERROR": 13,
+          "NONFUNC": 44
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.020419366657733917,
+          "p_hi": 0.10302518308162689
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_20_2025W19_1B_0241_3_d1",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 1,
+        "mjd": 60801.51782750001,
+        "date_utc": "2025-05-06 12:25 UTC",
+        "wavelength_um": 1.041,
+        "obs_ids": [
+          "2025W19_1B_0241_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 19,
+          "SUR_ERROR": 14,
+          "NONFUNC": 9
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.03236651048064232,
+          "p_hi": 0.2447415292263031
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_21_2025W19_1B_0241_3_d4",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 4,
+        "mjd": 60801.51782750001,
+        "date_utc": "2025-05-06 12:25 UTC",
+        "wavelength_um": 3.542,
+        "obs_ids": [
+          "2025W19_1B_0241_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 33,
+          "OVERFLOW": 2,
+          "SUR_ERROR": 33,
+          "NONFUNC": 25
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.021955573931336403,
+          "p_hi": 0.0969669297337532
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_22_2025W19_1B_0241_4_d1",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 1,
+        "mjd": 60801.51932,
+        "date_utc": "2025-05-06 12:27 UTC",
+        "wavelength_um": 1.065,
+        "obs_ids": [
+          "2025W19_1B_0241_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 24,
+          "SUR_ERROR": 15,
+          "NONFUNC": 14
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.28009626269340515,
+          "p_hi": 0.4072171747684479
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_23_2025W19_1B_0241_4_d4",
+        "kind": "visit",
+        "pass_index": 0,
+        "pass_label": "Pass 1 · May 2025",
+        "detector": 4,
+        "mjd": 60801.51932,
+        "date_utc": "2025-05-06 12:27 UTC",
+        "wavelength_um": 3.638,
+        "obs_ids": [
+          "2025W19_1B_0241_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 30,
+          "OVERFLOW": 2,
+          "SUR_ERROR": 27,
+          "NONFUNC": 25
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.021574171259999275,
+          "p_hi": 0.08786125481128693
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_24_2025W44_2B_0305_1_d1",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 1,
+        "mjd": 60979.723343499994,
+        "date_utc": "2025-10-31 17:21 UTC",
+        "wavelength_um": 0.861,
+        "obs_ids": [
+          "2025W44_2B_0305_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 23,
+          "SUR_ERROR": 17,
+          "NONFUNC": 8
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.027939338237047195,
+          "p_hi": 0.2461593747138977
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_25_2025W44_2B_0305_1_d4",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 4,
+        "mjd": 60979.723343499994,
+        "date_utc": "2025-10-31 17:21 UTC",
+        "wavelength_um": 2.854,
+        "obs_ids": [
+          "2025W44_2B_0305_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 19,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 16,
+          "NONFUNC": 24
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02301216498017311,
+          "p_hi": 0.09714190661907196
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_26_2025W44_2B_0321_1_d1",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 1,
+        "mjd": 60979.786089,
+        "date_utc": "2025-10-31 18:51 UTC",
+        "wavelength_um": 0.946,
+        "obs_ids": [
+          "2025W44_2B_0321_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 24,
+          "SUR_ERROR": 18,
+          "NONFUNC": 23
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.029157686978578568,
+          "p_hi": 0.3042834997177124
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_27_2025W44_2B_0321_1_d4",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 4,
+        "mjd": 60979.786089,
+        "date_utc": "2025-10-31 18:51 UTC",
+        "wavelength_um": 3.18,
+        "obs_ids": [
+          "2025W44_2B_0321_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 25,
+          "OVERFLOW": 2,
+          "SUR_ERROR": 22,
+          "NONFUNC": 23
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.021761754527688026,
+          "p_hi": 0.09765014797449112
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_28_2025W44_2B_0322_3_d1",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 1,
+        "mjd": 60979.792289,
+        "date_utc": "2025-10-31 19:00 UTC",
+        "wavelength_um": 1.039,
+        "obs_ids": [
+          "2025W44_2B_0322_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 27,
+          "SUR_ERROR": 21,
+          "NONFUNC": 8
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.03439754620194435,
+          "p_hi": 0.24619635939598083
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_29_2025W44_2B_0322_3_d4",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 4,
+        "mjd": 60979.792289,
+        "date_utc": "2025-10-31 19:00 UTC",
+        "wavelength_um": 3.537,
+        "obs_ids": [
+          "2025W44_2B_0322_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 28,
+          "SUR_ERROR": 23,
+          "NONFUNC": 16
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.023305583745241165,
+          "p_hi": 0.0813961774110794
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_30_2025W45_1A_0110_1_d1",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 1,
+        "mjd": 60982.50725150001,
+        "date_utc": "2025-11-03 12:10 UTC",
+        "wavelength_um": 0.784,
+        "obs_ids": [
+          "2025W45_1A_0110_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 17,
+          "SUR_ERROR": 14,
+          "NONFUNC": 9
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02938290499150753,
+          "p_hi": 0.2122233659029007
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_31_2025W45_1A_0110_1_d4",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 4,
+        "mjd": 60982.50725150001,
+        "date_utc": "2025-11-03 12:10 UTC",
+        "wavelength_um": 2.563,
+        "obs_ids": [
+          "2025W45_1A_0110_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 24,
+          "SUR_ERROR": 21,
+          "NONFUNC": 9
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.022381125018000603,
+          "p_hi": 0.1299273520708084
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_32_2025W45_1A_0153_1_d1",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 1,
+        "mjd": 60982.7091145,
+        "date_utc": "2025-11-03 17:01 UTC",
+        "wavelength_um": 0.767,
+        "obs_ids": [
+          "2025W45_1A_0153_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 15,
+          "SUR_ERROR": 13,
+          "NONFUNC": 4
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.031264618039131165,
+          "p_hi": 0.27018624544143677
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_33_2025W45_1A_0153_1_d4",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 4,
+        "mjd": 60982.7091145,
+        "date_utc": "2025-11-03 17:01 UTC",
+        "wavelength_um": 2.495,
+        "obs_ids": [
+          "2025W45_1A_0153_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 24,
+          "OVERFLOW": 2,
+          "SUR_ERROR": 20,
+          "NONFUNC": 18
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.023631833493709564,
+          "p_hi": 0.12200077623128891
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_34_2025W45_2A_0164_1_d2",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 2,
+        "mjd": 60986.241655499995,
+        "date_utc": "2025-11-07 05:47 UTC",
+        "wavelength_um": 1.101,
+        "obs_ids": [
+          "2025W45_2A_0164_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 11,
+          "SUR_ERROR": 10,
+          "NONFUNC": 9
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.0817539393901825,
+          "p_hi": 0.48845773935317993
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_35_2025W45_2A_0164_1_d5",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 5,
+        "mjd": 60986.241655499995,
+        "date_utc": "2025-11-07 05:47 UTC",
+        "wavelength_um": 3.821,
+        "obs_ids": [
+          "2025W45_2A_0164_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 16,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 6,
+          "NONFUNC": 16
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.04524216055870056,
+          "p_hi": 0.10640277713537216
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_36_2025W45_2A_0278_1_d2",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 2,
+        "mjd": 60986.783468,
+        "date_utc": "2025-11-07 18:48 UTC",
+        "wavelength_um": 1.257,
+        "obs_ids": [
+          "2025W45_2A_0278_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 11,
+          "SUR_ERROR": 6,
+          "NONFUNC": 7
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.031928613781929016,
+          "p_hi": 0.25930944085121155
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_37_2025W45_2A_0278_1_d5",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 5,
+        "mjd": 60986.783468,
+        "date_utc": "2025-11-07 18:48 UTC",
+        "wavelength_um": 4.012,
+        "obs_ids": [
+          "2025W45_2A_0278_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 23,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 16,
+          "NONFUNC": 10
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.047566406428813934,
+          "p_hi": 0.07783539593219757
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_38_2025W45_2A_0292_3_d2",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 2,
+        "mjd": 60986.857335,
+        "date_utc": "2025-11-07 20:34 UTC",
+        "wavelength_um": 1.447,
+        "obs_ids": [
+          "2025W45_2A_0292_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 7,
+          "SUR_ERROR": 4,
+          "NONFUNC": 6
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.029773756861686707,
+          "p_hi": 0.2811238765716553
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_39_2025W45_2A_0292_3_d5",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 5,
+        "mjd": 60986.857335,
+        "date_utc": "2025-11-07 20:34 UTC",
+        "wavelength_um": 4.225,
+        "obs_ids": [
+          "2025W45_2A_0292_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 26,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 22,
+          "NONFUNC": 16
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.055704694241285324,
+          "p_hi": 0.10196972638368607
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_40_2025W46_1A_0075_4_d3",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 3,
+        "mjd": 60989.2974735,
+        "date_utc": "2025-11-10 07:08 UTC",
+        "wavelength_um": 1.631,
+        "obs_ids": [
+          "2025W46_1A_0075_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 18,
+          "SUR_ERROR": 11,
+          "NONFUNC": 10
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02998262085020542,
+          "p_hi": 0.26947513222694397
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_41_2025W46_1A_0075_4_d6",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 6,
+        "mjd": 60989.2974735,
+        "date_utc": "2025-11-10 07:08 UTC",
+        "wavelength_um": 4.418,
+        "obs_ids": [
+          "2025W46_1A_0075_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 21,
+          "OVERFLOW": 3,
+          "SUR_ERROR": 18,
+          "NONFUNC": 17
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.07268734276294708,
+          "p_hi": 0.09830982238054276
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_42_2025W46_1A_0090_2_d3",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 3,
+        "mjd": 60989.366934499994,
+        "date_utc": "2025-11-10 08:48 UTC",
+        "wavelength_um": 1.83,
+        "obs_ids": [
+          "2025W46_1A_0090_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 13,
+          "SUR_ERROR": 8,
+          "NONFUNC": 10
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02750919945538044,
+          "p_hi": 0.22643868625164032
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_43_2025W46_1A_0090_2_d6",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 6,
+        "mjd": 60989.366934499994,
+        "date_utc": "2025-11-10 08:48 UTC",
+        "wavelength_um": 4.58,
+        "obs_ids": [
+          "2025W46_1A_0090_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 20,
+          "OVERFLOW": 3,
+          "SUR_ERROR": 20,
+          "NONFUNC": 22
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.07561357319355011,
+          "p_hi": 0.12181361019611359
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_44_2025W46_1A_0108_1_d2",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 2,
+        "mjd": 60989.43865149999,
+        "date_utc": "2025-11-10 10:31 UTC",
+        "wavelength_um": 1.257,
+        "obs_ids": [
+          "2025W46_1A_0108_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 6,
+          "SUR_ERROR": 4,
+          "NONFUNC": 7
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.030025664716959,
+          "p_hi": 0.33339840173721313
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_45_2025W46_1A_0108_1_d5",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 5,
+        "mjd": 60989.43865149999,
+        "date_utc": "2025-11-10 10:31 UTC",
+        "wavelength_um": 4.012,
+        "obs_ids": [
+          "2025W46_1A_0108_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 25,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 12,
+          "NONFUNC": 10
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.05271800234913826,
+          "p_hi": 0.06599101424217224
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_46_2025W46_2A_0214_2_d3",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 3,
+        "mjd": 60993.507267,
+        "date_utc": "2025-11-14 12:10 UTC",
+        "wavelength_um": 2.033,
+        "obs_ids": [
+          "2025W46_2A_0214_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 22,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 16,
+          "NONFUNC": 13
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.025082962587475777,
+          "p_hi": 0.23436416685581207
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_47_2025W46_2A_0214_2_d6",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 6,
+        "mjd": 60993.507267,
+        "date_utc": "2025-11-14 12:10 UTC",
+        "wavelength_um": 4.736,
+        "obs_ids": [
+          "2025W46_2A_0214_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 27,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 16,
+          "NONFUNC": 19
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.09132038801908493,
+          "p_hi": 0.12456356734037399
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_48_2025W46_2A_0226_3_d3",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 3,
+        "mjd": 60993.57790049999,
+        "date_utc": "2025-11-14 13:52 UTC",
+        "wavelength_um": 2.281,
+        "obs_ids": [
+          "2025W46_2A_0226_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 17,
+          "OVERFLOW": 2,
+          "SUR_ERROR": 14,
+          "NONFUNC": 5
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02621622569859028,
+          "p_hi": 0.14939512312412262
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_49_2025W46_2A_0226_3_d6",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 6,
+        "mjd": 60993.57790049999,
+        "date_utc": "2025-11-14 13:52 UTC",
+        "wavelength_um": 4.911,
+        "obs_ids": [
+          "2025W46_2A_0226_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 21,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 16,
+          "NONFUNC": 13
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.09551222622394562,
+          "p_hi": 0.1682564616203308
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_50_2025W50_2A_0428_1_d3",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 3,
+        "mjd": 61022.029798999996,
+        "date_utc": "2025-12-13 00:42 UTC",
+        "wavelength_um": 2.034,
+        "obs_ids": [
+          "2025W50_2A_0428_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 20,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 12,
+          "NONFUNC": 16
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02404010482132435,
+          "p_hi": 0.25158050656318665
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_51_2025W50_2A_0428_1_d6",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 6,
+        "mjd": 61022.029798999996,
+        "date_utc": "2025-12-13 00:42 UTC",
+        "wavelength_um": 4.736,
+        "obs_ids": [
+          "2025W50_2A_0428_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 16,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 10,
+          "NONFUNC": 19
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.0717451423406601,
+          "p_hi": 0.12305592000484467
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_52_2025W50_2A_0512_1_d2",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 2,
+        "mjd": 61022.3687715,
+        "date_utc": "2025-12-13 08:51 UTC",
+        "wavelength_um": 1.447,
+        "obs_ids": [
+          "2025W50_2A_0512_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 36,
+          "SUR_ERROR": 28,
+          "NONFUNC": 6
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.027751093730330467,
+          "p_hi": 0.24752579629421234
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_53_2025W50_2A_0512_1_d5",
+        "kind": "visit",
+        "pass_index": 1,
+        "pass_label": "Pass 2 · Oct–Dec 2025",
+        "detector": 5,
+        "mjd": 61022.3687715,
+        "date_utc": "2025-12-13 08:51 UTC",
+        "wavelength_um": 4.225,
+        "obs_ids": [
+          "2025W50_2A_0512_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 40,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 32,
+          "NONFUNC": 16
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.053685370832681656,
+          "p_hi": 0.0966443121433258
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_54_2026W17_1B_0227_2_d3",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 3,
+        "mjd": 61151.1985995,
+        "date_utc": "2026-04-21 04:45 UTC",
+        "wavelength_um": 1.639,
+        "obs_ids": [
+          "2026W17_1B_0227_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 4,
+          "SUR_ERROR": 1,
+          "NONFUNC": 7
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.025926874950528145,
+          "p_hi": 0.31536394357681274
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_55_2026W17_1B_0227_2_d6",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 6,
+        "mjd": 61151.1985995,
+        "date_utc": "2026-04-21 04:45 UTC",
+        "wavelength_um": 4.424,
+        "obs_ids": [
+          "2026W17_1B_0227_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 16,
+          "OVERFLOW": 3,
+          "SUR_ERROR": 14,
+          "NONFUNC": 11
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.06804758310317993,
+          "p_hi": 0.09090277552604675
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_56_2026W17_1B_0507_3_d3",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 3,
+        "mjd": 61152.760954,
+        "date_utc": "2026-04-22 18:15 UTC",
+        "wavelength_um": 1.836,
+        "obs_ids": [
+          "2026W17_1B_0507_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 22,
+          "SUR_ERROR": 12,
+          "NONFUNC": 11
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.024072127416729927,
+          "p_hi": 0.19108763337135315
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_57_2026W17_1B_0507_3_d6",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 6,
+        "mjd": 61152.760954,
+        "date_utc": "2026-04-22 18:15 UTC",
+        "wavelength_um": 4.584,
+        "obs_ids": [
+          "2026W17_1B_0507_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 20,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 15,
+          "NONFUNC": 17
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.06539881974458694,
+          "p_hi": 0.35318201780319214
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_58_2026W17_2A_0591_1_d3",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 3,
+        "mjd": 61156.086177,
+        "date_utc": "2026-04-26 02:04 UTC",
+        "wavelength_um": 2.154,
+        "obs_ids": [
+          "2026W17_2A_0591_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 28,
+          "SUR_ERROR": 21,
+          "NONFUNC": 11
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.023132115602493286,
+          "p_hi": 0.22569499909877777
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_59_2026W17_2A_0591_1_d6",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 6,
+        "mjd": 61156.086177,
+        "date_utc": "2026-04-26 02:04 UTC",
+        "wavelength_um": 4.822,
+        "obs_ids": [
+          "2026W17_2A_0591_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 35,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 29,
+          "NONFUNC": 19
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.07804273813962936,
+          "p_hi": 0.14065560698509216
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_60_2026W18_2A_0065_1_d3",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 3,
+        "mjd": 61160.77148349999,
+        "date_utc": "2026-04-30 18:30 UTC",
+        "wavelength_um": 2.157,
+        "obs_ids": [
+          "2026W18_2A_0065_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 42,
+          "SUR_ERROR": 19,
+          "NONFUNC": 8
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02398546226322651,
+          "p_hi": 0.18902620673179626
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_61_2026W18_2A_0065_1_d6",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 6,
+        "mjd": 61160.77148349999,
+        "date_utc": "2026-04-30 18:30 UTC",
+        "wavelength_um": 4.825,
+        "obs_ids": [
+          "2026W18_2A_0065_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 23,
+          "OVERFLOW": 4,
+          "SUR_ERROR": 19,
+          "NONFUNC": 21
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.08680947124958038,
+          "p_hi": 0.1385953724384308
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_62_2026W18_2A_0247_1_d2",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 2,
+        "mjd": 61161.5875335,
+        "date_utc": "2026-05-01 14:06 UTC",
+        "wavelength_um": 1.111,
+        "obs_ids": [
+          "2026W18_2A_0247_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 9,
+          "SUR_ERROR": 7,
+          "NONFUNC": 4
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.027709368616342545,
+          "p_hi": 0.24617300927639008
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_63_2026W18_2A_0247_1_d5",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 5,
+        "mjd": 61161.5875335,
+        "date_utc": "2026-05-01 14:06 UTC",
+        "wavelength_um": 3.835,
+        "obs_ids": [
+          "2026W18_2A_0247_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 15,
+          "OVERFLOW": 5,
+          "SUR_ERROR": 12,
+          "NONFUNC": 13
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.04546935111284256,
+          "p_hi": 0.10909727960824966
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_64_2026W18_2A_0264_1_d1",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 1,
+        "mjd": 61161.65584,
+        "date_utc": "2026-05-01 15:44 UTC",
+        "wavelength_um": 1.091,
+        "obs_ids": [
+          "2026W18_2A_0264_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 23,
+          "SUR_ERROR": 16,
+          "NONFUNC": 11
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.3247818946838379,
+          "p_hi": 0.27900826930999756
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_65_2026W18_2A_0264_1_d4",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 4,
+        "mjd": 61161.65584,
+        "date_utc": "2026-05-01 15:44 UTC",
+        "wavelength_um": 3.735,
+        "obs_ids": [
+          "2026W18_2A_0264_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 18,
+          "OVERFLOW": 3,
+          "SUR_ERROR": 18,
+          "NONFUNC": 18
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02246285416185856,
+          "p_hi": 0.07853371649980545
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_66_2026W18_2A_0424_4_d1",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 1,
+        "mjd": 61162.337622499996,
+        "date_utc": "2026-05-02 08:06 UTC",
+        "wavelength_um": 0.779,
+        "obs_ids": [
+          "2026W18_2A_0424_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 35,
+          "SUR_ERROR": 21,
+          "NONFUNC": 8
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.027583720162510872,
+          "p_hi": 0.19942700862884521
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_67_2026W18_2A_0424_4_d4",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 4,
+        "mjd": 61162.337622499996,
+        "date_utc": "2026-05-02 08:06 UTC",
+        "wavelength_um": 2.543,
+        "obs_ids": [
+          "2026W18_2A_0424_4"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 10,
+          "OVERFLOW": 2,
+          "SUR_ERROR": 11,
+          "NONFUNC": 21
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.02373628504574299,
+          "p_hi": 0.15409113466739655
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_68_2026W18_2A_0441_1_d2",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 2,
+        "mjd": 61162.402198,
+        "date_utc": "2026-05-02 09:39 UTC",
+        "wavelength_um": 1.221,
+        "obs_ids": [
+          "2026W18_2A_0441_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 6,
+          "SUR_ERROR": 6,
+          "NONFUNC": 4
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.027086615562438965,
+          "p_hi": 0.2600772976875305
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_69_2026W18_2A_0441_1_d5",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 5,
+        "mjd": 61162.402198,
+        "date_utc": "2026-05-02 09:39 UTC",
+        "wavelength_um": 3.969,
+        "obs_ids": [
+          "2026W18_2A_0441_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 26,
+          "OVERFLOW": 2,
+          "SUR_ERROR": 21,
+          "NONFUNC": 25
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.04437519982457161,
+          "p_hi": 0.0758141428232193
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_70_2026W18_2A_0519_2_d2",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 2,
+        "mjd": 61162.6758135,
+        "date_utc": "2026-05-02 16:13 UTC",
+        "wavelength_um": 1.479,
+        "obs_ids": [
+          "2026W18_2A_0519_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 144,
+          "SUR_ERROR": 52,
+          "NONFUNC": 10
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.031947750598192215,
+          "p_hi": 0.2810402810573578
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_71_2026W18_2A_0519_2_d5",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 5,
+        "mjd": 61162.6758135,
+        "date_utc": "2026-05-02 16:13 UTC",
+        "wavelength_um": 4.259,
+        "obs_ids": [
+          "2026W18_2A_0519_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 163,
+          "OVERFLOW": 6,
+          "SUR_ERROR": 70,
+          "NONFUNC": 19
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.056234367191791534,
+          "p_hi": 0.1300315409898758
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_72_2026W18_2A_0684_3_d1",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 1,
+        "mjd": 61163.286980499994,
+        "date_utc": "2026-05-03 06:53 UTC",
+        "wavelength_um": 0.836,
+        "obs_ids": [
+          "2026W18_2A_0684_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 21,
+          "SUR_ERROR": 11,
+          "NONFUNC": 10
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.027287978678941727,
+          "p_hi": 0.2735738456249237
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_73_2026W18_2A_0684_3_d4",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 4,
+        "mjd": 61163.286980499994,
+        "date_utc": "2026-05-03 06:53 UTC",
+        "wavelength_um": 2.756,
+        "obs_ids": [
+          "2026W18_2A_0684_3"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 11,
+          "OVERFLOW": 2,
+          "SUR_ERROR": 11,
+          "NONFUNC": 21
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.021553032100200653,
+          "p_hi": 0.14746445417404175
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_74_2026W19_1A_0227_2_d1",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 1,
+        "mjd": 61164.6411485,
+        "date_utc": "2026-05-04 15:23 UTC",
+        "wavelength_um": 0.897,
+        "obs_ids": [
+          "2026W19_1A_0227_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 29,
+          "SUR_ERROR": 19,
+          "NONFUNC": 9
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.030831003561615944,
+          "p_hi": 0.20521235466003418
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_75_2026W19_1A_0227_2_d4",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 4,
+        "mjd": 61164.6411485,
+        "date_utc": "2026-05-04 15:23 UTC",
+        "wavelength_um": 2.987,
+        "obs_ids": [
+          "2026W19_1A_0227_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 26,
+          "OVERFLOW": 6,
+          "SUR_ERROR": 21,
+          "NONFUNC": 31
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.01929270103573799,
+          "p_hi": 0.0977976843714714
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_76_2026W19_1A_0594_2_d1",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 1,
+        "mjd": 61165.590809,
+        "date_utc": "2026-05-05 14:10 UTC",
+        "wavelength_um": 0.962,
+        "obs_ids": [
+          "2026W19_1A_0594_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 21,
+          "SUR_ERROR": 19,
+          "NONFUNC": 10
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.028235919773578644,
+          "p_hi": 0.275898277759552
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_77_2026W19_1A_0594_2_d4",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 4,
+        "mjd": 61165.590809,
+        "date_utc": "2026-05-05 14:10 UTC",
+        "wavelength_um": 3.241,
+        "obs_ids": [
+          "2026W19_1A_0594_2"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 18,
+          "OVERFLOW": 3,
+          "SUR_ERROR": 17,
+          "NONFUNC": 30
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.022677196189761162,
+          "p_hi": 0.18974816799163818
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_78_2026W20_1A_0033_1_d3",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 3,
+        "mjd": 61171.0970165,
+        "date_utc": "2026-05-11 02:19 UTC",
+        "wavelength_um": 2.363,
+        "obs_ids": [
+          "2026W20_1A_0033_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 25,
+          "SUR_ERROR": 17,
+          "NONFUNC": 13
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.023547576740384102,
+          "p_hi": 0.1427483856678009
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_79_2026W20_1A_0033_1_d6",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 6,
+        "mjd": 61171.0970165,
+        "date_utc": "2026-05-11 02:19 UTC",
+        "wavelength_um": 4.967,
+        "obs_ids": [
+          "2026W20_1A_0033_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 28,
+          "OVERFLOW": 5,
+          "SUR_ERROR": 22,
+          "NONFUNC": 24
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.10924674570560455,
+          "p_hi": 0.12246353179216385
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_80_2026W20_1A_0214_1_d2",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 2,
+        "mjd": 61171.5678585,
+        "date_utc": "2026-05-11 13:37 UTC",
+        "wavelength_um": 1.444,
+        "obs_ids": [
+          "2026W20_1A_0214_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 10,
+          "SUR_ERROR": 9,
+          "NONFUNC": 5
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.029938742518424988,
+          "p_hi": 0.30640044808387756
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_81_2026W20_1A_0214_1_d5",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 5,
+        "mjd": 61171.5678585,
+        "date_utc": "2026-05-11 13:37 UTC",
+        "wavelength_um": 4.222,
+        "obs_ids": [
+          "2026W20_1A_0214_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 44,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 28,
+          "NONFUNC": 21
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.054825618863105774,
+          "p_hi": 0.09608712792396545
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_82_2026W20_1A_1166_1_d2",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 2,
+        "mjd": 61174.287884,
+        "date_utc": "2026-05-14 06:54 UTC",
+        "wavelength_um": 1.59,
+        "obs_ids": [
+          "2026W20_1A_1166_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 50,
+          "SUR_ERROR": 15,
+          "NONFUNC": 10
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.03210083767771721,
+          "p_hi": 0.3172709345817566
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      },
+      {
+        "id": "visit_83_2026W20_1A_1166_1_d5",
+        "kind": "visit",
+        "pass_index": 2,
+        "pass_label": "Pass 3 · Apr–May 2026",
+        "detector": 5,
+        "mjd": 61174.287884,
+        "date_utc": "2026-05-14 06:54 UTC",
+        "wavelength_um": 4.369,
+        "obs_ids": [
+          "2026W20_1A_1166_1"
+        ],
+        "flag_summary": {
+          "TRANSIENT": 49,
+          "OVERFLOW": 1,
+          "SUR_ERROR": 29,
+          "NONFUNC": 12
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.0625489354133606,
+          "p_hi": 0.1813036948442459
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null
+      }
+    ]
+  },
+  "warnings": [
+    "WISE 0855 is extremely faint (~18.5 mag W1 / ~15.7 mag W2); detection in stacked D5–D6 SPHEREx passes sits near the survey sensitivity floor."
+  ],
+  "citations": [
+    {
+      "label": "SPHEREx DR1 Spectral Images",
+      "doi": "10.26131/IRSA678",
+      "url": "https://irsa.ipac.caltech.edu/data/SPHEREx/docs/overview_dr1.html",
+      "text": "This publication makes use of data products from the Spectro-Photometer for the History of the Universe, Epoch of Reionization and Ices Explorer (SPHEREx), which is a joint project of the Jet Propulsion Laboratory and the California Institute of Technology, and is funded by the National Aeronautics and Space Administration."
+    },
+    {
+      "label": "SPHEREx QR3 Quick Release Images",
+      "doi": "10.26131/IRSA662",
+      "url": "https://irsa.ipac.caltech.edu/data/SPHEREx/docs/overview_qr.html",
+      "text": "Uniformly processed Quick Release 3 spectral images combined with DR1 via NASA/IPAC IRSA SIAv2."
+    },
+    {
+      "label": "Gaia DR3 & AllWISE / CDS Aladin Lite",
+      "doi": null,
+      "url": "https://archive.stsci.edu/missions-and-data/gaia",
+      "text": "Cross-mission astrometric & infrared overlays powered by ESA Gaia DR3, NASA AllWISE, and CDS Aladin Lite v3."
+    }
+  ],
+  "created_utc": "2026-11-13T19:52:41Z",
+  "pipeline_version": "v1"
+}

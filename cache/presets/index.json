@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "barnards-star",
+    "name": "Barnard's Star",
+    "passes": 3,
+    "spectrum_pts": 56,
+    "gaia": 0,
+    "allwise": 80,
+    "bytes": 4263174
+  },
+  {
+    "slug": "eps-indi-b",
+    "name": "Epsilon Indi B (Ba/Bb)",
+    "passes": 4,
+    "spectrum_pts": 104,
+    "gaia": 0,
+    "allwise": 64,
+    "bytes": 6449188
+  },
+  {
+    "slug": "wise-0855",
+    "name": "WISE 0855",
+    "passes": 3,
+    "spectrum_pts": 82,
+    "gaia": 0,
+    "allwise": 65,
+    "bytes": 4869349
+  },
+  {
+    "slug": "rw-aurigae",
+    "name": "RW Aurigae",
+    "passes": 3,
+    "spectrum_pts": 7,
+    "gaia": 0,
+    "allwise": 48,
+    "bytes": 4486426
+  },
+  {
+    "slug": "r-draconis",
+    "name": "R Draconis",
+    "passes": 3,
+    "spectrum_pts": 2,
+    "gaia": 0,
+    "allwise": 39,
+    "bytes": 12899970
+  }
+]

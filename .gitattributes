@@ -1,0 +1,2 @@
+cache/presets/**/*.sfp filter=lfs diff=lfs merge=lfs -text
+cache/presets/**/*.webp filter=lfs diff=lfs merge=lfs -text

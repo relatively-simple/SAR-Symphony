@@ -1,0 +1,32 @@
+[project]
+name = "kurinjikumaran-spherex"
+version = "0.1.0"
+description = "SPHEREx Discovery Flipbook for NASA Space Apps 2026 Challenge 12 (Planet X and SPHEREx)"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "pydantic>=2.9.0",
+    "pydantic-settings>=2.6.0",
+    "astropy>=6.1.0",
+    "reproject>=0.14.0",
+    "numpy>=1.26.0",
+    "scipy>=1.14.0",
+    "httpx>=0.27.2",
+    "certifi>=2024.8.30",
+    "pillow>=10.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = [
+    "network: tests that hit live IRSA/SIMBAD/Gaia endpoints",
+]

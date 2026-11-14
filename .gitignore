@@ -1,0 +1,20 @@
+# Python / uv
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Node / Frontend build
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Ephemeral runtime cache (presets stay committed in cache/presets/)
+runtime_cache/
+
+# OS / IDE / Logs
+.DS_Store
+Thumbs.db
+*.log
+.env

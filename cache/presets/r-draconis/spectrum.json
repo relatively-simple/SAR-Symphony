@@ -1,0 +1,271 @@
+{
+  "ra": 248.167234,
+  "dec": 66.755024,
+  "points": [
+    {
+      "wavelength_um": 0.7799,
+      "flux_mjysr": 5.49785,
+      "err": 0.01749,
+      "detector": 1,
+      "mjd": 60870.7311835,
+      "obs_id": "2025W29_1A_0141_4",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 0.7808,
+      "flux_mjysr": 2.01525,
+      "err": 0.00846,
+      "detector": 1,
+      "mjd": 60965.615174,
+      "obs_id": "2025W42_2A_0244_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 0.7898,
+      "flux_mjysr": 5.08257,
+      "err": 0.01651,
+      "detector": 1,
+      "mjd": 60984.289768,
+      "obs_id": "2025W45_1A_0515_2",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 0.7983,
+      "flux_mjysr": 8.03386,
+      "err": 0.02645,
+      "detector": 1,
+      "mjd": 60874.6671835,
+      "obs_id": "2025W29_2A_0288_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 0.8255,
+      "flux_mjysr": 14.80421,
+      "err": 0.06793,
+      "detector": 1,
+      "mjd": 60999.637503499995,
+      "obs_id": "2025W47_2A_0033_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 0.8371,
+      "flux_mjysr": 9.48019,
+      "err": 0.0271,
+      "detector": 1,
+      "mjd": 61234.0725405,
+      "obs_id": "2026W29_1A_0015_3",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 0.8979,
+      "flux_mjysr": 14.65686,
+      "err": 0.06336,
+      "detector": 1,
+      "mjd": 61232.441967499995,
+      "obs_id": "2026W28_2A_0376_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 1.0082,
+      "flux_mjysr": 17.22897,
+      "err": 0.06785,
+      "detector": 1,
+      "mjd": 61227.485194,
+      "obs_id": "2026W28_1A_0104_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 1.1016,
+      "flux_mjysr": 14.47939,
+      "err": 0.02657,
+      "detector": 1,
+      "mjd": 60987.619770499994,
+      "obs_id": "2025W45_2A_0458_2",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 1.1612,
+      "flux_mjysr": 21.36909,
+      "err": 0.09529,
+      "detector": 2,
+      "mjd": 61010.023259,
+      "obs_id": "2025W49_1A_0009_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 1.2005,
+      "flux_mjysr": 16.43369,
+      "err": 0.06409,
+      "detector": 2,
+      "mjd": 61214.454343,
+      "obs_id": "2026W26_1A_0324_3",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 1.2191,
+      "flux_mjysr": 34.31282,
+      "err": 0.19775,
+      "detector": 2,
+      "mjd": 60836.014232,
+      "obs_id": "2025W24_1A_0215_3",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 1.2627,
+      "flux_mjysr": 19.01173,
+      "err": 0.04301,
+      "detector": 2,
+      "mjd": 61212.1430885,
+      "obs_id": "2026W25_2A_0573_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 1.4048,
+      "flux_mjysr": 16.12928,
+      "err": 0.04088,
+      "detector": 2,
+      "mjd": 60834.788417,
+      "obs_id": "2025W23_2B_0696_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 1.4096,
+      "flux_mjysr": 12.22986,
+      "err": 0.02722,
+      "detector": 2,
+      "mjd": 60997.733404,
+      "obs_id": "2025W47_1A_0388_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 1.4544,
+      "flux_mjysr": 9.75638,
+      "err": 0.02864,
+      "detector": 2,
+      "mjd": 61212.618940500004,
+      "obs_id": "2026W25_2A_0661_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 1.6553,
+      "flux_mjysr": 62.3768,
+      "err": 0.19871,
+      "detector": 3,
+      "mjd": 61166.253867499996,
+      "obs_id": "2026W19_1A_0842_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 1.9555,
+      "flux_mjysr": 18.36254,
+      "err": 0.04996,
+      "detector": 3,
+      "mjd": 61203.861571,
+      "obs_id": "2026W24_2B_0242_4",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.2324,
+      "flux_mjysr": 41.26865,
+      "err": 0.34272,
+      "detector": 5,
+      "mjd": 61212.618940500004,
+      "obs_id": "2026W25_2A_0661_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.4166,
+      "flux_mjysr": 47.63944,
+      "err": 0.28304,
+      "detector": 5,
+      "mjd": 61212.687957,
+      "obs_id": "2026W25_2A_0674_2",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.4377,
+      "flux_mjysr": 102.61386,
+      "err": 0.31535,
+      "detector": 6,
+      "mjd": 61166.253867499996,
+      "obs_id": "2026W19_1A_0842_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.6225,
+      "flux_mjysr": 36.22722,
+      "err": 0.25905,
+      "detector": 6,
+      "mjd": 61035.561156,
+      "obs_id": "2025W52_2A_0227_4",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.6323,
+      "flux_mjysr": 52.18598,
+      "err": 0.22361,
+      "detector": 6,
+      "mjd": 61152.331718,
+      "obs_id": "2026W17_1B_0434_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.6389,
+      "flux_mjysr": 51.78597,
+      "err": 0.28952,
+      "detector": 6,
+      "mjd": 60838.2565205,
+      "obs_id": "2025W24_1A_0631_3",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.6776,
+      "flux_mjysr": 36.96686,
+      "err": 0.13434,
+      "detector": 6,
+      "mjd": 61203.861571,
+      "obs_id": "2026W24_2B_0242_4",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.6916,
+      "flux_mjysr": 40.32703,
+      "err": 0.16917,
+      "detector": 6,
+      "mjd": 61183.4926635,
+      "obs_id": "2026W21_2A_0325_2",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.7671,
+      "flux_mjysr": 35.48977,
+      "err": 0.37781,
+      "detector": 6,
+      "mjd": 61043.5679735,
+      "obs_id": "2026W01_2A_0426_1",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.8362,
+      "flux_mjysr": 144.51167,
+      "err": 0.40603,
+      "detector": 6,
+      "mjd": 61040.582309499994,
+      "obs_id": "2026W01_1A_0534_3",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.8715,
+      "flux_mjysr": 50.05145,
+      "err": 0.14799,
+      "detector": 6,
+      "mjd": 61173.246343,
+      "obs_id": "2026W20_1A_0795_2",
+      "flagged": true
+    }
+  ],
+  "aperture_arcsec": 29.5,
+  "n_used": 29,
+  "n_rejected": 61,
+  "note": "Bright source saturates central pixel(s) [OVERFLOW]; spectrum shows unmasked PSF halo photometry (lower limit). Click away from core for unsaturated field stars."
+}
