@@ -44,9 +44,10 @@ select {
   top: 0;
   z-index: 40;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem 1rem;
   padding: 0.7rem 1.25rem;
   background: rgba(7, 11, 20, 0.9);
   backdrop-filter: blur(10px);
@@ -113,8 +114,9 @@ select {
 
 .nav-actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.5rem;
 }
 
 .btn {
@@ -583,5 +585,275 @@ select {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Discovery Score Pill & Success Callout */
+.score-pill {
+  background: rgba(251, 191, 36, 0.14);
+  border-color: rgba(251, 191, 36, 0.45);
+  color: var(--accent-amber);
+  font-weight: 700;
+}
+
+.callout-success {
+  border-left-color: var(--accent-emerald);
+  background: rgba(52, 211, 153, 0.1);
+}
+
+/* Side-by-Side Past vs Present vs Difference Triptych */
+.compare-triptych {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.compare-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.compare-tile-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-size: 0.76rem;
+}
+
+.compare-footer-note {
+  margin-top: 0.65rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-panel-elevated);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.77rem;
+  color: var(--text-secondary);
+}
+
+/* Automated Pattern Finder */
+.pattern-card {
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.pattern-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.6rem;
+}
+
+.pattern-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.34rem 0.68rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-panel-elevated);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pattern-pill.active {
+  border-color: var(--accent-amber);
+  background: rgba(251, 191, 36, 0.14);
+  color: #fde68a;
+}
+
+.pattern-detail-box {
+  padding: 0.72rem 0.85rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-panel-elevated);
+  border: 1px solid var(--border-subtle);
+}
+
+.verdict-bar {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Pre-Entry Citizen Scientist Onboarding Tutorial */
+.tutorial-modal {
+  max-width: 820px;
+  padding: 1.4rem;
+  border-color: rgba(56, 189, 248, 0.45);
+}
+
+.tutorial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.tutorial-kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+}
+
+.tutorial-progress {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+
+.tutorial-step-dot {
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-input);
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  padding: 0.38rem 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tutorial-step-dot.active {
+  border-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.16);
+  color: var(--accent-cyan);
+}
+
+.tutorial-step-dot.done {
+  border-color: var(--accent-emerald);
+  color: var(--accent-emerald);
+}
+
+.tutorial-body {
+  min-height: 255px;
+}
+
+.tutorial-lead {
+  margin: 0 0 0.9rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.tutorial-cards-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.tutorial-mini-card {
+  padding: 0.85rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-panel-elevated);
+  border: 1px solid var(--border-subtle);
+}
+
+.tutorial-mini-card h3 {
+  margin: 0.45rem 0 0.35rem;
+  font-size: 0.95rem;
+}
+
+.tutorial-mini-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.tutorial-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.16rem 0.5rem;
+  border-radius: 999px;
+}
+
+.tutorial-badge.cyan {
+  background: rgba(56, 189, 248, 0.16);
+  color: var(--accent-cyan);
+}
+
+.tutorial-badge.amber {
+  background: rgba(251, 191, 36, 0.16);
+  color: var(--accent-amber);
+}
+
+.tutorial-badge.emerald {
+  background: rgba(52, 211, 153, 0.16);
+  color: var(--accent-emerald);
+}
+
+.tutorial-demo-split {
+  display: grid;
+  grid-template-columns: minmax(220px, 270px) 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.tutorial-demo-canvas-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tutorial-svg-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: #050812;
+  display: block;
+}
+
+.tutorial-demo-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tutorial-demo-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.practice-status-bar {
+  font-size: 0.72rem;
+  color: var(--accent-cyan);
+  background: var(--bg-input);
+  padding: 0.32rem 0.55rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.tutorial-footer {
+  margin-top: 1.15rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 760px) {
+  .compare-triptych {
+    grid-template-columns: 1fr;
+  }
+  .tutorial-cards-3,
+  .tutorial-demo-split {
+    grid-template-columns: 1fr;
+  }
+  .tutorial-progress {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .progress-stages {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

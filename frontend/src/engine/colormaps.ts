@@ -3,13 +3,16 @@ export type ColormapKind = "grey" | "inferno" | "red-cyan" | "orange-blue";
 export function sampleSequential(u: number, kind: "grey" | "inferno"): [number, number, number] {
   const t = Math.max(0, Math.min(1, u));
   if (kind === "grey") {
-    const c = Math.round(t * 255);
-    return [c, c, c];
+    const c = Math.round(8 + t * 247);
+    return [c, c, Math.min(255, c + 4)];
   }
-  // Obsidian -> Deep Violet -> Amber -> White-Gold (Cold Glow palette)
-  const r = Math.round(Math.min(255, 14 + 241 * Math.pow(t, 0.72)));
-  const g = Math.round(Math.min(255, 11 + 215 * Math.pow(t, 1.38)));
-  const b = Math.round(Math.min(255, 26 + 229 * Math.pow(t, 2.35)));
+  if (t <= 0.004) {
+    return [7, 10, 18];
+  }
+  // Obsidian night floor -> Deep Violet -> Bright Amber -> Starlight Gold-White
+  const r = Math.round(Math.min(255, 7 + 248 * Math.pow(t, 0.85)));
+  const g = Math.round(Math.min(255, 10 + 232 * Math.pow(t, 1.38)));
+  const b = Math.round(Math.min(255, 18 + 225 * Math.pow(t, 2.25)));
   return [r, g, b];
 }
 
@@ -18,33 +21,35 @@ export function sampleDiverging(
   palette: "red-cyan" | "orange-blue"
 ): [number, number, number] {
   const x = Math.max(-1, Math.min(1, s));
-  const m = Math.sqrt(Math.abs(x));
+  if (Math.abs(x) <= 0.004) {
+    return [8, 12, 20];
+  }
+  const m = Math.pow(Math.abs(x), 0.86);
   if (palette === "orange-blue") {
-    // Color-blind safe: Teal/Blue negative (old position) -> Dark Neutral -> Vivid Orange positive (new position)
     if (x >= 0) {
       return [
-        Math.round(22 + 233 * m),
-        Math.round(26 + 135 * m),
-        Math.round(42 * (1 - m)),
+        Math.round(10 + 245 * m),
+        Math.round(14 + 145 * m),
+        Math.round(24 * (1 - m)),
       ];
     }
     return [
-      Math.round(22 * (1 - m)),
-      Math.round(26 + 150 * m),
-      Math.round(42 + 213 * m),
+      Math.round(10 * (1 - m)),
+      Math.round(14 + 165 * m),
+      Math.round(24 + 231 * m),
     ];
   }
-  // Default Crimson/Rose (+) vs Cyan (-) for crisp motion dipoles
+  // Crisp Neon Coral-Red ('Now / +') vs Electric Cyan ('Before / -') over pitch obsidian
   if (x >= 0) {
     return [
-      Math.round(18 + 237 * m),
-      Math.round(22 + 65 * m * m),
-      Math.round(36 + 75 * m),
+      Math.round(12 + 243 * m),
+      Math.round(16 + 72 * m * m),
+      Math.round(24 + 78 * m),
     ];
   }
   return [
-    Math.round(18 + 18 * m),
-    Math.round(22 + 205 * m),
-    Math.round(36 + 219 * m),
+    Math.round(12 + 20 * m),
+    Math.round(16 + 212 * m),
+    Math.round(24 + 231 * m),
   ];
 }

@@ -282,3 +282,73 @@ def test_api_live_spectrum_lru_cache_and_offcenter(tmp_path) -> None:
         r2 = client.get("/api/sessions/barnards-star/spectrum?ra=200.0&dec=15.0")
         assert r2.status_code == 200
         assert r2.json()["points"][0]["flux_mjysr"] == flux1
+
+
+def test_api_pattern_detection_mover_and_validation(tmp_path) -> None:
+    from tests.conftest import gaussian_star
+
+    preset_dir = tmp_path / "presets"
+    slug_dir = preset_dir / "mover-synth"
+    (slug_dir / "frames").mkdir(parents=True)
+
+    npix = 25
+    past = gaussian_star((npix, npix), 12.0, 10.0, flux=60.0, sigma=0.8)
+    present = gaussian_star((npix, npix), 12.0, 13.0, flux=60.0, sigma=0.8)
+    diff = (present - past).astype(np.float32)
+
+    blob_c = encode_framepack(
+        ["c0_d1", "c1_d1"],
+        np.stack([past, present], axis=0)[:, np.newaxis, :, :],
+        np.zeros((2, npix, npix), dtype=np.uint16),
+    )
+    blob_d = encode_framepack(
+        ["d1_0"],
+        diff[np.newaxis, np.newaxis, :, :],
+        np.zeros((1, npix, npix), dtype=np.uint16),
+    )
+    (slug_dir / "frames" / "pass_coadds.sfp").write_bytes(blob_c)
+    (slug_dir / "frames" / "diffs.sfp").write_bytes(blob_d)
+
+    manifest = SessionManifest(
+        session_id="mover-synth",
+        source="live",
+        target=TargetRef(ra=180.0, dec=0.0, name="Synth Mover"),
+        grid=GridSpec(ra0=180.0, dec0=0.0, fov_deg=0.05, npix=npix),
+        passes=[
+            SurveyPass(index=0, mjd_start=60800.0, mjd_end=60810.0, mjd_mid=60805.0, n_exposures=1, label="Pass 1"),
+            SurveyPass(index=1, mjd_start=61100.0, mjd_end=61110.0, mjd_mid=61105.0, n_exposures=1, label="Pass 2"),
+        ],
+        products={
+            "pass_coadds": ProductInfo(name="pass_coadds", url="/api/sessions/mover-synth/frames/pass_coadds.sfp", n_frames=2, planes_per_frame=1, has_flags=True, bytes=len(blob_c)),
+            "diffs": ProductInfo(name="diffs", url="/api/sessions/mover-synth/frames/diffs.sfp", n_frames=1, planes_per_frame=1, has_flags=True, bytes=len(blob_d)),
+        },
+        frames={
+            "pass_coadds": [
+                FrameMeta(id="c0_d1", kind="coadd", pass_index=0, pass_label="Pass 1", detector=1, mjd=60805.0, date_utc="2025-05-10", wavelength_um=0.93, obs_ids=["o1"], stretch_hint=StretchHint(p_lo=0.0, p_hi=10.0)),
+                FrameMeta(id="c1_d1", kind="coadd", pass_index=1, pass_label="Pass 2", detector=1, mjd=61105.0, date_utc="2026-03-06", wavelength_um=0.93, obs_ids=["o2"], stretch_hint=StretchHint(p_lo=0.0, p_hi=10.0)),
+            ],
+            "diffs": [
+                FrameMeta(id="d1_0", kind="diff", pass_index=1, pass_label="Pass 2 - Pass 1", detector=1, mjd=61105.0, date_utc="2026-03-06", wavelength_um=0.93, obs_ids=["o1", "o2"], stretch_hint=StretchHint(p_lo=-10.0, p_hi=10.0), ref_pass_index=0),
+            ],
+        },
+        created_utc="2026-11-15T00:00:00Z",
+        pipeline_version="v1",
+    )
+    (slug_dir / "manifest.json").write_text(manifest.model_dump_json(), encoding="utf-8")
+
+    cfg = Settings(
+        SPX_PRESET_DIR=preset_dir,
+        SPX_CACHE_DIR=tmp_path / "runtime",
+        SPX_FRONTEND_DIST=tmp_path / "no_dist",
+    )
+    with TestClient(create_app(cfg)) as client:
+        r_pat = client.get("/api/sessions/mover-synth/patterns")
+        assert r_pat.status_code == 200
+        pat = r_pat.json()
+        assert pat["n_patterns"] >= 1
+        assert pat["candidates"][0]["kind"] == "mover"
+        assert pat["candidates"][0]["metrics"]["direction"] == "N"
+
+        r_bad = client.get("/api/sessions/bad$id/patterns")
+        assert r_bad.status_code == 400
+        assert r_bad.json()["error_code"] == "INVALID_SESSION_ID"

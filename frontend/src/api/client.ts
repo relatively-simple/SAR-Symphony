@@ -1,6 +1,7 @@
 import type {
   HealthStatus,
   OverlaySet,
+  PatternReport,
   SessionManifest,
   SpectrumResult,
   TargetPreset,
@@ -68,4 +69,8 @@ export async function fetchOverlays(
 
 export async function fetchHealth(): Promise<HealthStatus> {
   return readJson(await fetch("/api/health"));
+}
+
+export async function fetchPatterns(sessionId: string): Promise<PatternReport> {
+  return readJson(await fetch(`/api/sessions/${encodeURIComponent(sessionId)}/patterns`));
 }

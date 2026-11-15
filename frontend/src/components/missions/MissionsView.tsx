@@ -9,9 +9,9 @@ export const MissionsView: React.FC = () => {
     <section className="strip-panel" aria-label="Guided Discovery Missions">
       <div className="panel-header" style={{ marginBottom: "0.55rem" }}>
         <div>
-          <h1 className="panel-title">5 NASA Challenge 12 Discovery Missions</h1>
+          <h1 className="panel-title">5 Real SPHEREx Discovery Examples (+ Scan Any Sky Coordinate)</h1>
           <div style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
-            Pick a target below to inspect instant epoch-aligned SPHEREx DR1+QR3 flipbooks, thermal colors, and 102-channel spectra.
+            Practice spotting movers, cold worlds, and variable stars on real NASA scans — or switch to <strong>Free Sky Explorer</strong> to search anywhere in the sky.
           </div>
         </div>
       </div>

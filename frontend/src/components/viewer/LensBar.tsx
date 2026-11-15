@@ -3,7 +3,7 @@ import { LENS_SPECS, PRIMARY_LENSES } from "../../content/lenses";
 import { useAppState } from "../../state/store";
 
 export const LensBar: React.FC = () => {
-  const { lens, setLens, manifest, proOpen, setProOpen } = useAppState();
+  const { lens, setLens, viewLayout, setViewLayout, manifest, proOpen, setProOpen } = useAppState();
   const proVisitAvailable = Boolean(manifest?.products.visits);
 
   return (
@@ -47,6 +47,28 @@ export const LensBar: React.FC = () => {
           {proOpen ? "Hide Pro Controls" : "Pro Controls"}
         </button>
       </div>
+
+      {lens === "blink" && (
+        <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", flexWrap: "wrap" }}>
+          <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontWeight: 600 }}>
+            Compare Style:
+          </span>
+          <button
+            type="button"
+            className={`detector-chip ${viewLayout === "compare" ? "active" : ""}`}
+            onClick={() => setViewLayout("compare")}
+          >
+            Side-by-Side (Past | Present | Diff)
+          </button>
+          <button
+            type="button"
+            className={`detector-chip ${viewLayout === "single" ? "active" : ""}`}
+            onClick={() => setViewLayout("single")}
+          >
+            Blink Animation (Past &harr; Present)
+          </button>
+        </div>
+      )}
 
       <div style={{ fontSize: "0.79rem", color: "var(--text-secondary)" }}>
         <span className="status-pill" style={{ marginRight: "0.5rem" }}>

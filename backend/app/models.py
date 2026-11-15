@@ -8,6 +8,7 @@ TargetKind = Literal["mover", "variable", "binary_bd"]
 LensId = Literal["motion", "coldglow", "variable", "rgb", "visits"]
 StretchFn = Literal["asinh", "linear", "log"]
 OverlaySource = Literal["preset", "live", "unavailable"]
+PatternKind = Literal["mover", "variable", "cold_ir", "archive_drift"]
 
 
 class TargetPreset(BaseModel):
@@ -214,3 +215,33 @@ class HealthStatus(BaseModel):
     cache_entries: int
     presets_ready: list[str]
     version: str
+
+
+class PatternCandidate(BaseModel):
+    """Automatically detected astrophysical candidate or anomaly in a SPHEREx cube."""
+
+    id: str
+    kind: PatternKind
+    title: str
+    summary: str
+    confidence: Literal["High", "Medium"]
+    snr: float
+    ra: float
+    dec: float
+    fits_x: float
+    fits_y: float
+    past_fits_x: float | None = None
+    past_fits_y: float | None = None
+    suggested_label: str
+    metrics: dict[str, float | str] = Field(default_factory=dict)
+
+
+class PatternReport(BaseModel):
+    """Ranked list of automated spatial/temporal/spectral patterns for a session."""
+
+    session_id: str
+    n_patterns: int
+    summary: str
+    past_label: str | None = None
+    present_label: str | None = None
+    candidates: list[PatternCandidate] = Field(default_factory=list)

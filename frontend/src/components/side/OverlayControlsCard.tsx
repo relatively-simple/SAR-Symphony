@@ -15,7 +15,12 @@ export const OverlayControlsCard: React.FC = () => {
   return (
     <section className="panel-card" aria-label="Cross-Mission Catalog Overlays">
       <div className="panel-header" style={{ marginBottom: "0.45rem" }}>
-        <h2 className="panel-title">Cross-Mission Context &amp; Sky Overlays</h2>
+        <div>
+          <h2 className="panel-title">Cross-Mission Catalog Overlays</h2>
+          <div style={{ fontSize: "0.73rem", color: "var(--text-muted)" }}>
+            Hidden by default to keep images clutter-free; tick below to reveal reference stars
+          </div>
+        </div>
         {overlays && (
           <span className="status-pill">
             {overlays.gaia.length} Gaia &middot; {overlays.allwise.length} AllWISE

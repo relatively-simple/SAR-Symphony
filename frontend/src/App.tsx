@@ -9,14 +9,25 @@ import { ProDrawer } from "./components/pro/ProDrawer";
 import { AladinInsetModal } from "./components/side/AladinInsetModal";
 import { MissionBriefingCard } from "./components/side/MissionBriefingCard";
 import { OverlayControlsCard } from "./components/side/OverlayControlsCard";
+import { PatternFinderCard } from "./components/side/PatternFinderCard";
 import { SpectrumChart } from "./components/side/SpectrumChart";
+import { OnboardingTutorial } from "./components/tutorial/OnboardingTutorial";
+import { CompareTriptych } from "./components/viewer/CompareTriptych";
 import { FlipbookCanvas } from "./components/viewer/FlipbookCanvas";
 import { LensBar } from "./components/viewer/LensBar";
 import { PlaybackBar } from "./components/viewer/PlaybackBar";
 import { AppProvider, useAppState } from "./state/store";
 
 const Workbench: React.FC = () => {
-  const { mode, sessionLoading, productLoading, sessionError, manifest } = useAppState();
+  const {
+    mode,
+    lens,
+    viewLayout,
+    sessionLoading,
+    productLoading,
+    sessionError,
+    manifest,
+  } = useAppState();
 
   return (
     <>
@@ -31,10 +42,10 @@ const Workbench: React.FC = () => {
         )}
 
         <div className="workbench">
-          {/* Left: Interactive Flipbook Canvas & Controls */}
+          {/* Left: Interactive Past vs Present / Flipbook Canvas & Controls */}
           <section className="panel-card" aria-label="SPHEREx Discovery Flipbook Viewer">
             <div className="panel-header" style={{ marginBottom: "0.55rem" }}>
-              <h2 className="panel-title">Interactive SPHEREx Flipbook</h2>
+              <h2 className="panel-title">Interactive SPHEREx Discovery Viewer</h2>
               {(sessionLoading || productLoading) && (
                 <Spinner label="Loading calibrated float32 tiles..." />
               )}
@@ -43,9 +54,7 @@ const Workbench: React.FC = () => {
             <LensBar />
 
             <div style={{ marginTop: "0.7rem" }}>
-              {manifest ? (
-                <FlipbookCanvas />
-              ) : (
+              {!manifest ? (
                 <div
                   className="canvas-stage"
                   style={{ display: "grid", placeItems: "center", color: "var(--text-muted)" }}
@@ -53,9 +62,13 @@ const Workbench: React.FC = () => {
                   {sessionLoading ? (
                     <Spinner label="Preparing discovery stack..." />
                   ) : (
-                    <span>Select a mission or scan sky coordinates to begin.</span>
+                    <span>Select a sky patch or scan coordinates to begin.</span>
                   )}
                 </div>
+              ) : lens === "blink" && viewLayout === "compare" ? (
+                <CompareTriptych />
+              ) : (
+                <FlipbookCanvas />
               )}
             </div>
 
@@ -63,8 +76,9 @@ const Workbench: React.FC = () => {
             <ProDrawer />
           </section>
 
-          {/* Right: Briefing, Click-to-Spectrum & Multi-Mission Overlays */}
+          {/* Right: Automated Pattern Finder, Spectrum, Briefing & Overlays */}
           <aside className="side-stack" aria-label="Discovery Context and Spectrum">
+            <PatternFinderCard />
             <MissionBriefingCard />
             <SpectrumChart />
             <OverlayControlsCard />
@@ -74,6 +88,7 @@ const Workbench: React.FC = () => {
         <CitationsBar />
       </main>
 
+      <OnboardingTutorial />
       <GlossaryModal />
       <AladinInsetModal />
     </>

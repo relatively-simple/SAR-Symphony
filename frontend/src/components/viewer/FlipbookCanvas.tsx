@@ -31,6 +31,10 @@ export const FlipbookCanvas: React.FC = () => {
     loOverride,
     hiOverride,
     showFlags,
+    cleanMode,
+    crispPixels,
+    patterns,
+    activePatternId,
     overlays,
     overlayGaia,
     overlayWise,
@@ -62,8 +66,24 @@ export const FlipbookCanvas: React.FC = () => {
       diverging: spec.diverging,
       palette: spec.palette,
       showFlags,
+      autoRange: loOverride === null && hiOverride === null,
+      cleanMode,
+      crispPixels,
     });
-  }, [activePack, packFrameIdx, stretchFn, lo, hi, spec.diverging, spec.palette, showFlags]);
+  }, [
+    activePack,
+    packFrameIdx,
+    stretchFn,
+    lo,
+    hi,
+    loOverride,
+    hiOverride,
+    spec.diverging,
+    spec.palette,
+    showFlags,
+    cleanMode,
+    crispPixels,
+  ]);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const canvas = canvasRef.current;
@@ -89,6 +109,25 @@ export const FlipbookCanvas: React.FC = () => {
     if (!Number.isFinite(fx) || !Number.isFinite(fy)) return null;
     return { pctX: ((fx + 0.5) / npix) * 100, pctY: ((npix - 0.5 - fy) / npix) * 100 };
   }, [manifest, selectedCoord, npix]);
+
+  const patternOverlay = useMemo(() => {
+    const cand =
+      patterns?.candidates.find((c) => c.id === activePatternId) ?? patterns?.candidates[0] ?? null;
+    if (!cand || !Number.isFinite(cand.fits_x) || !Number.isFinite(cand.fits_y)) return null;
+    const nowX = ((cand.fits_x + 0.5) / npix) * 100;
+    const nowY = ((npix - 0.5 - cand.fits_y) / npix) * 100;
+    const hasPast =
+      typeof cand.past_fits_x === "number" &&
+      typeof cand.past_fits_y === "number" &&
+      Number.isFinite(cand.past_fits_x) &&
+      Number.isFinite(cand.past_fits_y);
+    return {
+      nowX,
+      nowY,
+      pastX: hasPast ? ((cand.past_fits_x! + 0.5) / npix) * 100 : null,
+      pastY: hasPast ? ((npix - 0.5 - cand.past_fits_y!) / npix) * 100 : null,
+    };
+  }, [patterns, activePatternId, npix]);
 
   const currentMjd = activeMeta?.mjd ?? overlays?.mjd_ref ?? 61000;
 
@@ -160,6 +199,39 @@ export const FlipbookCanvas: React.FC = () => {
                 </g>
               );
             })}
+
+          {patternOverlay && (
+            <g fill="none">
+              {patternOverlay.pastX !== null && patternOverlay.pastY !== null && (
+                <>
+                  <circle
+                    cx={patternOverlay.pastX}
+                    cy={patternOverlay.pastY}
+                    r="2.9"
+                    stroke="#22d3ee"
+                    strokeWidth="0.4"
+                  />
+                  <line
+                    x1={patternOverlay.pastX}
+                    y1={patternOverlay.pastY}
+                    x2={patternOverlay.nowX}
+                    y2={patternOverlay.nowY}
+                    stroke="#f8fafc"
+                    strokeWidth="0.38"
+                    strokeDasharray="1.1 0.8"
+                  />
+                </>
+              )}
+              <circle
+                cx={patternOverlay.nowX}
+                cy={patternOverlay.nowY}
+                r="3.8"
+                stroke="#fb923c"
+                strokeWidth="0.45"
+                strokeDasharray="1.3 0.7"
+              />
+            </g>
+          )}
 
           {targetMarker && (
             <g stroke="rgba(248, 250, 252, 0.55)" strokeWidth="0.3" fill="none">

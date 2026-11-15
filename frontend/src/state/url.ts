@@ -9,7 +9,7 @@ export interface UrlParamsState {
   lens?: LensId;
 }
 
-const VALID_LENSES = new Set<LensId>(["motion", "coldglow", "variable", "rgb", "visits"]);
+const VALID_LENSES = new Set<LensId>(["blink", "motion", "coldglow", "variable", "rgb", "visits"]);
 
 export function readUrlState(): UrlParamsState {
   if (typeof window === "undefined") return {};

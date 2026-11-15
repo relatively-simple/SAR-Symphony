@@ -15,18 +15,31 @@ export interface LensSpec {
 }
 
 export const LENS_SPECS: Record<LensId, LensSpec> = {
+  blink: {
+    id: "blink",
+    productKey: "pass_coadds",
+    label: "Past vs Present",
+    shortName: "Past vs Present",
+    badge: "Past <-> Present Blink",
+    palette: "inferno",
+    diverging: false,
+    howToRead:
+      "Alternates (or shows side-by-side) the earliest PAST scan vs newest PRESENT scan. Fixed background stars freeze completely still — any moving world visibly jumps or flashes!",
+    legendLeft: "Dark empty space (noise removed)",
+    legendRight: "Glowing stars & worlds",
+  },
   motion: {
     id: "motion",
     productKey: "diffs",
-    label: "Motion Finder",
-    shortName: "Motion",
-    badge: "Pass_n - Pass_0",
+    label: "Difference Only",
+    shortName: "Difference Only",
+    badge: "Present - Past",
     palette: "red-cyan",
     diverging: true,
     howToRead:
-      "Fixed background stars subtract cleanly to neutral slate. Any star or brown dwarf that moved between Survey Pass 0 and Pass n leaves a bright RED 'now' spot paired with a CYAN 'then' shadow.",
-    legendLeft: "- Flux (Was here in Pass 0)",
-    legendRight: "+ Flux (Moved here now)",
+      "Subtracts stationary sky cleanly to pure black. ONLY things that changed survive: Red ('now') paired next to Cyan ('before') = Moved! Single bright spot = Brightened or Faded!",
+    legendLeft: "Cyan = Was here in Past (-)",
+    legendRight: "Red = Moved/Brightened Now (+)",
   },
   coldglow: {
     id: "coldglow",
@@ -83,4 +96,4 @@ export const LENS_SPECS: Record<LensId, LensSpec> = {
   },
 };
 
-export const PRIMARY_LENSES: LensId[] = ["motion", "coldglow", "variable", "rgb"];
+export const PRIMARY_LENSES: LensId[] = ["blink", "motion", "coldglow", "variable", "rgb"];

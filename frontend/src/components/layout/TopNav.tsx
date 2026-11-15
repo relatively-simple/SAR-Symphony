@@ -2,7 +2,15 @@ import React from "react";
 import { useAppState } from "../../state/store";
 
 export const TopNav: React.FC = () => {
-  const { mode, setMode, setGlossaryOpen, health } = useAppState();
+  const {
+    mode,
+    setMode,
+    setGlossaryOpen,
+    setTutorialOpen,
+    discoveryPoints,
+    hunterRank,
+    health,
+  } = useAppState();
 
   return (
     <header className="topbar">
@@ -10,7 +18,7 @@ export const TopNav: React.FC = () => {
         <div className="brand-mark">KK</div>
         <div>
           <div className="brand-title">SPHEREx Discovery Flipbook</div>
-          <div className="brand-sub">Team KurinjiKumaraN &middot; Challenge 12 Workbench</div>
+          <div className="brand-sub">Team KurinjiKumaraN &middot; Citizen Planet X Workbench</div>
         </div>
       </div>
 
@@ -20,7 +28,7 @@ export const TopNav: React.FC = () => {
           className={`nav-tab ${mode === "missions" ? "active" : ""}`}
           onClick={() => setMode("missions")}
         >
-          Guided Discovery Missions
+          Sample Sky Patches
         </button>
         <button
           type="button"
@@ -32,21 +40,33 @@ export const TopNav: React.FC = () => {
       </nav>
 
       <div className="nav-actions">
+        <span
+          className="status-pill score-pill"
+          title="Earn points by completing the tutorial practice & verifying auto-detected sky patterns"
+        >
+          &#9733; {discoveryPoints} pts &middot; {hunterRank}
+        </span>
         {health && (
           <span
             className="status-pill"
             title="Live connection status to NASA/IPAC IRSA SIAv2 archive"
           >
-            {health.presets_ready.length}/5 presets &middot;{" "}
-            {health.irsa_ok ? "IRSA Online" : "Offline Presets"}
+            {health.irsa_ok ? "IRSA Live" : "Offline"}
           </span>
         )}
         <button
           type="button"
           className="btn btn-ghost"
+          onClick={() => setTutorialOpen(true)}
+        >
+          Tutorial
+        </button>
+        <button
+          type="button"
+          className="btn btn-ghost"
           onClick={() => setGlossaryOpen(true)}
         >
-          Science Guide &amp; FAQ
+          FAQ
         </button>
       </div>
     </header>

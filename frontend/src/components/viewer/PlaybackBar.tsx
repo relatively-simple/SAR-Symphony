@@ -3,6 +3,9 @@ import { useAppState } from "../../state/store";
 
 export const PlaybackBar: React.FC = () => {
   const {
+    lens,
+    viewLayout,
+    setViewLayout,
     activeFrames,
     frameIndex,
     setFrameIndex,
@@ -14,6 +17,7 @@ export const PlaybackBar: React.FC = () => {
   } = useAppState();
   const [copied, setCopied] = useState(false);
 
+  const inCompareMode = lens === "blink" && viewLayout === "compare";
   const total = activeFrames.length;
   const current = activeFrames[frameIndex];
 
@@ -47,6 +51,38 @@ export const PlaybackBar: React.FC = () => {
       // clipboard blocked in sandbox
     }
   };
+
+  if (inCompareMode) {
+    return (
+      <div className="playback-bar" style={{ justifyContent: "space-between" }}>
+        <span style={{ fontSize: "0.78rem", color: "var(--text-secondary)" }}>
+          Showing synchronized <strong>Past</strong>, <strong>Present</strong>, and{" "}
+          <strong>Difference Only</strong> panels side-by-side.
+        </span>
+        <div style={{ display: "flex", gap: "0.45rem", alignItems: "center" }}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            style={{ fontSize: "0.75rem", padding: "0.3rem 0.65rem" }}
+            onClick={() => {
+              setViewLayout("single");
+              setPlaying(true);
+            }}
+          >
+            Play Blink Loop
+          </button>
+          <button
+            type="button"
+            className="btn btn-ghost"
+            style={{ fontSize: "0.73rem", padding: "0.26rem 0.55rem" }}
+            onClick={copyShareUrl}
+          >
+            {copied ? "Copied Link" : "Share Link"}
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="playback-bar">

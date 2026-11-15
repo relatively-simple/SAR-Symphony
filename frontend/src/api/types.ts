@@ -1,7 +1,9 @@
 export type TargetKind = "mover" | "variable" | "binary_bd";
-export type LensId = "motion" | "coldglow" | "variable" | "rgb" | "visits";
+export type LensId = "blink" | "motion" | "coldglow" | "variable" | "rgb" | "visits";
 export type StretchFn = "asinh" | "linear" | "log";
 export type OverlaySource = "preset" | "live" | "unavailable";
+export type PatternKind = "mover" | "variable" | "cold_ir" | "archive_drift";
+export type ViewLayout = "single" | "compare";
 
 export interface TargetPreset {
   slug: string;
@@ -163,4 +165,30 @@ export interface HealthStatus {
   cache_entries: number;
   presets_ready: string[];
   version: string;
+}
+
+export interface PatternCandidate {
+  id: string;
+  kind: PatternKind;
+  title: string;
+  summary: string;
+  confidence: "High" | "Medium";
+  snr: number;
+  ra: number;
+  dec: number;
+  fits_x: number;
+  fits_y: number;
+  past_fits_x?: number | null;
+  past_fits_y?: number | null;
+  suggested_label: string;
+  metrics: Record<string, number | string>;
+}
+
+export interface PatternReport {
+  session_id: string;
+  n_patterns: number;
+  summary: string;
+  past_label?: string | null;
+  present_label?: string | null;
+  candidates: PatternCandidate[];
 }
