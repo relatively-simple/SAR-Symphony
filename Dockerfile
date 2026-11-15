@@ -42,7 +42,9 @@ RUN uv pip install --system --no-cache \
     "pillow>=11.0.0"
 
 COPY backend/app /app/backend/app
+COPY backend/scripts /app/backend/scripts
 COPY cache/presets /app/cache/presets
+RUN python scripts/prewarm.py && python scripts/verify_presets.py
 COPY --from=frontend-build /app/frontend/dist /app/frontend/dist
 
 RUN useradd -m -u 1000 user \
