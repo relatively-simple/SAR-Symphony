@@ -1323,6 +1323,22 @@ select {
   height: 195px;
 }
 
+.si-watermark-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 9px;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 4px;
+  color: rgba(148, 163, 184, 0.45);
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  letter-spacing: 0.03em;
+  user-select: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 /* Modal Styles (GlossaryModal) */
 .modal-backdrop {
   position: fixed;

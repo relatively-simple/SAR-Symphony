@@ -1,4 +1,5 @@
 # KurinjiKumaraN — SAR Symphony: Dancing with Earth's Signals
+# SI-assisted codebase & Earth signal synthesis; open Earth data, no NASA branding or endorsement.
 # Single unified multi-stage Docker build targeting Hugging Face Spaces (port 7860)
 
 FROM node:20-slim AS frontend-build
@@ -10,6 +11,10 @@ RUN npm run build
 
 FROM python:3.11-slim AS runtime
 WORKDIR /app
+
+LABEL org.opencontainers.image.title="SAR Symphony" \
+      org.opencontainers.image.description="SI-assisted multi-sensor Earth Domino Story-Map Studio by Team KurinjiKumaraN (uses open Earth observation data; no NASA branding or endorsement)." \
+      org.opencontainers.image.licenses="Apache-2.0"
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \

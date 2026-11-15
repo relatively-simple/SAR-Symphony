@@ -415,6 +415,11 @@ export const StoryMapCanvas: React.FC = () => {
       ctx.stroke();
     }
 
+    // Subtle SI-generated watermark stamped onto synthesized 64x64 overlay canvas
+    ctx.font = "6px monospace";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.28)";
+    ctx.fillText("SI", Math.max(0, npix - 9), Math.max(6, npix - 2));
+
     const halfFov = Math.max(0.2, manifest.grid.fov_deg * 0.5);
     const cLat = manifest.grid.dec0;
     const cLon = manifest.grid.ra0;
@@ -658,11 +663,17 @@ export const StoryMapCanvas: React.FC = () => {
           />
         </label>
         <span className="map-click-hint">Click map to sample</span>
+        <span
+          className="si-watermark-tag"
+          title="SI-generated visualization & synthesis · Uses open Earth data; no NASA branding or endorsement"
+        >
+          SI-gen
+        </span>
       </div>
 
       {(sessionLoading || exploring) && (
         <div className="map-loading-pill">
-          Loading NASA satellite signals &amp; building Domino Chain...
+          Loading Earth satellite signals &amp; building Domino Chain...
         </div>
       )}
     </div>

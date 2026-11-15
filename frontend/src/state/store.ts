@@ -11,9 +11,7 @@ import {
   fetchAiExplain,
   fetchEonet,
   fetchFramepackBuffer,
-  fetchHealth,
   fetchLiveStory,
-  fetchOverlays,
   fetchPatterns,
   fetchSpectrum,
   fetchTargets,
@@ -23,12 +21,9 @@ import {
 import type {
   AiExplainResponse,
   EonetEvent,
-  HealthStatus,
   LensId,
-  OverlaySet,
   PatternCandidate,
   PatternReport,
-  ProgressEvent,
   SessionManifest,
   SignalId,
   SpectrumResult,
@@ -43,7 +38,6 @@ const VALID_SIGNALS = new Set<SignalId>(["radar", "rain", "wind", "temp", "optic
 
 export interface AppContextValue {
   targets: TargetPreset[];
-  health: HealthStatus | null;
   mode: AppMode;
   setMode: (mode: AppMode) => void;
   activeMissionSlug: string | null;
@@ -62,7 +56,6 @@ export interface AppContextValue {
   storyPlaying: boolean;
   setStoryPlaying: (p: boolean) => void;
 
-  overlays: OverlaySet | null;
   glossaryOpen: boolean;
   setGlossaryOpen: (v: boolean) => void;
 
@@ -87,11 +80,9 @@ export interface AppContextValue {
   aiLoading: boolean;
   askAiDirector: (question?: string) => Promise<void>;
 
-  exploreProgress: ProgressEvent | null;
   exploring: boolean;
   exploreError: string | null;
   runLiveStorySearch: (params: LiveStoryParams) => Promise<void>;
-  runExplore: (lon: string, lat: string, fov: number) => void;
   selectMission: (slug: string) => Promise<void>;
 
   activeLayers: SignalId[];
@@ -118,10 +109,7 @@ export interface AppContextValue {
 const AppContext = createContext<AppContextValue | null>(null);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const initialUrl = useMemo(() => readUrlState(), []);
-
   const [targets, setTargets] = useState<TargetPreset[]>([]);
-  const [health, setHealth] = useState<HealthStatus | null>(null);
   const [mode, setModeState] = useState<AppMode>("missions");
   const [activeMissionSlug, setActiveMissionSlug] = useState<string | null>(null);
   const [manifest, setManifest] = useState<SessionManifest | null>(null);
@@ -135,7 +123,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [frameIndex, setFrameIndexState] = useState(0);
   const [storyPlaying, setStoryPlaying] = useState(false);
 
-  const [overlays, setOverlays] = useState<OverlaySet | null>(null);
   const [glossaryOpen, setGlossaryOpen] = useState(false);
 
   const [patterns, setPatterns] = useState<PatternReport | null>(null);
@@ -155,7 +142,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [aiExplanation, setAiExplanation] = useState<AiExplainResponse | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
 
-  const [exploreProgress, setExploreProgress] = useState<ProgressEvent | null>(null);
   const [exploring, setExploring] = useState(false);
   const [exploreError, setExploreError] = useState<string | null>(null);
 
@@ -315,7 +301,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           : ["temp", "wind", "radar"]
       );
       setStoryPlaying(false);
-      setOverlays(null);
       setPatterns(null);
       setActivePatternId(null);
       setPatternsLoading(true);
@@ -342,18 +327,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setSelectedCoord(initCoord);
       setSpectrumLoading(true);
       setSpectrumError(null);
-
-      const mjdRef =
-        sess.target.mjd_ref ??
-        (sess.passes.length > 0 ? sess.passes[Math.floor(sess.passes.length / 2)].mjd_mid : 60900);
-
-      const overlaysPromise = fetchOverlays(lonVal, latVal, sess.grid.fov_deg, mjdRef, slug)
-        .then((ov) => {
-          if (reqId === sessionReqRef.current) setOverlays(ov);
-        })
-        .catch(() => {
-          if (reqId === sessionReqRef.current) setOverlays(null);
-        });
 
       const patternsPromise = fetchPatterns(sess.session_id)
         .then((rep) => {
@@ -397,7 +370,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
       await Promise.all([
         ...preloadKeys.map((k) => ensureProductLoaded(sess, k)),
-        overlaysPromise,
         patternsPromise,
         spectrumPromise,
         aiPromise,
@@ -442,12 +414,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setExploring(true);
       setExploreError(null);
       setSessionError(null);
-      setExploreProgress({
-        stage: "fetch",
-        message: `Resolving NASA/historical Earth signals for "${params.title || params.q || "event"}"...`,
-        done: 1,
-        total: 2,
-      });
 
       try {
         const sess = await fetchLiveStory(params);
@@ -458,7 +424,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setSessionLoading(true);
         await applySessionManifest(sess, "radar", matchedPresetSlug, reqId);
         if (reqId === sessionReqRef.current) {
-          setExploreProgress(null);
           if (matchedPresetSlug) {
             setModeState("missions");
             writeUrlState({ mode: "missions", mission: matchedPresetSlug, lens: "radar", scene: 0 });
@@ -486,19 +451,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
     },
     [applySessionManifest]
-  );
-
-  const runExplore = useCallback(
-    (lonStr: string, latStr: string, fov: number) => {
-      const lonNum = Number(lonStr);
-      const latNum = Number(latStr);
-      if (Number.isFinite(lonNum) && Number.isFinite(latNum)) {
-        void runLiveStorySearch({ lat: latNum, lon: lonNum, fov });
-      } else {
-        void runLiveStorySearch({ q: `${latStr} ${lonStr}`.trim(), fov });
-      }
-    },
-    [runLiveStorySearch]
   );
 
   const setMode = useCallback(
@@ -621,13 +573,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     let alive = true;
     const init = async () => {
       try {
-        const [presetList, healthRes] = await Promise.all([
-          fetchTargets(),
-          fetchHealth().catch(() => null),
-        ]);
+        const presetList = await fetchTargets();
         if (!alive) return;
         setTargets(presetList);
-        if (healthRes) setHealth(healthRes);
 
         const url = readUrlState();
         if (url.mode === "explorer" && url.ra && url.dec) {
@@ -674,7 +622,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const value = useMemo<AppContextValue>(
     () => ({
       targets,
-      health,
       mode,
       setMode,
       activeMissionSlug,
@@ -690,7 +637,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setFrameIndex,
       storyPlaying,
       setStoryPlaying,
-      overlays,
       glossaryOpen,
       setGlossaryOpen,
       patterns,
@@ -705,11 +651,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       aiExplanation,
       aiLoading,
       askAiDirector,
-      exploreProgress,
       exploring,
       exploreError,
       runLiveStorySearch,
-      runExplore,
       selectMission,
       activeLayers,
       setActiveLayers,
@@ -731,7 +675,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }),
     [
       targets,
-      health,
       mode,
       setMode,
       activeMissionSlug,
@@ -746,7 +689,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       frameIndex,
       setFrameIndex,
       storyPlaying,
-      overlays,
       glossaryOpen,
       patterns,
       patternsLoading,
@@ -760,11 +702,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       aiExplanation,
       aiLoading,
       askAiDirector,
-      exploreProgress,
       exploring,
       exploreError,
       runLiveStorySearch,
-      runExplore,
       selectMission,
       activeLayers,
       toggleLayer,

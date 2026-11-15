@@ -28,7 +28,7 @@
       "NASA Black Marble"
     ],
     "story_scenes_count": 5,
-    "bytes": 3454747
+    "bytes": 3455908
   },
   {
     "slug": "maui-wildfire",
@@ -58,7 +58,7 @@
       "NASA MERRA-2"
     ],
     "story_scenes_count": 5,
-    "bytes": 3449384
+    "bytes": 3450530
   },
   {
     "slug": "amazon-drought-fire",
@@ -89,7 +89,7 @@
       "NASA Black Marble"
     ],
     "story_scenes_count": 5,
-    "bytes": 3444255
+    "bytes": 3445401
   },
   {
     "slug": "mahaweli-rice",
@@ -119,7 +119,7 @@
       "MODIS LST"
     ],
     "story_scenes_count": 5,
-    "bytes": 3443610
+    "bytes": 3444682
   },
   {
     "slug": "jakobshavn-glacier",
@@ -149,6 +149,6 @@
       "Viability Night Context"
     ],
     "story_scenes_count": 5,
-    "bytes": 3449199
+    "bytes": 3450235
   }
 ]

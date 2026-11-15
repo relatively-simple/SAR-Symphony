@@ -9,7 +9,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 from app.config import get_settings
 from app.core.presets import FLAGSHIP_PRESETS, PRESETS
@@ -56,8 +56,22 @@ def _render_thumbnail(preset_dir: Path, slug: str, compiled_products: dict) -> N
 
     # Flip vertically so North (+Y) renders up in standard screen coordinates
     img_u8 = np.flipud(img_u8)
-    pil = Image.fromarray(img_u8, mode="RGB").resize((160, 160), Image.Resampling.LANCZOS)
-    pil.save(preset_dir / "thumb.webp", format="WEBP", quality=90)
+    pil = Image.fromarray(img_u8, mode="RGB").resize((160, 160), Image.Resampling.LANCZOS).convert("RGBA")
+
+    # Discrete visible SI watermark in bottom-right corner
+    overlay = Image.new("RGBA", pil.size, (0, 0, 0, 0))
+    draw = ImageDraw.Draw(overlay)
+    draw.rounded_rectangle([123, 145, 158, 158], radius=3, fill=(6, 11, 22, 110))
+    draw.text((126, 147), "SI-gen", fill=(255, 255, 255, 115), font=ImageFont.load_default())
+    pil = Image.alpha_composite(pil, overlay).convert("RGB")
+
+    exif = pil.getexif()
+    exif[0x010E] = (
+        "SI-generated multi-sensor thumbnail preview (SAR Symphony by Team KurinjiKumaraN). "
+        "Open Earth signal synthesis; no NASA branding."
+    )
+    exif[0x0131] = "SAR Symphony SI Pipeline"
+    pil.save(preset_dir / "thumb.webp", format="WEBP", quality=90, exif=exif.tobytes())
 
 
 def build_preset(slug: str) -> dict:

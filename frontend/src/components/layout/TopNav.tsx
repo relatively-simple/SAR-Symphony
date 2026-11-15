@@ -125,7 +125,7 @@ export const TopNav: React.FC = () => {
         {searchOpen && (
           <div className="command-popover" role="region" aria-label="Curated and historical events">
             <div className="popover-head">
-              <strong>Curated NASA Benchmark &amp; Historical Disaster Causes</strong>
+              <strong>Curated Benchmark &amp; Historical Disaster Causes</strong>
               <button type="button" className="btn btn-ghost btn-xs" onClick={() => setSearchOpen(false)}>
                 ✕
               </button>
@@ -206,6 +206,13 @@ export const TopNav: React.FC = () => {
         >
           📖 SAR Guide
         </button>
+
+        <span
+          className="si-watermark-tag"
+          title="SI-assisted code, UI & Earth signal synthesis (no audio generated; open Earth data, no NASA branding)"
+        >
+          SI-gen
+        </span>
       </div>
     </header>
   );

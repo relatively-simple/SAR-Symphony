@@ -4,6 +4,12 @@ from typing import Any, Literal
 from pydantic import BaseModel, Field, model_validator
 
 
+SI_DISCLOSURE_TEXT = (
+    "SI-assisted code and multi-sensor Earth signal synthesis (Team KurinjiKumaraN). "
+    "Uses open Earth observation data; contains no NASA branding and is not endorsed by NASA."
+)
+
+
 SignalId = Literal["radar", "rain", "wind", "temp", "optical", "nightlights"]
 TargetKind = Literal["mover", "variable", "binary_bd", "flood", "wildfire", "drought", "agriculture", "cryosphere"]
 LensId = Literal["motion", "coldglow", "variable", "rgb", "visits", "radar", "rain", "wind", "temp", "optical", "nightlights"]
@@ -253,6 +259,7 @@ class SessionManifest(BaseModel):
     causal_summary: str = ""
     event_dates: list[str] = Field(default_factory=list)
     geo_features: list[GeoFeatureOverlay] = Field(default_factory=list)
+    si_disclosure: str = SI_DISCLOSURE_TEXT
 
 
 class AiExplainRequest(BaseModel):
@@ -274,6 +281,7 @@ class AiExplainResponse(BaseModel):
     recommended_layers: list[SignalId] = Field(default_factory=lambda: ["radar", "rain", "wind"])
     key_connections: list[str] = Field(default_factory=list)
     lead_lag_summary: str = ""
+    si_disclosure: str = SI_DISCLOSURE_TEXT
 
 
 class SpectrumPoint(BaseModel):
@@ -304,6 +312,7 @@ class SpectrumResult(BaseModel):
     n_used: int = 0
     n_rejected: int = 0
     note: str | None = None
+    si_disclosure: str = SI_DISCLOSURE_TEXT
 
     @model_validator(mode="before")
     @classmethod
@@ -351,6 +360,7 @@ class OverlaySet(BaseModel):
     source: OverlaySource = "unavailable"
     mjd_ref: float = 2026.0
     note: str | None = None
+    si_disclosure: str = SI_DISCLOSURE_TEXT
 
 
 class ProgressEvent(BaseModel):

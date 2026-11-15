@@ -205,6 +205,7 @@ export interface SessionManifest {
   causal_summary?: string;
   event_dates?: string[];
   geo_features?: GeoFeatureOverlay[];
+  si_disclosure?: string;
 }
 
 export interface SpectrumPoint {
@@ -231,6 +232,7 @@ export interface SpectrumResult {
   n_used: number;
   n_rejected: number;
   note?: string | null;
+  si_disclosure?: string;
 }
 
 export interface EonetEvent {
@@ -329,4 +331,5 @@ export interface AiExplainResponse {
   recommended_layers: SignalId[];
   key_connections: string[];
   lead_lag_summary: string;
+  si_disclosure?: string;
 }

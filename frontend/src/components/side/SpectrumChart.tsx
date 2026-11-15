@@ -154,6 +154,19 @@ export const SpectrumChart: React.FC = () => {
         x: 0,
         font: { size: 9 },
       },
+      annotations: [
+        {
+          text: "SI-gen",
+          xref: "paper",
+          yref: "paper",
+          x: 0.995,
+          y: 0.02,
+          xanchor: "right",
+          yanchor: "bottom",
+          showarrow: false,
+          font: { size: 7, color: "rgba(148,163,184,0.30)" },
+        },
+      ],
       hovermode: "closest",
     };
 
@@ -182,7 +195,11 @@ export const SpectrumChart: React.FC = () => {
       (rawSeries.radar[i] ?? 0).toFixed(2),
       (rawSeries.nightlights[i] ?? 0).toFixed(2),
     ]);
-    const csv = [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
+    const disclosureHeader = [
+      "# SAR Symphony (Team KurinjiKumaraN) — SI-assisted multi-sensor data export",
+      "# Uses open Earth observation data; no NASA branding or endorsement implied.",
+    ];
+    const csv = [...disclosureHeader, headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");

@@ -5,18 +5,26 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 
-Data & Archival Acknowledgments:
-- NASA-ISRO SAR (NISAR) & Copernicus Sentinel-1 GRD via NASA Alaska Satellite Facility (ASF) DAAC:
+Super Intelligence (SI) Transparency & Non-Endorsement Notice:
+- Code, UI layouts, synthetic 64x64 multi-sensor benchmark cubes/thumbnails, and
+  presentation graphics were created with SI coding and generation assistance.
+- All synthesized images/charts carry discrete visible SI watermarks; no audio
+  media was generated; API JSON/CSV outputs and package metadata disclose SI use.
+- This project uses no NASA logos, flags, or official mission branding/identifiers
+  and is not affiliated with or endorsed by NASA.
+
+Open Earth Data & Archival Acknowledgments:
+- NASA-ISRO SAR (NISAR) & Copernicus Sentinel-1 GRD via ASF DAAC:
   DOI 10.5067/SENTINEL-1/SAR_GRD (https://api.daac.asf.alaska.edu/services/search/param)
 - NASA GPM IMERG v07 Precipitation:
   DOI 10.5067/GPM/IMERG/3B-HH/07 (https://gpm.nasa.gov/data/imerg)
-- NASA MERRA-2 Reanalysis, CYGNSS Surface Wind & NASA Langley POWER Daily API:
+- NASA MERRA-2 Reanalysis, CYGNSS Surface Wind & Langley POWER Daily API:
   DOI 10.5067/A7S6XP56VZWS (https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/)
-- NASA MODIS / ECOSTRESS Land Surface Temperature & NASA GIBS WMTS Imagery:
+- MODIS / ECOSTRESS Land Surface Temperature & GIBS WMTS Imagery:
   MODIS_Terra_Land_Surface_Temp_Day, IMERG_Precipitation_Rate, MODIS_Terra_CorrectedReflectance_TrueColor, VIIRS_SNPP_CorrectedReflectance_TrueColor
-- NASA Black Marble VNP46A2 Nighttime Lights Radiance & NASA GIBS Day/Night Band:
+- Black Marble VNP46A2 Nighttime Lights Radiance & GIBS Day/Night Band:
   DOI 10.5067/VIIRS/VNP46A2.001 (https://blackmarble.gsfc.nasa.gov/) · VIIRS_SNPP_DayNightBand_At_Sensor_Radiance
-- Copernicus Sentinel-2 & NASA VIIRS NDVI (https://www.copernicus.eu/en/access-data)
-- NASA Earth Observatory Natural Event Tracker (EONET v3): https://eonet.gsfc.nasa.gov/api/v3/events
+- Copernicus Sentinel-2 & VIIRS NDVI (https://www.copernicus.eu/en/access-data)
+- Earth Observatory Natural Event Tracker (EONET v3): https://eonet.gsfc.nasa.gov/api/v3/events
 - Open-Meteo Forecast, Historical Archive & Geocoding APIs: https://open-meteo.com/
 - Esri ArcGIS Online World Dark Gray Base & World Topo Map Basemaps: https://www.arcgis.com/

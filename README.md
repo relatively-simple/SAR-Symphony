@@ -80,3 +80,13 @@ Or use `.\Makefile.ps1 -Task dev` to run the FastAPI backend alongside Vite hot-
 - `cache/presets/` — Pre-baked 12-frame `SFP1` archives (`manifest.json`, `spectrum.json`, `overlays.json`, `thumb.webp`, and 10 `.sfp` framepacks per flagship event).
 - `pitch/` — Updated 7-slide presentation (`SAR_Symphony_Dancing_With_The_SARs_Pitch.pptx`).
 - `Dockerfile` — Unified single-container deployment serving both the FastAPI API and built frontend SPA on port `7860`.
+
+---
+
+## Super Intelligence (SI) Transparency & Non-Endorsement
+
+- **Code & Data:** SI coding assistants helped build this FastAPI + React/Leaflet/Plotly workspace, prepare pre-baked `64×64×12` normalized `SFP1` cubes (`cache/presets/`), and format optional Tier 2 Gemini summaries. Disclosed via `si_disclosure` API fields, CSV headers, HTML/package metadata, and [docs/AI_DISCLOSURE.md](docs/AI_DISCLOSURE.md).
+- **Images & Visualizations:** All synthesized preset thumbnails (`cache/presets/*/thumb.webp`), rendered heatmap canvases, Plotly timelines, and slide media carry discrete visible `"SI-gen"` / `"SI-generated"` watermarks.
+- **Audio:** No SI-generated audio files or synthetic speech streams are used.
+- **Zero NASA Branding:** Contains no NASA logos, flags, or official mission identifiers, and implies no NASA affiliation or endorsement.
+

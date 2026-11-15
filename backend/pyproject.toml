@@ -1,7 +1,7 @@
 [project]
 name = "kurinjikumaran-sar-symphony"
 version = "0.1.0"
-description = "SAR Symphony: Dancing with Earth's Signals for NASA Space Apps Challenge (Dancing with the SARs)"
+description = "SAR Symphony: Dancing with Earth's Signals (Team KurinjiKumaraN). SI-assisted code and Earth data synthesis using open public data; no NASA branding or endorsement."
 requires-python = ">=3.11,<3.13"
 dependencies = [
     "fastapi>=0.115.0",

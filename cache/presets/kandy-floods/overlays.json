@@ -3,5 +3,6 @@
   "allwise": [],
   "source": "preset",
   "mjd_ref": 2026.0,
-  "note": "Earth surface preset: Bay of Bengal Cyclone to Kandy Floods"
+  "note": "Earth surface preset: Bay of Bengal Cyclone to Kandy Floods",
+  "si_disclosure": "SI-assisted code and multi-sensor Earth signal synthesis (Team KurinjiKumaraN). Uses open Earth observation data; contains no NASA branding and is not endorsed by NASA."
 }

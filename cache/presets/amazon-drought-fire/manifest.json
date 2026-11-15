@@ -3143,7 +3143,7 @@
       "text": "Real-time global natural hazards and disaster curation provided by NASA Goddard Space Flight Center."
     }
   ],
-  "created_utc": "2026-11-15T08:34:21Z",
+  "created_utc": "2026-11-15T10:15:01Z",
   "pipeline_version": "v2.1-earth-symphony",
   "category": "Drought & Wildfire",
   "region_label": "Rio Negro & Manaus, Brazil",
@@ -3406,7 +3406,7 @@
         "Night Glow": "38 nW/cm²/sr",
         "True Loss": "Confirmed"
       },
-      "gibs_layer": "VIIRS_SNPP_DayNightBand_ENCC",
+      "gibs_layer": "VIIRS_SNPP_DayNightBand_At_Sensor_Radiance",
       "gibs_date": "2024-08-31",
       "sar_granule_id": "S1A_IW_GRDH_1SDV_20240831T093215"
     }
@@ -3509,5 +3509,6 @@
         4
       ]
     }
-  ]
+  ],
+  "si_disclosure": "SI-assisted code and multi-sensor Earth signal synthesis (Team KurinjiKumaraN). Uses open Earth observation data; contains no NASA branding and is not endorsed by NASA."
 }

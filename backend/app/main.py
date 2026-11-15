@@ -28,6 +28,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     app = FastAPI(
         title="SAR Symphony — Dancing with Earth's Signals",
+        description=(
+            "Multi-sensor Earth Domino Story-Map Studio by Team KurinjiKumaraN. "
+            "SI-assisted codebase and signal synthesis using open Earth observation data; "
+            "contains no NASA branding and is not endorsed by NASA."
+        ),
         version=cfg.app_version,
         lifespan=lifespan,
     )

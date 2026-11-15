@@ -73,4 +73,4 @@ export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
 ];
 
 export const DATA_CAVEAT =
-  "Scientific Rigor Note: SAR Symphony integrates calibrated multi-temporal Earth observation products from NASA ASF DAAC (NISAR/Sentinel-1 SAR), NASA GPM IMERG (precipitation), NASA MERRA-2 (wind velocity), NASA MODIS (land surface temperature), Sentinel-2 (NDVI), and NASA Black Marble (nighttime radiance). The AI Story Director and Radar Illusion Guard enforce genuine electromagnetic and hydrological physical constraints across all observations.";
+  "Scientific & SI Transparency Note: SAR Symphony integrates open multi-temporal Earth observation metadata and physics models (Sentinel-1 SAR, GPM IMERG rainfall, MERRA-2 wind, MODIS temperature, Sentinel-2 NDVI, and VIIRS nighttime lights). SI (Super Intelligence) tools assisted in writing application code, synthesizing normalized 64x64 preview cubes, and optional Tier 2 causal text (no audio content is generated). Contains no NASA branding and is not affiliated with or endorsed by NASA.";
