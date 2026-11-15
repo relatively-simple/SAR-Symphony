@@ -1,0 +1,229 @@
+{
+  "ra": -60.0217,
+  "dec": -3.119,
+  "lon": -60.0217,
+  "lat": -3.119,
+  "series": {
+    "radar": [
+      -7.5,
+      -7.909,
+      -8.318,
+      -8.727,
+      -9.136,
+      -9.545,
+      -9.955,
+      -10.364,
+      -10.773,
+      -14.182,
+      -14.591,
+      -15.0
+    ],
+    "rain": [
+      1.419,
+      1.31,
+      1.201,
+      1.092,
+      0.983,
+      0.874,
+      0.765,
+      0.656,
+      0.546,
+      0.437,
+      0.328,
+      0.219
+    ],
+    "wind": [
+      4.542,
+      5.132,
+      5.723,
+      6.314,
+      6.905,
+      7.496,
+      8.087,
+      8.678,
+      9.269,
+      9.86,
+      10.451,
+      11.042
+    ],
+    "temp": [
+      27.0,
+      28.0,
+      29.0,
+      30.0,
+      31.0,
+      36.488,
+      42.709,
+      49.426,
+      53.0,
+      51.426,
+      46.709,
+      42.488
+    ],
+    "optical": [
+      0.82,
+      0.8,
+      0.78,
+      0.76,
+      0.74,
+      0.72,
+      0.7,
+      0.68,
+      0.16,
+      0.16,
+      0.16,
+      0.16
+    ],
+    "nightlights": [
+      0.8,
+      0.8,
+      0.8,
+      0.8,
+      0.8,
+      10.275,
+      21.297,
+      33.366,
+      38.8,
+      33.366,
+      21.297,
+      10.275
+    ]
+  },
+  "dates": [
+    "2024-08-01 06:00 UTC",
+    "2024-08-04 06:00 UTC",
+    "2024-08-07 06:00 UTC",
+    "2024-08-10 06:00 UTC",
+    "2024-08-13 06:00 UTC",
+    "2024-08-16 06:00 UTC",
+    "2024-08-19 06:00 UTC",
+    "2024-08-22 06:00 UTC",
+    "2024-08-25 06:00 UTC",
+    "2024-08-27 06:00 UTC",
+    "2024-08-29 06:00 UTC",
+    "2024-08-31 06:00 UTC"
+  ],
+  "units": {
+    "radar": "dB",
+    "rain": "mm/hr",
+    "wind": "m/s",
+    "temp": "°C",
+    "optical": "NDVI",
+    "nightlights": "nW/cm²/sr"
+  },
+  "location_story": "Location (3.119° S, 60.022° W): Baseline radar starts at -7.5 dB with vegetation greenness 0.82 NDVI and night lights 0.8 nW/cm²/sr. Surface temperature spiked to 53.0°C at step 9, causing acute dielectric drying and thermal vegetation stress. AI Illusion Guard detected: Cloud Cover Blanking (bit 4: optical obscured while SAR penetrated).",
+  "points": [
+    {
+      "wavelength_um": 1.0,
+      "flux_mjysr": -7.5,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 60997.0,
+      "obs_id": "T00",
+      "flagged": false
+    },
+    {
+      "wavelength_um": 2.0,
+      "flux_mjysr": -7.909,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 60999.0,
+      "obs_id": "T01",
+      "flagged": false
+    },
+    {
+      "wavelength_um": 3.0,
+      "flux_mjysr": -8.318,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61001.0,
+      "obs_id": "T02",
+      "flagged": false
+    },
+    {
+      "wavelength_um": 4.0,
+      "flux_mjysr": -8.727,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61003.0,
+      "obs_id": "T03",
+      "flagged": false
+    },
+    {
+      "wavelength_um": 5.0,
+      "flux_mjysr": -9.136,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61005.0,
+      "obs_id": "T04",
+      "flagged": false
+    },
+    {
+      "wavelength_um": 6.0,
+      "flux_mjysr": -9.545,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61007.0,
+      "obs_id": "T05",
+      "flagged": false
+    },
+    {
+      "wavelength_um": 7.0,
+      "flux_mjysr": -9.955,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61009.0,
+      "obs_id": "T06",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 8.0,
+      "flux_mjysr": -10.364,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61011.0,
+      "obs_id": "T07",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 9.0,
+      "flux_mjysr": -10.773,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61013.0,
+      "obs_id": "T08",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 10.0,
+      "flux_mjysr": -14.182,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61015.0,
+      "obs_id": "T09",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 11.0,
+      "flux_mjysr": -14.591,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61017.0,
+      "obs_id": "T10",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 12.0,
+      "flux_mjysr": -15.0,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61019.0,
+      "obs_id": "T11",
+      "flagged": true
+    }
+  ],
+  "aperture_arcsec": 45.0,
+  "n_used": 12,
+  "n_rejected": 0,
+  "note": "Sampled at basin cell (31, 31) across 12 multi-sensor passes."
+}

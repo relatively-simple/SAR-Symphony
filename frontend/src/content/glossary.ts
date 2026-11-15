@@ -8,60 +8,69 @@ export interface GlossaryEntry {
 
 export const GLOSSARY_ENTRIES: GlossaryEntry[] = [
   {
-    id: "proper-motion",
-    term: "Proper Motion (mas/yr)",
-    shortLabel: "Sky drift",
+    id: "sar-backscatter",
+    term: "SAR Radar Backscatter (dB)",
+    shortLabel: "Surface roughness",
     definition:
-      "The apparent sideways shift of a nearby star or brown dwarf across the background sky over months or years, measured in milliarcseconds per year (mas/yr). Because distant background galaxies stay fixed, nearby fast movers stand out immediately when you blink frames across time.",
+      "Synthetic Aperture Radar (SAR) transmits microwave pulses (C-band ~5.4 GHz or L-band ~1.2 GHz) and records the ratio of backscattered to transmitted power in decibels (dB). Unlike optical imagery, microwaves penetrate dense storm clouds, heavy monsoon rain, and dark nighttime conditions.",
     whyItMatters:
-      "SPHEREx revisits every patch of sky roughly every 6 months. Subtracting Pass 1 from Pass 2 or Pass 3 turns a moving nearby object into a sharp bright-and-dark dipole pair while stationary stars cancel cleanly out.",
+      "Smooth open water acts as a mirror, reflecting radar pulses away (specular reflection) and appearing dark (<-20 dB). Rough terrain, crops, and buildings reflect power back strongly (>-10 dB), making flood delineation instantaneous.",
   },
   {
-    id: "cold-glow",
-    term: "Cold Glow (Band 2 - Band 1 / ~4.4-5.0 um vs ~3.4 um)",
-    shortLabel: "Methane infrared excess",
+    id: "specular-reflection",
+    term: "Specular Reflection & Inundation",
+    shortLabel: "Flood signature",
     definition:
-      "Very cold objects below ~500 K (like Y-dwarf brown dwarfs or a hypothetical icy Planet 9) barely glow at short near-infrared wavelengths (<3.5 um) where methane absorbs light, but radiate strongly in SPHEREx's longest thermal bands (4.1-5.0 um, Detectors D5 & D6).",
+      "When microwave radar pulses strike standing water whose roughness is smaller than the radar wavelength (~5.6 cm for C-band), the beam bounces away at an angle equal to the angle of incidence, sending virtually zero power back to the sensor.",
     whyItMatters:
-      "Subtracting the scaled short-band sky (D4) from the long thermal band (D5+D6) cancels ordinary hot stars and leaves cool thermal emitters glowing bright amber-orange.",
+      "This physical principle causes freshly flooded fields, burst riverbanks, and expanded reservoirs to plummet in radar brightness, enabling automated disaster inundation mapping.",
   },
   {
-    id: "survey-pass",
-    term: "SPHEREx Survey Pass (~6-month cadence)",
-    shortLabel: "Sky visit epoch",
+    id: "wind-ripple-illusion",
+    term: "Wind-Ripple Radar Illusion",
+    shortLabel: "Wave roughness glitch",
     definition:
-      "SPHEREx follows a Sun-synchronous orbit and sweeps great circles orthogonal to the Sun, revisiting most sky locations roughly every 6 months during its primary 2-year all-sky spectrophotometric survey (DR1 + QR3).",
+      "When surface wind exceeds ~4-6 m/s across open water reservoirs, lakes, or coastal estuaries, it generates capillary waves with wavelengths matching the radar wavelength (Bragg scattering), scattering energy directly back to the antenna.",
     whyItMatters:
-      "Grouping exposures cleanly by temporal pass avoids smearing moving objects and reveals genuine brightness changes and astrometric shifts between visits.",
+      "Without multi-sensor coupling, high backscatter on water mimics dry land, causing algorithms to misclassify lakes as dry ground. SAR Symphony couples MERRA-2 wind velocity to mask and correct this illusion.",
   },
   {
-    id: "sed-spectrum",
-    term: "Low-Resolution Spectrum (0.75-5.0 um, 102 channels)",
-    shortLabel: "Infrared fingerprint",
+    id: "subzero-freeze-illusion",
+    term: "Sub-Zero Freeze Radar Illusion",
+    shortLabel: "Dielectric drop",
     definition:
-      "Unlike standard telescopes using a few broad glass filters, SPHEREx uses Linear Variable Filters across six detector arrays (D1-D6), sampling 102 wavelengths continuously from 0.75 um (deep red optical) out to 5.00 um (thermal infrared).",
+      "Liquid water has a high dielectric constant (~80), but when temperature drops below 0 °C and water freezes into ice, its dielectric constant collapses to ~3.15, sharply reducing radar backscatter by up to 10-15 dB.",
     whyItMatters:
-      "Clicking any pixel in the flipbook extracts the real calibrated flux (MJy/sr) across all six detectors at that sky position—letting you see cool blackbody slopes, water/methane absorption troughs, or disk excess directly.",
+      "Sudden flash freezing can cause frozen land or wetlands to appear dark like open water. SAR Symphony's Illusion Guard integrates MODIS surface temperature to prevent false flood alarms during freeze events.",
   },
   {
-    id: "gaia-allwise",
-    term: "Gaia DR3 & AllWISE Cross-Match Overlays",
-    shortLabel: "Reference anchors",
+    id: "gpm-imerg",
+    term: "NASA GPM IMERG Precipitation (mm/hr)",
+    shortLabel: "Rainfall rate",
     definition:
-      "Gaia DR3 (optical, epoch 2016.0 with proper motions propagated to the current pass MJD) marks cataloged Milky Way stars, while AllWISE (2010-2011, 3.4 & 4.6 um) shows where infrared sources sat 15 years ago.",
+      "NASA Global Precipitation Measurement (GPM) Integrated Multi-satellitE Retrievals for GPM combines passive microwave and infrared sensors to map surface rain rate globally at high temporal resolution.",
     whyItMatters:
-      "An infrared source moving away from its 2010 AllWISE circle—or invisible in optical Gaia entirely—is a classic brown dwarf or solar-system candidate signature.",
+      "Coupling rain surge directly with subsequent flood inundation reveals the precise hydrodynamic lag between cloudburst forcing and downstream river cresting.",
   },
   {
-    id: "flags-mask",
-    term: "SPHEREx Calibration Flags",
-    shortLabel: "Artifact protection",
+    id: "black-marble-nightlights",
+    term: "NASA Black Marble Nocturnal Radiance (nW/cm²/sr)",
+    shortLabel: "Power grid failure",
     definition:
-      "Per-pixel quality flags attached to each SPHEREx Level 2 exposure marking cosmic rays / transients, detector saturation/overflow, sample-up-the-ramp errors, non-functional pixels, dichroic edge seams, and missing data.",
+      "The Suomi-NPP and NOAA-20 VIIRS Day/Night Band calibrated by NASA Black Marble captures low-light anthropogenic emissions across cities and rural villages, corrected for atmospheric and lunar illumination.",
     whyItMatters:
-      "We mask fatal detector errors automatically before computing coadds and spectra, and let you toggle the live FLAGS overlay in Pro Controls so a glitch never masquerades as a discovery.",
+      "When radar confirms flood inundation or wildfire spread, a coincident drop of >50% in nightlights radiance pinpoints electrical grid failure and stranded civilian communities.",
+  },
+  {
+    id: "steep-slope-slip",
+    term: "Steep-Slope Layover & Shadow",
+    shortLabel: "Relief distortion",
+    definition:
+      "Side-looking SAR geometry causes mountainous slopes facing the radar to appear compressed (layover/foreshortening), while steep opposite slopes fall into radar shadow (zero signal).",
+    whyItMatters:
+      "In mountainous terrain like Kandy, Sri Lanka, shadow pixels can be misidentified as water. The Radar Illusion Guard masks these geometric terrain artifacts automatically.",
   },
 ];
 
 export const DATA_CAVEAT =
-  "Scientific honesty note: Individual SPHEREx Level 2 exposures have ~6.2 arcsec pixels and pass-median sensitivity calibrated to MJy/sr. Tiny faint Solar System bodies below the single-pass background noise floor won't pop out without multi-exposure stacking—this workbench aligns real IRSA DR1+QR3 passes so you can inspect genuine motion, thermal glow, variability, and 102-channel spectra honestly.";
+  "Scientific Rigor Note: SAR Symphony integrates calibrated multi-temporal Earth observation products from NASA ASF DAAC (NISAR/Sentinel-1 SAR), NASA GPM IMERG (precipitation), NASA MERRA-2 (wind velocity), NASA MODIS (land surface temperature), Sentinel-2 (NDVI), and NASA Black Marble (nighttime radiance). The AI Story Director and Radar Illusion Guard enforce genuine electromagnetic and hydrological physical constraints across all observations.";

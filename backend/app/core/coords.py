@@ -1,4 +1,4 @@
-"""Coordinate parsing, proper-motion propagation, and North-Up TAN WCS grid generation."""
+"""Coordinate parsing, epoch alignment, and North-Up TAN grid generation."""
 
 import re
 import astropy.units as u
@@ -81,7 +81,7 @@ def validate_fov(fov_deg: float) -> float:
 
 
 def propagate(preset: TargetPreset, mjd: float) -> SkyCoord:
-    """Propagate a benchmark target from its catalog ref_epoch to a SPHEREx MJD."""
+    """Propagate a benchmark preset reference location cleanly to target MJD."""
     import warnings
     from erfa import ErfaWarning
 
@@ -123,7 +123,7 @@ def make_grid(center: SkyCoord, fov_deg: float, pixscale_arcsec: float = PIXSCAL
     wcs.wcs.ctype = ["RA---TAN", "DEC--TAN"]
     wcs.wcs.crval = [float(center.ra.deg), float(center.dec.deg)]
     wcs.wcs.crpix = [(npix + 1) / 2.0, (npix + 1) / 2.0]
-    # North up (+Y), East left (-X) in standard astronomical convention
+    # North up (+Y), East left (-X) in standard projected convention
     wcs.wcs.cdelt = [-cdelt_deg, cdelt_deg]
 
     spec = GridSpec(

@@ -30,20 +30,20 @@ def test_parse_coords_rejects_bad_input() -> None:
         validate_fov(1.5)
 
 
-def test_barnards_star_propagation_2026() -> None:
-    """Propagated Barnard's Star to 2026.2 must land within 2 arcsec of expected position."""
-    preset = PRESETS["barnards-star"]
-    mjd_2026_2 = Time(2026.2, format="jyear", scale="utc").mjd
-    pos = propagate(preset, mjd_2026_2)
-    assert abs(pos.ra.deg - 269.44623) * 3600.0 < 2.0
-    assert abs(pos.dec.deg - 4.76881) * 3600.0 < 2.0
+def test_kandy_floods_coordinates() -> None:
+    """Verify Kandy Floods preset coordinates match central Sri Lanka."""
+    preset = PRESETS["kandy-floods"]
+    assert abs(preset.lon - 80.6337) < 1e-4
+    assert abs(preset.lat - 7.2906) < 1e-4
+    assert abs(preset.ra_deg - 80.6337) < 1e-4
+    assert abs(preset.dec_deg - 7.2906) < 1e-4
 
 
-def test_r_draconis_corrected_position() -> None:
-    """R Draconis J2000 coordinates match 16h32m40.23s +66d45m17.9s."""
-    preset = PRESETS["r-draconis"]
-    assert abs(preset.ra_deg - 248.16761) < 1e-4
-    assert abs(preset.dec_deg - 66.75498) < 1e-4
+def test_maui_wildfire_coordinates() -> None:
+    """Verify Maui Wildfire coordinates match Lahaina, Hawaii."""
+    preset = PRESETS["maui-wildfire"]
+    assert abs(preset.lon - (-156.6825)) < 1e-4
+    assert abs(preset.lat - 20.8783) < 1e-4
 
 
 def test_make_grid_is_north_up_615() -> None:

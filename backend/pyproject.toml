@@ -1,7 +1,7 @@
 [project]
-name = "kurinjikumaran-spherex"
+name = "kurinjikumaran-sar-symphony"
 version = "0.1.0"
-description = "SPHEREx Discovery Flipbook for NASA Space Apps 2026 Challenge 12 (Planet X and SPHEREx)"
+description = "SAR Symphony: Dancing with Earth's Signals for NASA Space Apps Challenge (Dancing with the SARs)"
 requires-python = ">=3.11,<3.13"
 dependencies = [
     "fastapi>=0.115.0",
@@ -28,5 +28,5 @@ testpaths = ["tests"]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 markers = [
-    "network: tests that hit live IRSA/SIMBAD/Gaia endpoints",
+    "network: tests that hit live NASA EONET/ASF/Open-Meteo endpoints",
 ]

@@ -9,7 +9,19 @@ from app.pipeline.session import find_session_dir
 
 
 router = APIRouter(prefix="/api/sessions", tags=["frames"])
-ALLOWED_PRODUCTS = {"pass_coadds", "diffs", "coldglow", "rgb", "visits"}
+ALLOWED_PRODUCTS = {
+    "radar",
+    "rain",
+    "wind",
+    "temp",
+    "optical",
+    "nightlights",
+    "pass_coadds",
+    "diffs",
+    "rgb",
+    "coldglow",
+    "visits",
+}
 
 
 @router.get("/{session_id}/frames/{product}.sfp")

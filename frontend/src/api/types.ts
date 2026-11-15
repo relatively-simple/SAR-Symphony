@@ -1,9 +1,91 @@
-export type TargetKind = "mover" | "variable" | "binary_bd";
-export type LensId = "blink" | "motion" | "coldglow" | "variable" | "rgb" | "visits";
+export type SignalId = "radar" | "rain" | "wind" | "temp" | "optical" | "nightlights";
+
+export type TargetKind =
+  | "mover"
+  | "variable"
+  | "binary_bd"
+  | "flood"
+  | "wildfire"
+  | "drought"
+  | "agriculture"
+  | "cryosphere";
+
+export type LensId =
+  | "blink"
+  | "motion"
+  | "coldglow"
+  | "variable"
+  | "rgb"
+  | "visits"
+  | "radar"
+  | "rain"
+  | "wind"
+  | "temp"
+  | "optical"
+  | "nightlights";
+
 export type StretchFn = "asinh" | "linear" | "log";
 export type OverlaySource = "preset" | "live" | "unavailable";
-export type PatternKind = "mover" | "variable" | "cold_ir" | "archive_drift";
+
+export type PatternKind =
+  | "onset"
+  | "peak_impact"
+  | "blackout"
+  | "illusion"
+  | "mover"
+  | "variable"
+  | "cold_ir"
+  | "archive_drift";
+
 export type ViewLayout = "single" | "compare";
+
+export interface CameraView {
+  lat: number;
+  lon: number;
+  zoom: number;
+  bbox?: number[] | null;
+  region_name: string;
+}
+
+export interface CausalLink {
+  from_signal: string;
+  to_signal: string;
+  lag_hours: number;
+  correlation: number;
+  explanation: string;
+  from_coord?: [number, number] | null;
+  to_coord?: [number, number] | null;
+}
+
+export interface GeoFeatureOverlay {
+  id: string;
+  kind: string;
+  label: string;
+  detail: string;
+  geometry_type: "point" | "point_radius" | "polyline" | "polygon";
+  coordinates: any;
+  radius_km?: number | null;
+  color: string;
+  scene_indices: number[];
+}
+
+export interface StoryScene {
+  index: number;
+  phase: string;
+  title: string;
+  date_label: string;
+  frame_index: number;
+  active_layers: SignalId[];
+  narration: string;
+  why_these_layers: string;
+  illusion_note: string;
+  camera?: CameraView | null;
+  causal_chain?: CausalLink[];
+  key_metrics?: Record<string, string | number>;
+  gibs_layer?: string | null;
+  gibs_date?: string | null;
+  sar_granule_id?: string | null;
+}
 
 export interface TargetPreset {
   slug: string;
@@ -11,6 +93,9 @@ export interface TargetPreset {
   kind: TargetKind;
   ra_deg: number;
   dec_deg: number;
+  lon?: number;
+  lat?: number;
+  title?: string;
   ref_epoch: number;
   pmra_masyr?: number | null;
   pmdec_masyr?: number | null;
@@ -23,6 +108,14 @@ export interface TargetPreset {
   what_to_expect: string;
   caveat?: string | null;
   has_preset_bundle: boolean;
+  category?: string;
+  region_label?: string;
+  sensors_used?: string[];
+  story_scenes?: StoryScene[];
+  illusion_summary?: string;
+  causal_summary?: string;
+  event_dates?: string[];
+  geo_features?: GeoFeatureOverlay[];
 }
 
 export interface SurveyPass {
@@ -69,6 +162,8 @@ export interface GridSpec {
 export interface TargetRef {
   ra: number;
   dec: number;
+  lon?: number;
+  lat?: number;
   name?: string | null;
   slug?: string | null;
   mjd_ref?: number | null;
@@ -102,6 +197,14 @@ export interface SessionManifest {
   citations: CitationEntry[];
   created_utc: string;
   pipeline_version: string;
+  category?: string;
+  region_label?: string;
+  sensors_used?: string[];
+  story_scenes?: StoryScene[];
+  illusion_summary?: string;
+  causal_summary?: string;
+  event_dates?: string[];
+  geo_features?: GeoFeatureOverlay[];
 }
 
 export interface SpectrumPoint {
@@ -117,11 +220,29 @@ export interface SpectrumPoint {
 export interface SpectrumResult {
   ra: number;
   dec: number;
+  lon?: number;
+  lat?: number;
   points: SpectrumPoint[];
+  series?: Record<string, number[]>;
+  dates?: string[];
+  units?: Record<string, string>;
+  location_story?: string;
   aperture_arcsec: number;
   n_used: number;
   n_rejected: number;
   note?: string | null;
+}
+
+export interface EonetEvent {
+  id: string;
+  title: string;
+  category: string;
+  coordinates: [number, number]; // [lon, lat]
+  date: string;
+  description?: string | null;
+  magnitude?: string | null;
+  link?: string | null;
+  sources?: string[];
 }
 
 export interface GaiaSource {
@@ -191,4 +312,21 @@ export interface PatternReport {
   past_label?: string | null;
   present_label?: string | null;
   candidates: PatternCandidate[];
+}
+
+export interface AiExplainRequest {
+  session_id?: string | null;
+  question?: string;
+  scene_index?: number;
+  lat?: number | null;
+  lon?: number | null;
+  illusion_guard?: boolean;
+}
+
+export interface AiExplainResponse {
+  answer: string;
+  mode: "causal_graph" | "gemini_enhanced";
+  recommended_layers: SignalId[];
+  key_connections: string[];
+  lead_lag_summary: string;
 }

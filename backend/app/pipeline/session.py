@@ -1,9 +1,9 @@
-"""Session ID resolution, manifest persistence, and preset bundle loading."""
+"""Session ID resolution, manifest persistence, and preset bundle loading for Dancing with the SARs."""
 
 import hashlib
 import json
-import re
 from pathlib import Path
+import re
 
 from app.config import Settings
 from app.core.errors import ExploreError
@@ -15,25 +15,38 @@ _SAFE_SESSION_ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
 
 DEFAULT_CITATIONS: list[CitationEntry] = [
     CitationEntry(
-        label="SPHEREx DR1 Spectral Images",
-        doi="10.26131/IRSA678",
-        url="https://irsa.ipac.caltech.edu/data/SPHEREx/docs/overview_dr1.html",
-        text=(
-            "This publication makes use of data products from the Spectro-Photometer for the History of the Universe, "
-            "Epoch of Reionization and Ices Explorer (SPHEREx), which is a joint project of the Jet Propulsion "
-            "Laboratory and the California Institute of Technology, and is funded by the National Aeronautics and Space Administration."
-        ),
+        label="NASA-ISRO SAR (NISAR) & Copernicus Sentinel-1",
+        doi="10.5067/SENTINEL-1/SAR_GRD",
+        url="https://nisar.jpl.nasa.gov/",
+        text="L-band & C-band Synthetic Aperture Radar (SAR) backscatter observations provided via NASA ASF DAAC and ESA Copernicus.",
     ),
     CitationEntry(
-        label="SPHEREx QR3 Quick Release Images",
-        doi="10.26131/IRSA662",
-        url="https://irsa.ipac.caltech.edu/data/SPHEREx/docs/overview_qr.html",
-        text="Uniformly processed Quick Release 3 spectral images combined with DR1 via NASA/IPAC IRSA SIAv2.",
+        label="NASA Global Precipitation Measurement (GPM IMERG)",
+        doi="10.5067/GPM/IMERG/3B-HH/07",
+        url="https://gpm.nasa.gov/data/imerg",
+        text="Half-hourly multi-satellite precipitation estimates from the NASA GPM Integrated Multi-satellitE Retrievals for GPM (IMERG).",
     ),
     CitationEntry(
-        label="Gaia DR3 & AllWISE / CDS Aladin Lite",
-        url="https://irsa.ipac.caltech.edu/Missions/gaia.html",
-        text="Cross-mission astrometric & infrared overlays powered by ESA/IRSA Gaia DR3, NASA AllWISE, and CDS Aladin Lite v3.",
+        label="NASA MERRA-2 Atmospheric Reanalysis",
+        doi="10.5067/A7S6XP56VZWS",
+        url="https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/",
+        text="Surface wind speed and vector fields from the Modern-Era Retrospective analysis for Research and Applications, Version 2.",
+    ),
+    CitationEntry(
+        label="NASA Black Marble Nighttime Lights (VNP46A2)",
+        doi="10.5067/VIIRS/VNP46A2.001",
+        url="https://blackmarble.gsfc.nasa.gov/",
+        text="Daily moonlight- and atmosphere-corrected Day/Night Band nocturnal radiance product from Suomi-NPP VIIRS.",
+    ),
+    CitationEntry(
+        label="Copernicus Sentinel-2 & NASA VIIRS NDVI",
+        url="https://www.copernicus.eu/en/access-data",
+        text="Multi-spectral high-resolution optical surface reflectance and Normalized Difference Vegetation Index (NDVI).",
+    ),
+    CitationEntry(
+        label="NASA Earth Observatory Natural Event Tracker (EONET v3)",
+        url="https://eonet.gsfc.nasa.gov/api/v3/events",
+        text="Real-time global natural hazards and disaster curation provided by NASA Goddard Space Flight Center.",
     ),
 ]
 

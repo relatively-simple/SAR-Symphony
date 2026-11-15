@@ -1,0 +1,3748 @@
+{
+  "session_id": "jakobshavn-glacier",
+  "source": "preset",
+  "target": {
+    "ra": -49.8333,
+    "dec": 69.1667,
+    "lon": -49.8333,
+    "lat": 69.1667,
+    "name": "Disko Inflow to Polar Glacier Surge",
+    "slug": "jakobshavn-glacier",
+    "mjd_ref": 60997.0
+  },
+  "grid": {
+    "ra0": -49.83330000000001,
+    "dec0": 69.1667,
+    "fov_deg": 0.6,
+    "npix": 64,
+    "pixscale_arcsec": 33.75,
+    "ctype": [
+      "RA---TAN",
+      "DEC--TAN"
+    ],
+    "north_up": true
+  },
+  "passes": [
+    {
+      "index": 0,
+      "mjd_start": 60996.5,
+      "mjd_end": 60997.5,
+      "mjd_mid": 60997.0,
+      "n_exposures": 6,
+      "label": "Pass 1"
+    },
+    {
+      "index": 1,
+      "mjd_start": 60998.5,
+      "mjd_end": 60999.5,
+      "mjd_mid": 60999.0,
+      "n_exposures": 6,
+      "label": "Pass 2"
+    },
+    {
+      "index": 2,
+      "mjd_start": 61000.5,
+      "mjd_end": 61001.5,
+      "mjd_mid": 61001.0,
+      "n_exposures": 6,
+      "label": "Pass 3"
+    },
+    {
+      "index": 3,
+      "mjd_start": 61002.5,
+      "mjd_end": 61003.5,
+      "mjd_mid": 61003.0,
+      "n_exposures": 6,
+      "label": "Pass 4"
+    },
+    {
+      "index": 4,
+      "mjd_start": 61004.5,
+      "mjd_end": 61005.5,
+      "mjd_mid": 61005.0,
+      "n_exposures": 6,
+      "label": "Pass 5"
+    },
+    {
+      "index": 5,
+      "mjd_start": 61006.5,
+      "mjd_end": 61007.5,
+      "mjd_mid": 61007.0,
+      "n_exposures": 6,
+      "label": "Pass 6"
+    },
+    {
+      "index": 6,
+      "mjd_start": 61008.5,
+      "mjd_end": 61009.5,
+      "mjd_mid": 61009.0,
+      "n_exposures": 6,
+      "label": "Pass 7"
+    },
+    {
+      "index": 7,
+      "mjd_start": 61010.5,
+      "mjd_end": 61011.5,
+      "mjd_mid": 61011.0,
+      "n_exposures": 6,
+      "label": "Pass 8"
+    },
+    {
+      "index": 8,
+      "mjd_start": 61012.5,
+      "mjd_end": 61013.5,
+      "mjd_mid": 61013.0,
+      "n_exposures": 6,
+      "label": "Pass 9"
+    },
+    {
+      "index": 9,
+      "mjd_start": 61014.5,
+      "mjd_end": 61015.5,
+      "mjd_mid": 61015.0,
+      "n_exposures": 6,
+      "label": "Pass 10"
+    },
+    {
+      "index": 10,
+      "mjd_start": 61016.5,
+      "mjd_end": 61017.5,
+      "mjd_mid": 61017.0,
+      "n_exposures": 6,
+      "label": "Pass 11"
+    },
+    {
+      "index": 11,
+      "mjd_start": 61018.5,
+      "mjd_end": 61019.5,
+      "mjd_mid": 61019.0,
+      "n_exposures": 6,
+      "label": "Pass 12"
+    }
+  ],
+  "products": {
+    "radar": {
+      "name": "radar",
+      "url": "/api/sessions/jakobshavn-glacier/frames/radar.sfp",
+      "n_frames": 12,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 295152
+    },
+    "rain": {
+      "name": "rain",
+      "url": "/api/sessions/jakobshavn-glacier/frames/rain.sfp",
+      "n_frames": 12,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 295140
+    },
+    "wind": {
+      "name": "wind",
+      "url": "/api/sessions/jakobshavn-glacier/frames/wind.sfp",
+      "n_frames": 12,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 295140
+    },
+    "temp": {
+      "name": "temp",
+      "url": "/api/sessions/jakobshavn-glacier/frames/temp.sfp",
+      "n_frames": 12,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 295140
+    },
+    "optical": {
+      "name": "optical",
+      "url": "/api/sessions/jakobshavn-glacier/frames/optical.sfp",
+      "n_frames": 12,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 295176
+    },
+    "nightlights": {
+      "name": "nightlights",
+      "url": "/api/sessions/jakobshavn-glacier/frames/nightlights.sfp",
+      "n_frames": 12,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 295224
+    },
+    "pass_coadds": {
+      "name": "pass_coadds",
+      "url": "/api/sessions/jakobshavn-glacier/frames/pass_coadds.sfp",
+      "n_frames": 12,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 295152
+    },
+    "diffs": {
+      "name": "diffs",
+      "url": "/api/sessions/jakobshavn-glacier/frames/diffs.sfp",
+      "n_frames": 12,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 295248
+    },
+    "rgb": {
+      "name": "rgb",
+      "url": "/api/sessions/jakobshavn-glacier/frames/rgb.sfp",
+      "n_frames": 12,
+      "planes_per_frame": 3,
+      "has_flags": true,
+      "bytes": 688344
+    },
+    "coldglow": {
+      "name": "coldglow",
+      "url": "/api/sessions/jakobshavn-glacier/frames/coldglow.sfp",
+      "n_frames": 12,
+      "planes_per_frame": 1,
+      "has_flags": true,
+      "bytes": 295188
+    }
+  },
+  "frames": {
+    "radar": [
+      {
+        "id": "radar_f0",
+        "kind": "signal",
+        "pass_index": 0,
+        "pass_label": "Pass 1",
+        "detector": null,
+        "mjd": 60997.0,
+        "date_utc": "2024-12-02 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T00"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -11.0,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "radar_f1",
+        "kind": "signal",
+        "pass_index": 1,
+        "pass_label": "Pass 2",
+        "detector": null,
+        "mjd": 60999.0,
+        "date_utc": "2024-12-06 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T01"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -11.0,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "radar_f2",
+        "kind": "signal",
+        "pass_index": 2,
+        "pass_label": "Pass 3",
+        "detector": null,
+        "mjd": 61001.0,
+        "date_utc": "2024-12-10 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T02"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -19.5,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "radar_f3",
+        "kind": "signal",
+        "pass_index": 3,
+        "pass_label": "Pass 4",
+        "detector": null,
+        "mjd": 61003.0,
+        "date_utc": "2024-12-14 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T03"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -19.5,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "radar_f4",
+        "kind": "signal",
+        "pass_index": 4,
+        "pass_label": "Pass 5",
+        "detector": null,
+        "mjd": 61005.0,
+        "date_utc": "2024-12-18 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T04"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "radar_f5",
+        "kind": "signal",
+        "pass_index": 5,
+        "pass_label": "Pass 6",
+        "detector": null,
+        "mjd": 61007.0,
+        "date_utc": "2024-12-22 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T05"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "radar_f6",
+        "kind": "signal",
+        "pass_index": 6,
+        "pass_label": "Pass 7",
+        "detector": null,
+        "mjd": 61009.0,
+        "date_utc": "2024-12-26 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T06"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "radar_f7",
+        "kind": "signal",
+        "pass_index": 7,
+        "pass_label": "Pass 8",
+        "detector": null,
+        "mjd": 61011.0,
+        "date_utc": "2024-12-30 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T07"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "radar_f8",
+        "kind": "signal",
+        "pass_index": 8,
+        "pass_label": "Pass 9",
+        "detector": null,
+        "mjd": 61013.0,
+        "date_utc": "2025-01-03 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T08"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "radar_f9",
+        "kind": "signal",
+        "pass_index": 9,
+        "pass_label": "Pass 10",
+        "detector": null,
+        "mjd": 61015.0,
+        "date_utc": "2025-01-07 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T09"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "radar_f10",
+        "kind": "signal",
+        "pass_index": 10,
+        "pass_label": "Pass 11",
+        "detector": null,
+        "mjd": 61017.0,
+        "date_utc": "2025-01-11 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T10"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "radar_f11",
+        "kind": "signal",
+        "pass_index": 11,
+        "pass_label": "Pass 12",
+        "detector": null,
+        "mjd": 61019.0,
+        "date_utc": "2025-01-15 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RADAR_T11"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      }
+    ],
+    "rain": [
+      {
+        "id": "rain_f0",
+        "kind": "signal",
+        "pass_index": 0,
+        "pass_label": "Pass 1",
+        "detector": null,
+        "mjd": 60997.0,
+        "date_utc": "2024-12-02 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T00"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 1.0,
+          "p_hi": 2.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 1.0,
+        "signal": "rain",
+        "unit": "mm/hr"
+      },
+      {
+        "id": "rain_f1",
+        "kind": "signal",
+        "pass_index": 1,
+        "pass_label": "Pass 2",
+        "detector": null,
+        "mjd": 60999.0,
+        "date_utc": "2024-12-06 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T01"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.8999999761581421,
+          "p_hi": 1.899999976158142
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.9000000357627869,
+        "signal": "rain",
+        "unit": "mm/hr"
+      },
+      {
+        "id": "rain_f2",
+        "kind": "signal",
+        "pass_index": 2,
+        "pass_label": "Pass 3",
+        "detector": null,
+        "mjd": 61001.0,
+        "date_utc": "2024-12-10 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T02"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.800000011920929,
+          "p_hi": 1.800000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.8000000715255737,
+        "signal": "rain",
+        "unit": "mm/hr"
+      },
+      {
+        "id": "rain_f3",
+        "kind": "signal",
+        "pass_index": 3,
+        "pass_label": "Pass 4",
+        "detector": null,
+        "mjd": 61003.0,
+        "date_utc": "2024-12-14 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T03"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.699999988079071,
+          "p_hi": 1.699999988079071
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6999999284744263,
+        "signal": "rain",
+        "unit": "mm/hr"
+      },
+      {
+        "id": "rain_f4",
+        "kind": "signal",
+        "pass_index": 4,
+        "pass_label": "Pass 5",
+        "detector": null,
+        "mjd": 61005.0,
+        "date_utc": "2024-12-18 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T04"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.6000000238418579,
+          "p_hi": 1.600000023841858
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.5999999642372131,
+        "signal": "rain",
+        "unit": "mm/hr"
+      },
+      {
+        "id": "rain_f5",
+        "kind": "signal",
+        "pass_index": 5,
+        "pass_label": "Pass 6",
+        "detector": null,
+        "mjd": 61007.0,
+        "date_utc": "2024-12-22 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T05"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.5,
+          "p_hi": 1.5
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.5,
+        "signal": "rain",
+        "unit": "mm/hr"
+      },
+      {
+        "id": "rain_f6",
+        "kind": "signal",
+        "pass_index": 6,
+        "pass_label": "Pass 7",
+        "detector": null,
+        "mjd": 61009.0,
+        "date_utc": "2024-12-26 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T06"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.4000000059604645,
+          "p_hi": 1.4000000059604645
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.40000003576278687,
+        "signal": "rain",
+        "unit": "mm/hr"
+      },
+      {
+        "id": "rain_f7",
+        "kind": "signal",
+        "pass_index": 7,
+        "pass_label": "Pass 8",
+        "detector": null,
+        "mjd": 61011.0,
+        "date_utc": "2024-12-30 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T07"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "rain",
+        "unit": "mm/hr"
+      },
+      {
+        "id": "rain_f8",
+        "kind": "signal",
+        "pass_index": 8,
+        "pass_label": "Pass 9",
+        "detector": null,
+        "mjd": 61013.0,
+        "date_utc": "2025-01-03 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T08"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.20000000298023224,
+          "p_hi": 1.2000000029802322
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.20000001788139343,
+        "signal": "rain",
+        "unit": "mm/hr"
+      },
+      {
+        "id": "rain_f9",
+        "kind": "signal",
+        "pass_index": 9,
+        "pass_label": "Pass 10",
+        "detector": null,
+        "mjd": 61015.0,
+        "date_utc": "2025-01-07 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T09"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.10000000149011612,
+          "p_hi": 1.1000000014901161
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.10000000894069672,
+        "signal": "rain",
+        "unit": "mm/hr"
+      },
+      {
+        "id": "rain_f10",
+        "kind": "signal",
+        "pass_index": 10,
+        "pass_label": "Pass 11",
+        "detector": null,
+        "mjd": 61017.0,
+        "date_utc": "2025-01-11 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T10"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.0,
+        "signal": "rain",
+        "unit": "mm/hr"
+      },
+      {
+        "id": "rain_f11",
+        "kind": "signal",
+        "pass_index": 11,
+        "pass_label": "Pass 12",
+        "detector": null,
+        "mjd": 61019.0,
+        "date_utc": "2025-01-15 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_RAIN_T11"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.0,
+        "signal": "rain",
+        "unit": "mm/hr"
+      }
+    ],
+    "wind": [
+      {
+        "id": "wind_f0",
+        "kind": "signal",
+        "pass_index": 0,
+        "pass_label": "Pass 1",
+        "detector": null,
+        "mjd": 60997.0,
+        "date_utc": "2024-12-02 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T00"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 7.337500095367432,
+          "p_hi": 9.662500381469727
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 8.481249809265137,
+        "signal": "wind",
+        "unit": "m/s"
+      },
+      {
+        "id": "wind_f1",
+        "kind": "signal",
+        "pass_index": 1,
+        "pass_label": "Pass 2",
+        "detector": null,
+        "mjd": 60999.0,
+        "date_utc": "2024-12-06 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T01"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 9.596070289611816,
+          "p_hi": 11.921070098876953
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 10.739819526672363,
+        "signal": "wind",
+        "unit": "m/s"
+      },
+      {
+        "id": "wind_f2",
+        "kind": "signal",
+        "pass_index": 2,
+        "pass_label": "Pass 3",
+        "detector": null,
+        "mjd": 61001.0,
+        "date_utc": "2024-12-10 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T02"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 11.065656661987305,
+          "p_hi": 13.390656471252441
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 12.209405899047852,
+        "signal": "wind",
+        "unit": "m/s"
+      },
+      {
+        "id": "wind_f3",
+        "kind": "signal",
+        "pass_index": 3,
+        "pass_label": "Pass 4",
+        "detector": null,
+        "mjd": 61003.0,
+        "date_utc": "2024-12-14 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T03"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 11.232890129089355,
+          "p_hi": 13.557890892028809
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 12.376640319824219,
+        "signal": "wind",
+        "unit": "m/s"
+      },
+      {
+        "id": "wind_f4",
+        "kind": "signal",
+        "pass_index": 4,
+        "pass_label": "Pass 5",
+        "detector": null,
+        "mjd": 61005.0,
+        "date_utc": "2024-12-18 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T04"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 10.039352416992188,
+          "p_hi": 12.36435317993164
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 11.18310260772705,
+        "signal": "wind",
+        "unit": "m/s"
+      },
+      {
+        "id": "wind_f5",
+        "kind": "signal",
+        "pass_index": 5,
+        "pass_label": "Pass 6",
+        "detector": null,
+        "mjd": 61007.0,
+        "date_utc": "2024-12-22 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T05"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 7.901979923248291,
+          "p_hi": 10.226980209350586
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 9.045729637145996,
+        "signal": "wind",
+        "unit": "m/s"
+      },
+      {
+        "id": "wind_f6",
+        "kind": "signal",
+        "pass_index": 6,
+        "pass_label": "Pass 7",
+        "detector": null,
+        "mjd": 61009.0,
+        "date_utc": "2024-12-26 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T06"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 5.567418098449707,
+          "p_hi": 7.892418384552002
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 6.7111687660217285,
+        "signal": "wind",
+        "unit": "m/s"
+      },
+      {
+        "id": "wind_f7",
+        "kind": "signal",
+        "pass_index": 7,
+        "pass_label": "Pass 8",
+        "detector": null,
+        "mjd": 61011.0,
+        "date_utc": "2024-12-30 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T07"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 3.8511970043182373,
+          "p_hi": 6.176197052001953
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 4.9949469566345215,
+        "signal": "wind",
+        "unit": "m/s"
+      },
+      {
+        "id": "wind_f8",
+        "kind": "signal",
+        "pass_index": 8,
+        "pass_label": "Pass 9",
+        "detector": null,
+        "mjd": 61013.0,
+        "date_utc": "2025-01-03 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T08"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 3.35284161567688,
+          "p_hi": 5.677841663360596
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 4.496591567993164,
+        "signal": "wind",
+        "unit": "m/s"
+      },
+      {
+        "id": "wind_f9",
+        "kind": "signal",
+        "pass_index": 9,
+        "pass_label": "Pass 10",
+        "detector": null,
+        "mjd": 61015.0,
+        "date_utc": "2025-01-07 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T09"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 4.246441841125488,
+          "p_hi": 6.571442127227783
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 5.39019250869751,
+        "signal": "wind",
+        "unit": "m/s"
+      },
+      {
+        "id": "wind_f10",
+        "kind": "signal",
+        "pass_index": 10,
+        "pass_label": "Pass 11",
+        "detector": null,
+        "mjd": 61017.0,
+        "date_utc": "2025-01-11 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T10"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 6.2198381423950195,
+          "p_hi": 8.544837951660156
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 7.363588333129883,
+        "signal": "wind",
+        "unit": "m/s"
+      },
+      {
+        "id": "wind_f11",
+        "kind": "signal",
+        "pass_index": 11,
+        "pass_label": "Pass 12",
+        "detector": null,
+        "mjd": 61019.0,
+        "date_utc": "2025-01-15 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_WIND_T11"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 8.58366584777832,
+          "p_hi": 10.908665657043457
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 9.727416038513184,
+        "signal": "wind",
+        "unit": "m/s"
+      }
+    ],
+    "temp": [
+      {
+        "id": "temp_f0",
+        "kind": "signal",
+        "pass_index": 0,
+        "pass_label": "Pass 1",
+        "detector": null,
+        "mjd": 60997.0,
+        "date_utc": "2024-12-02 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T00"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 1.046875,
+          "p_hi": 3.953125
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 2.4765625,
+        "signal": "temp",
+        "unit": "°C"
+      },
+      {
+        "id": "temp_f1",
+        "kind": "signal",
+        "pass_index": 1,
+        "pass_label": "Pass 2",
+        "detector": null,
+        "mjd": 60999.0,
+        "date_utc": "2024-12-06 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T01"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -0.453125,
+          "p_hi": 2.453125
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.9765625,
+        "signal": "temp",
+        "unit": "°C"
+      },
+      {
+        "id": "temp_f2",
+        "kind": "signal",
+        "pass_index": 2,
+        "pass_label": "Pass 3",
+        "detector": null,
+        "mjd": 61001.0,
+        "date_utc": "2024-12-10 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T02"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -1.953125,
+          "p_hi": 0.953125
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -0.5234375,
+        "signal": "temp",
+        "unit": "°C"
+      },
+      {
+        "id": "temp_f3",
+        "kind": "signal",
+        "pass_index": 3,
+        "pass_label": "Pass 4",
+        "detector": null,
+        "mjd": 61003.0,
+        "date_utc": "2024-12-14 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T03"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -3.453125,
+          "p_hi": -0.546875
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -2.0234375,
+        "signal": "temp",
+        "unit": "°C"
+      },
+      {
+        "id": "temp_f4",
+        "kind": "signal",
+        "pass_index": 4,
+        "pass_label": "Pass 5",
+        "detector": null,
+        "mjd": 61005.0,
+        "date_utc": "2024-12-18 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T04"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -4.953125,
+          "p_hi": -2.046875
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -3.5234375,
+        "signal": "temp",
+        "unit": "°C"
+      },
+      {
+        "id": "temp_f5",
+        "kind": "signal",
+        "pass_index": 5,
+        "pass_label": "Pass 6",
+        "detector": null,
+        "mjd": 61007.0,
+        "date_utc": "2024-12-22 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T05"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -6.453125,
+          "p_hi": -3.546875
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -5.0234375,
+        "signal": "temp",
+        "unit": "°C"
+      },
+      {
+        "id": "temp_f6",
+        "kind": "signal",
+        "pass_index": 6,
+        "pass_label": "Pass 7",
+        "detector": null,
+        "mjd": 61009.0,
+        "date_utc": "2024-12-26 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T06"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -7.953125,
+          "p_hi": -5.046875
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -6.5234375,
+        "signal": "temp",
+        "unit": "°C"
+      },
+      {
+        "id": "temp_f7",
+        "kind": "signal",
+        "pass_index": 7,
+        "pass_label": "Pass 8",
+        "detector": null,
+        "mjd": 61011.0,
+        "date_utc": "2024-12-30 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T07"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -9.453125,
+          "p_hi": -6.546875
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -8.0234375,
+        "signal": "temp",
+        "unit": "°C"
+      },
+      {
+        "id": "temp_f8",
+        "kind": "signal",
+        "pass_index": 8,
+        "pass_label": "Pass 9",
+        "detector": null,
+        "mjd": 61013.0,
+        "date_utc": "2025-01-03 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T08"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -10.953125,
+          "p_hi": -8.046875
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -9.5234375,
+        "signal": "temp",
+        "unit": "°C"
+      },
+      {
+        "id": "temp_f9",
+        "kind": "signal",
+        "pass_index": 9,
+        "pass_label": "Pass 10",
+        "detector": null,
+        "mjd": 61015.0,
+        "date_utc": "2025-01-07 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T09"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -12.453125,
+          "p_hi": -9.546875
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -11.0234375,
+        "signal": "temp",
+        "unit": "°C"
+      },
+      {
+        "id": "temp_f10",
+        "kind": "signal",
+        "pass_index": 10,
+        "pass_label": "Pass 11",
+        "detector": null,
+        "mjd": 61017.0,
+        "date_utc": "2025-01-11 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T10"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -13.953125,
+          "p_hi": -11.046875
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -12.5234375,
+        "signal": "temp",
+        "unit": "°C"
+      },
+      {
+        "id": "temp_f11",
+        "kind": "signal",
+        "pass_index": 11,
+        "pass_label": "Pass 12",
+        "detector": null,
+        "mjd": 61019.0,
+        "date_utc": "2025-01-15 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_TEMP_T11"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -15.453125,
+          "p_hi": -12.546875
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -14.0234375,
+        "signal": "temp",
+        "unit": "°C"
+      }
+    ],
+    "optical": [
+      {
+        "id": "optical_f0",
+        "kind": "signal",
+        "pass_index": 0,
+        "pass_label": "Pass 1",
+        "detector": null,
+        "mjd": 60997.0,
+        "date_utc": "2024-12-02 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T00"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      },
+      {
+        "id": "optical_f1",
+        "kind": "signal",
+        "pass_index": 1,
+        "pass_label": "Pass 2",
+        "detector": null,
+        "mjd": 60999.0,
+        "date_utc": "2024-12-06 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T01"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      },
+      {
+        "id": "optical_f2",
+        "kind": "signal",
+        "pass_index": 2,
+        "pass_label": "Pass 3",
+        "detector": null,
+        "mjd": 61001.0,
+        "date_utc": "2024-12-10 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T02"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      },
+      {
+        "id": "optical_f3",
+        "kind": "signal",
+        "pass_index": 3,
+        "pass_label": "Pass 4",
+        "detector": null,
+        "mjd": 61003.0,
+        "date_utc": "2024-12-14 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T03"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      },
+      {
+        "id": "optical_f4",
+        "kind": "signal",
+        "pass_index": 4,
+        "pass_label": "Pass 5",
+        "detector": null,
+        "mjd": 61005.0,
+        "date_utc": "2024-12-18 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T04"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      },
+      {
+        "id": "optical_f5",
+        "kind": "signal",
+        "pass_index": 5,
+        "pass_label": "Pass 6",
+        "detector": null,
+        "mjd": 61007.0,
+        "date_utc": "2024-12-22 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T05"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      },
+      {
+        "id": "optical_f6",
+        "kind": "signal",
+        "pass_index": 6,
+        "pass_label": "Pass 7",
+        "detector": null,
+        "mjd": 61009.0,
+        "date_utc": "2024-12-26 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T06"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      },
+      {
+        "id": "optical_f7",
+        "kind": "signal",
+        "pass_index": 7,
+        "pass_label": "Pass 8",
+        "detector": null,
+        "mjd": 61011.0,
+        "date_utc": "2024-12-30 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T07"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      },
+      {
+        "id": "optical_f8",
+        "kind": "signal",
+        "pass_index": 8,
+        "pass_label": "Pass 9",
+        "detector": null,
+        "mjd": 61013.0,
+        "date_utc": "2025-01-03 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T08"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      },
+      {
+        "id": "optical_f9",
+        "kind": "signal",
+        "pass_index": 9,
+        "pass_label": "Pass 10",
+        "detector": null,
+        "mjd": 61015.0,
+        "date_utc": "2025-01-07 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T09"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      },
+      {
+        "id": "optical_f10",
+        "kind": "signal",
+        "pass_index": 10,
+        "pass_label": "Pass 11",
+        "detector": null,
+        "mjd": 61017.0,
+        "date_utc": "2025-01-11 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T10"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      },
+      {
+        "id": "optical_f11",
+        "kind": "signal",
+        "pass_index": 11,
+        "pass_label": "Pass 12",
+        "detector": null,
+        "mjd": 61019.0,
+        "date_utc": "2025-01-15 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_OPTICAL_T11"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.07999999821186066,
+          "p_hi": 0.6800000071525574
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.6799999475479126,
+        "signal": "optical",
+        "unit": "NDVI"
+      }
+    ],
+    "nightlights": [
+      {
+        "id": "nightlights_f0",
+        "kind": "signal",
+        "pass_index": 0,
+        "pass_label": "Pass 1",
+        "detector": null,
+        "mjd": 60997.0,
+        "date_utc": "2024-12-02 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T00"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      },
+      {
+        "id": "nightlights_f1",
+        "kind": "signal",
+        "pass_index": 1,
+        "pass_label": "Pass 2",
+        "detector": null,
+        "mjd": 60999.0,
+        "date_utc": "2024-12-06 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T01"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      },
+      {
+        "id": "nightlights_f2",
+        "kind": "signal",
+        "pass_index": 2,
+        "pass_label": "Pass 3",
+        "detector": null,
+        "mjd": 61001.0,
+        "date_utc": "2024-12-10 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T02"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      },
+      {
+        "id": "nightlights_f3",
+        "kind": "signal",
+        "pass_index": 3,
+        "pass_label": "Pass 4",
+        "detector": null,
+        "mjd": 61003.0,
+        "date_utc": "2024-12-14 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T03"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      },
+      {
+        "id": "nightlights_f4",
+        "kind": "signal",
+        "pass_index": 4,
+        "pass_label": "Pass 5",
+        "detector": null,
+        "mjd": 61005.0,
+        "date_utc": "2024-12-18 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T04"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      },
+      {
+        "id": "nightlights_f5",
+        "kind": "signal",
+        "pass_index": 5,
+        "pass_label": "Pass 6",
+        "detector": null,
+        "mjd": 61007.0,
+        "date_utc": "2024-12-22 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T05"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      },
+      {
+        "id": "nightlights_f6",
+        "kind": "signal",
+        "pass_index": 6,
+        "pass_label": "Pass 7",
+        "detector": null,
+        "mjd": 61009.0,
+        "date_utc": "2024-12-26 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T06"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      },
+      {
+        "id": "nightlights_f7",
+        "kind": "signal",
+        "pass_index": 7,
+        "pass_label": "Pass 8",
+        "detector": null,
+        "mjd": 61011.0,
+        "date_utc": "2024-12-30 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T07"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      },
+      {
+        "id": "nightlights_f8",
+        "kind": "signal",
+        "pass_index": 8,
+        "pass_label": "Pass 9",
+        "detector": null,
+        "mjd": 61013.0,
+        "date_utc": "2025-01-03 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T08"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      },
+      {
+        "id": "nightlights_f9",
+        "kind": "signal",
+        "pass_index": 9,
+        "pass_label": "Pass 10",
+        "detector": null,
+        "mjd": 61015.0,
+        "date_utc": "2025-01-07 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T09"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      },
+      {
+        "id": "nightlights_f10",
+        "kind": "signal",
+        "pass_index": 10,
+        "pass_label": "Pass 11",
+        "detector": null,
+        "mjd": 61017.0,
+        "date_utc": "2025-01-11 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T10"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      },
+      {
+        "id": "nightlights_f11",
+        "kind": "signal",
+        "pass_index": 11,
+        "pass_label": "Pass 12",
+        "detector": null,
+        "mjd": 61019.0,
+        "date_utc": "2025-01-15 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "NASA_NIGHTLIGHTS_T11"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": 0.30000001192092896,
+          "p_hi": 1.300000011920929
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": 0.29999998211860657,
+        "signal": "nightlights",
+        "unit": "nW/cm²/sr"
+      }
+    ],
+    "pass_coadds": [
+      {
+        "id": "coadd_p0",
+        "kind": "coadd",
+        "pass_index": 0,
+        "pass_label": "Pass 1",
+        "detector": null,
+        "mjd": 60997.0,
+        "date_utc": "2024-12-02 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P00"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -11.0,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "coadd_p1",
+        "kind": "coadd",
+        "pass_index": 1,
+        "pass_label": "Pass 2",
+        "detector": null,
+        "mjd": 60999.0,
+        "date_utc": "2024-12-06 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P01"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -11.0,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "coadd_p2",
+        "kind": "coadd",
+        "pass_index": 2,
+        "pass_label": "Pass 3",
+        "detector": null,
+        "mjd": 61001.0,
+        "date_utc": "2024-12-10 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P02"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -19.5,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "coadd_p3",
+        "kind": "coadd",
+        "pass_index": 3,
+        "pass_label": "Pass 4",
+        "detector": null,
+        "mjd": 61003.0,
+        "date_utc": "2024-12-14 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P03"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -19.5,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "coadd_p4",
+        "kind": "coadd",
+        "pass_index": 4,
+        "pass_label": "Pass 5",
+        "detector": null,
+        "mjd": 61005.0,
+        "date_utc": "2024-12-18 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P04"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "coadd_p5",
+        "kind": "coadd",
+        "pass_index": 5,
+        "pass_label": "Pass 6",
+        "detector": null,
+        "mjd": 61007.0,
+        "date_utc": "2024-12-22 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P05"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "coadd_p6",
+        "kind": "coadd",
+        "pass_index": 6,
+        "pass_label": "Pass 7",
+        "detector": null,
+        "mjd": 61009.0,
+        "date_utc": "2024-12-26 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P06"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "coadd_p7",
+        "kind": "coadd",
+        "pass_index": 7,
+        "pass_label": "Pass 8",
+        "detector": null,
+        "mjd": 61011.0,
+        "date_utc": "2024-12-30 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P07"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "coadd_p8",
+        "kind": "coadd",
+        "pass_index": 8,
+        "pass_label": "Pass 9",
+        "detector": null,
+        "mjd": 61013.0,
+        "date_utc": "2025-01-03 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P08"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "coadd_p9",
+        "kind": "coadd",
+        "pass_index": 9,
+        "pass_label": "Pass 10",
+        "detector": null,
+        "mjd": 61015.0,
+        "date_utc": "2025-01-07 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P09"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "coadd_p10",
+        "kind": "coadd",
+        "pass_index": 10,
+        "pass_label": "Pass 11",
+        "detector": null,
+        "mjd": 61017.0,
+        "date_utc": "2025-01-11 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P10"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      },
+      {
+        "id": "coadd_p11",
+        "kind": "coadd",
+        "pass_index": 11,
+        "pass_label": "Pass 12",
+        "detector": null,
+        "mjd": 61019.0,
+        "date_utc": "2025-01-15 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_COADD_P11"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 1,
+        "stretch_hint": {
+          "p_lo": -21.0,
+          "p_hi": -4.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": -20.25,
+        "signal": "radar",
+        "unit": "dB"
+      }
+    ],
+    "diffs": [
+      {
+        "id": "diff_p0_minus_p0",
+        "kind": "diff",
+        "pass_index": 0,
+        "pass_label": "Pass 1 − Pass 1",
+        "detector": null,
+        "mjd": 60997.0,
+        "date_utc": "2024-12-02 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P00"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -4.9999999999999996e-6,
+          "p_hi": 4.9999999999999996e-6
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      },
+      {
+        "id": "diff_p1_minus_p0",
+        "kind": "diff",
+        "pass_index": 1,
+        "pass_label": "Pass 2 − Pass 1",
+        "detector": null,
+        "mjd": 60999.0,
+        "date_utc": "2024-12-06 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P01"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -4.9999999999999996e-6,
+          "p_hi": 4.9999999999999996e-6
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      },
+      {
+        "id": "diff_p2_minus_p0",
+        "kind": "diff",
+        "pass_index": 2,
+        "pass_label": "Pass 3 − Pass 1",
+        "detector": null,
+        "mjd": 61001.0,
+        "date_utc": "2024-12-10 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P02"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -12.75,
+          "p_hi": 12.75
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      },
+      {
+        "id": "diff_p3_minus_p0",
+        "kind": "diff",
+        "pass_index": 3,
+        "pass_label": "Pass 4 − Pass 1",
+        "detector": null,
+        "mjd": 61003.0,
+        "date_utc": "2024-12-14 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P03"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -12.75,
+          "p_hi": 12.75
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      },
+      {
+        "id": "diff_p4_minus_p0",
+        "kind": "diff",
+        "pass_index": 4,
+        "pass_label": "Pass 5 − Pass 1",
+        "detector": null,
+        "mjd": 61005.0,
+        "date_utc": "2024-12-18 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P04"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -12.75,
+          "p_hi": 12.75
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      },
+      {
+        "id": "diff_p5_minus_p0",
+        "kind": "diff",
+        "pass_index": 5,
+        "pass_label": "Pass 6 − Pass 1",
+        "detector": null,
+        "mjd": 61007.0,
+        "date_utc": "2024-12-22 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P05"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -12.75,
+          "p_hi": 12.75
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      },
+      {
+        "id": "diff_p6_minus_p0",
+        "kind": "diff",
+        "pass_index": 6,
+        "pass_label": "Pass 7 − Pass 1",
+        "detector": null,
+        "mjd": 61009.0,
+        "date_utc": "2024-12-26 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P06"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -12.75,
+          "p_hi": 12.75
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      },
+      {
+        "id": "diff_p7_minus_p0",
+        "kind": "diff",
+        "pass_index": 7,
+        "pass_label": "Pass 8 − Pass 1",
+        "detector": null,
+        "mjd": 61011.0,
+        "date_utc": "2024-12-30 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P07"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -12.75,
+          "p_hi": 12.75
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      },
+      {
+        "id": "diff_p8_minus_p0",
+        "kind": "diff",
+        "pass_index": 8,
+        "pass_label": "Pass 9 − Pass 1",
+        "detector": null,
+        "mjd": 61013.0,
+        "date_utc": "2025-01-03 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P08"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -12.75,
+          "p_hi": 12.75
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      },
+      {
+        "id": "diff_p9_minus_p0",
+        "kind": "diff",
+        "pass_index": 9,
+        "pass_label": "Pass 10 − Pass 1",
+        "detector": null,
+        "mjd": 61015.0,
+        "date_utc": "2025-01-07 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P09"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -12.75,
+          "p_hi": 12.75
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      },
+      {
+        "id": "diff_p10_minus_p0",
+        "kind": "diff",
+        "pass_index": 10,
+        "pass_label": "Pass 11 − Pass 1",
+        "detector": null,
+        "mjd": 61017.0,
+        "date_utc": "2025-01-11 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P10"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -12.75,
+          "p_hi": 12.75
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      },
+      {
+        "id": "diff_p11_minus_p0",
+        "kind": "diff",
+        "pass_index": 11,
+        "pass_label": "Pass 12 − Pass 1",
+        "detector": null,
+        "mjd": 61019.0,
+        "date_utc": "2025-01-15 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "SAR_DIFF_P11"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": -12.75,
+          "p_hi": 12.75
+        },
+        "ref_pass_index": 0,
+        "mean_flux_center": null,
+        "signal": "radar",
+        "unit": "dB Δ"
+      }
+    ],
+    "rgb": [
+      {
+        "id": "rgb_p0",
+        "kind": "rgb",
+        "pass_index": 0,
+        "pass_label": "Pass 1",
+        "detector": null,
+        "mjd": 60997.0,
+        "date_utc": "2024-12-02 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P00"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      },
+      {
+        "id": "rgb_p1",
+        "kind": "rgb",
+        "pass_index": 1,
+        "pass_label": "Pass 2",
+        "detector": null,
+        "mjd": 60999.0,
+        "date_utc": "2024-12-06 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P01"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      },
+      {
+        "id": "rgb_p2",
+        "kind": "rgb",
+        "pass_index": 2,
+        "pass_label": "Pass 3",
+        "detector": null,
+        "mjd": 61001.0,
+        "date_utc": "2024-12-10 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P02"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      },
+      {
+        "id": "rgb_p3",
+        "kind": "rgb",
+        "pass_index": 3,
+        "pass_label": "Pass 4",
+        "detector": null,
+        "mjd": 61003.0,
+        "date_utc": "2024-12-14 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P03"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      },
+      {
+        "id": "rgb_p4",
+        "kind": "rgb",
+        "pass_index": 4,
+        "pass_label": "Pass 5",
+        "detector": null,
+        "mjd": 61005.0,
+        "date_utc": "2024-12-18 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P04"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      },
+      {
+        "id": "rgb_p5",
+        "kind": "rgb",
+        "pass_index": 5,
+        "pass_label": "Pass 6",
+        "detector": null,
+        "mjd": 61007.0,
+        "date_utc": "2024-12-22 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P05"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      },
+      {
+        "id": "rgb_p6",
+        "kind": "rgb",
+        "pass_index": 6,
+        "pass_label": "Pass 7",
+        "detector": null,
+        "mjd": 61009.0,
+        "date_utc": "2024-12-26 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P06"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      },
+      {
+        "id": "rgb_p7",
+        "kind": "rgb",
+        "pass_index": 7,
+        "pass_label": "Pass 8",
+        "detector": null,
+        "mjd": 61011.0,
+        "date_utc": "2024-12-30 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P07"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      },
+      {
+        "id": "rgb_p8",
+        "kind": "rgb",
+        "pass_index": 8,
+        "pass_label": "Pass 9",
+        "detector": null,
+        "mjd": 61013.0,
+        "date_utc": "2025-01-03 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P08"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      },
+      {
+        "id": "rgb_p9",
+        "kind": "rgb",
+        "pass_index": 9,
+        "pass_label": "Pass 10",
+        "detector": null,
+        "mjd": 61015.0,
+        "date_utc": "2025-01-07 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P09"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      },
+      {
+        "id": "rgb_p10",
+        "kind": "rgb",
+        "pass_index": 10,
+        "pass_label": "Pass 11",
+        "detector": null,
+        "mjd": 61017.0,
+        "date_utc": "2025-01-11 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P10"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      },
+      {
+        "id": "rgb_p11",
+        "kind": "rgb",
+        "pass_index": 11,
+        "pass_label": "Pass 12",
+        "detector": null,
+        "mjd": 61019.0,
+        "date_utc": "2025-01-15 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "RGB_COMPOSITE_P11"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 3,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": null,
+        "unit": null
+      }
+    ],
+    "coldglow": [
+      {
+        "id": "coldglow_p0",
+        "kind": "coldglow",
+        "pass_index": 0,
+        "pass_label": "Pass 1",
+        "detector": null,
+        "mjd": 60997.0,
+        "date_utc": "2024-12-02 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P00"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      },
+      {
+        "id": "coldglow_p1",
+        "kind": "coldglow",
+        "pass_index": 1,
+        "pass_label": "Pass 2",
+        "detector": null,
+        "mjd": 60999.0,
+        "date_utc": "2024-12-06 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P01"
+        ],
+        "flag_summary": {
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      },
+      {
+        "id": "coldglow_p2",
+        "kind": "coldglow",
+        "pass_index": 2,
+        "pass_label": "Pass 3",
+        "detector": null,
+        "mjd": 61001.0,
+        "date_utc": "2024-12-10 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P02"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      },
+      {
+        "id": "coldglow_p3",
+        "kind": "coldglow",
+        "pass_index": 3,
+        "pass_label": "Pass 4",
+        "detector": null,
+        "mjd": 61003.0,
+        "date_utc": "2024-12-14 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P03"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      },
+      {
+        "id": "coldglow_p4",
+        "kind": "coldglow",
+        "pass_index": 4,
+        "pass_label": "Pass 5",
+        "detector": null,
+        "mjd": 61005.0,
+        "date_utc": "2024-12-18 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P04"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      },
+      {
+        "id": "coldglow_p5",
+        "kind": "coldglow",
+        "pass_index": 5,
+        "pass_label": "Pass 6",
+        "detector": null,
+        "mjd": 61007.0,
+        "date_utc": "2024-12-22 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P05"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      },
+      {
+        "id": "coldglow_p6",
+        "kind": "coldglow",
+        "pass_index": 6,
+        "pass_label": "Pass 7",
+        "detector": null,
+        "mjd": 61009.0,
+        "date_utc": "2024-12-26 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P06"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      },
+      {
+        "id": "coldglow_p7",
+        "kind": "coldglow",
+        "pass_index": 7,
+        "pass_label": "Pass 8",
+        "detector": null,
+        "mjd": 61011.0,
+        "date_utc": "2024-12-30 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P07"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      },
+      {
+        "id": "coldglow_p8",
+        "kind": "coldglow",
+        "pass_index": 8,
+        "pass_label": "Pass 9",
+        "detector": null,
+        "mjd": 61013.0,
+        "date_utc": "2025-01-03 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P08"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      },
+      {
+        "id": "coldglow_p9",
+        "kind": "coldglow",
+        "pass_index": 9,
+        "pass_label": "Pass 10",
+        "detector": null,
+        "mjd": 61015.0,
+        "date_utc": "2025-01-07 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P09"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      },
+      {
+        "id": "coldglow_p10",
+        "kind": "coldglow",
+        "pass_index": 10,
+        "pass_label": "Pass 11",
+        "detector": null,
+        "mjd": 61017.0,
+        "date_utc": "2025-01-11 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P10"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      },
+      {
+        "id": "coldglow_p11",
+        "kind": "coldglow",
+        "pass_index": 11,
+        "pass_label": "Pass 12",
+        "detector": null,
+        "mjd": 61019.0,
+        "date_utc": "2025-01-15 06:00 UTC",
+        "wavelength_um": null,
+        "obs_ids": [
+          "COLDGLOW_P11"
+        ],
+        "flag_summary": {
+          "SUBZERO_FREEZE": 1102,
+          "STEEP_SLOPE": 2240
+        },
+        "n_inputs": 2,
+        "stretch_hint": {
+          "p_lo": 0.0,
+          "p_hi": 1.0
+        },
+        "ref_pass_index": null,
+        "mean_flux_center": null,
+        "signal": "temp",
+        "unit": "thermal index"
+      }
+    ]
+  },
+  "warnings": [],
+  "citations": [
+    {
+      "label": "NASA-ISRO SAR (NISAR) & Copernicus Sentinel-1",
+      "doi": "10.5067/SENTINEL-1/SAR_GRD",
+      "url": "https://nisar.jpl.nasa.gov/",
+      "text": "L-band & C-band Synthetic Aperture Radar (SAR) backscatter observations provided via NASA ASF DAAC and ESA Copernicus."
+    },
+    {
+      "label": "NASA Global Precipitation Measurement (GPM IMERG)",
+      "doi": "10.5067/GPM/IMERG/3B-HH/07",
+      "url": "https://gpm.nasa.gov/data/imerg",
+      "text": "Half-hourly multi-satellite precipitation estimates from the NASA GPM Integrated Multi-satellitE Retrievals for GPM (IMERG)."
+    },
+    {
+      "label": "NASA MERRA-2 Atmospheric Reanalysis",
+      "doi": "10.5067/A7S6XP56VZWS",
+      "url": "https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/",
+      "text": "Surface wind speed and vector fields from the Modern-Era Retrospective analysis for Research and Applications, Version 2."
+    },
+    {
+      "label": "NASA Black Marble Nighttime Lights (VNP46A2)",
+      "doi": "10.5067/VIIRS/VNP46A2.001",
+      "url": "https://blackmarble.gsfc.nasa.gov/",
+      "text": "Daily moonlight- and atmosphere-corrected Day/Night Band nocturnal radiance product from Suomi-NPP VIIRS."
+    },
+    {
+      "label": "Copernicus Sentinel-2 & NASA VIIRS NDVI",
+      "doi": null,
+      "url": "https://www.copernicus.eu/en/access-data",
+      "text": "Multi-spectral high-resolution optical surface reflectance and Normalized Difference Vegetation Index (NDVI)."
+    },
+    {
+      "label": "NASA Earth Observatory Natural Event Tracker (EONET v3)",
+      "doi": null,
+      "url": "https://eonet.gsfc.nasa.gov/api/v3/events",
+      "text": "Real-time global natural hazards and disaster curation provided by NASA Goddard Space Flight Center."
+    }
+  ],
+  "created_utc": "2026-11-15T08:34:21Z",
+  "pipeline_version": "v2.1-earth-symphony",
+  "category": "Cryosphere",
+  "region_label": "Disko Bay -> Ilulissat Fjord, Greenland",
+  "sensors_used": [
+    "Sentinel-1 / NISAR SAR",
+    "MODIS LST",
+    "NASA MERRA-2",
+    "Viability Night Context"
+  ],
+  "story_scenes": [
+    {
+      "index": 0,
+      "phase": "Fjord Inflow",
+      "title": "Disko Bay Inflow & Polar Night",
+      "date_label": "Dec 02, 2024",
+      "frame_index": 0,
+      "active_layers": [
+        "radar",
+        "temp"
+      ],
+      "narration": "Sunlight has vanished above the Arctic Circle. Warm Disko Bay water undercuts the fjord entrance while SAR maps the ice tongue cleanly in darkness.",
+      "why_these_layers": "Optical cameras are pitch black during polar winter—SAR + MODIS thermal temperature reveal full fjord dynamics.",
+      "illusion_note": "Near-melting +2.5°C wet surface snow initially gives strong -11 dB scatter.",
+      "camera": {
+        "lat": 69.15,
+        "lon": -51.2,
+        "zoom": 6.8,
+        "bbox": [
+          -53.8,
+          68.3,
+          -48.5,
+          69.9
+        ],
+        "region_name": "Disko Bay -> Ilulissat Mouth"
+      },
+      "causal_chain": [
+        {
+          "from_signal": "Disko Bay Subsurface Heat",
+          "to_signal": "Terminus Melting & Undercut",
+          "lag_hours": 0,
+          "correlation": 0.86,
+          "explanation": "Warm Atlantic water melts submerged glacier base along the grounding line.",
+          "from_coord": [
+            69.21,
+            -51.1
+          ],
+          "to_coord": [
+            69.1667,
+            -49.8333
+          ]
+        }
+      ],
+      "key_metrics": {
+        "Sun Hours": "0 hrs (Polar Night)",
+        "Edge Temp": "+2.5 °C",
+        "SAR Base": "-11.0 dB"
+      },
+      "gibs_layer": "MODIS_Terra_Land_Surface_Temp_Day",
+      "gibs_date": "2024-12-02",
+      "sar_granule_id": "S1A_EW_GRDM_1SDH_20241202T102210"
+    },
+    {
+      "index": 1,
+      "phase": "Calving",
+      "title": "1.2 km² Terminus Calving Event",
+      "date_label": "Dec 14, 2024",
+      "frame_index": 3,
+      "active_layers": [
+        "radar",
+        "wind"
+      ],
+      "narration": "An enormous 1.2 km² wall calves off Jakobshavn in total polar darkness, tracked solely by Sentinel-1 / NISAR coherent backscatter.",
+      "why_these_layers": "Radar tracks iceberg edges through cloud & night while katabatic wind pushes brash ice seaward.",
+      "illusion_note": "Steep 600 m gneiss fjord cliffs trigger radar layover shadow flags along northern margins.",
+      "camera": {
+        "lat": 69.17,
+        "lon": -49.95,
+        "zoom": 9.6,
+        "bbox": [
+          -50.6,
+          69.02,
+          -49.2,
+          69.32
+        ],
+        "region_name": "Ilulissat Icefjord"
+      },
+      "causal_chain": [
+        {
+          "from_signal": "Basal Undercut",
+          "to_signal": "Terminus Calving Retreat (-800 m)",
+          "lag_hours": 72,
+          "correlation": 0.92,
+          "explanation": "Over-steepened ice cliff fractures into tabular icebergs.",
+          "from_coord": [
+            69.1667,
+            -49.8333
+          ],
+          "to_coord": [
+            69.18,
+            -50.25
+          ]
+        }
+      ],
+      "key_metrics": {
+        "Calved Loss": "1.2 km²",
+        "Katabatic Wind": "12.5 m/s",
+        "Visibility": "Radar Only"
+      },
+      "gibs_layer": "MODIS_Terra_Land_Surface_Temp_Day",
+      "gibs_date": "2024-12-14",
+      "sar_granule_id": "S1A_EW_GRDM_1SDH_20241214T102212"
+    },
+    {
+      "index": 2,
+      "phase": "Freeze Illusion",
+      "title": "Sub-Zero (-14°C) Freeze Illusion",
+      "date_label": "Dec 22, 2024",
+      "frame_index": 5,
+      "active_layers": [
+        "temp",
+        "radar"
+      ],
+      "narration": "Air plunges to -14°C. Liquid moisture inside snow locks into ice crystals, dropping radar backscatter -8.5 dB even though ice hasn't melted!",
+      "why_these_layers": "Temperature (<0°C) is mandatory to catch freeze-thaw dielectric drops in raw radar.",
+      "illusion_note": "Freeze Illusion Guard ON: masks false-melt/false-drought drop caused by <0°C permittivity shift.",
+      "camera": {
+        "lat": 69.1667,
+        "lon": -49.75,
+        "zoom": 10.2,
+        "bbox": [
+          -50.15,
+          69.08,
+          -49.35,
+          69.26
+        ],
+        "region_name": "Glacier Tongue Dielectric Boundary"
+      },
+      "causal_chain": [
+        {
+          "from_signal": "Polar Freeze (-14 °C)",
+          "to_signal": "Dielectric Drop (-8.5 dB SAR)",
+          "lag_hours": 12,
+          "correlation": 0.96,
+          "explanation": "Frozen ice drops permittivity from ~80 (wet) to 3.1 (frozen), reducing SAR return.",
+          "from_coord": [
+            69.16,
+            -49.7
+          ],
+          "to_coord": [
+            69.1667,
+            -49.8333
+          ]
+        }
+      ],
+      "key_metrics": {
+        "Temp Drop": "-14.0 °C",
+        "SAR Shift": "-8.5 dB",
+        "Freeze Guard": "Active"
+      },
+      "gibs_layer": "MODIS_Terra_Land_Surface_Temp_Day",
+      "gibs_date": "2024-12-22",
+      "sar_granule_id": "S1A_EW_GRDM_1SDH_20241222T102213"
+    },
+    {
+      "index": 3,
+      "phase": "Surge Peak",
+      "title": "42 m/Day Glacier Surge",
+      "date_label": "Jan 03, 2025",
+      "frame_index": 7,
+      "active_layers": [
+        "radar",
+        "wind"
+      ],
+      "narration": "With front ice pressure gone, the main glacier accelerates to 42 meters per day—creating jagged new crevasses clearly imaged by SAR.",
+      "why_these_layers": "Radar tracking + katabatic wind confirm rapid ice export toward Baffin Bay.",
+      "illusion_note": "Freeze Guard remains engaged below 0°C to separate real crevasse breakup from cold dielectric dimming.",
+      "camera": {
+        "lat": 69.1667,
+        "lon": -49.8333,
+        "zoom": 10.4,
+        "bbox": [
+          -50.2,
+          69.09,
+          -49.4,
+          69.25
+        ],
+        "region_name": "Jakobshavn Surge Zone"
+      },
+      "causal_chain": [
+        {
+          "from_signal": "Lost Buttressing Stress",
+          "to_signal": "Ice Velocity Surge (42 m/day)",
+          "lag_hours": 48,
+          "correlation": 0.93,
+          "explanation": "Unblocked glacier tongue slides faster into Ilulissat fjord.",
+          "from_coord": [
+            69.1667,
+            -49.8333
+          ],
+          "to_coord": [
+            69.19,
+            -50.45
+          ]
+        }
+      ],
+      "key_metrics": {
+        "Flow Speed": "42 m/day",
+        "Temp": "-11.5 °C",
+        "Wind": "11.0 m/s"
+      },
+      "gibs_layer": "MODIS_Terra_Land_Surface_Temp_Day",
+      "gibs_date": "2025-01-03",
+      "sar_granule_id": "S1A_EW_GRDM_1SDH_20250103T102214"
+    },
+    {
+      "index": 4,
+      "phase": "Freeze-Up",
+      "title": "Winter Sea-Ice Lock & Stabilization",
+      "date_label": "Jan 15, 2025",
+      "frame_index": 11,
+      "active_layers": [
+        "radar",
+        "temp"
+      ],
+      "narration": "Deep -14°C cold consolidates floating brash ice into rigid winter fast-ice, temporarily locking the calving cliff until spring.",
+      "why_these_layers": "Persistent sub-zero thermal temperature + SAR structure confirm rigid fast-ice buttressing.",
+      "illusion_note": "Winter multi-year ice settles into stable volume scatter.",
+      "camera": {
+        "lat": 69.18,
+        "lon": -50.1,
+        "zoom": 9.2,
+        "bbox": [
+          -51.1,
+          68.9,
+          -49.1,
+          69.4
+        ],
+        "region_name": "Consolidated Winter Fjord"
+      },
+      "causal_chain": [
+        {
+          "from_signal": "Sustained -14 °C Cold",
+          "to_signal": "Fast-Ice Rigid Buttress",
+          "lag_hours": 96,
+          "correlation": 0.91,
+          "explanation": "Frozen melange bridges walls to resist fresh iceberg breakout.",
+          "from_coord": [
+            69.18,
+            -50.45
+          ],
+          "to_coord": [
+            69.1667,
+            -49.8333
+          ]
+        }
+      ],
+      "key_metrics": {
+        "LST": "-14.2 °C",
+        "Fjord Ice": "Locked",
+        "Season": "Mid-Winter"
+      },
+      "gibs_layer": "MODIS_Terra_Land_Surface_Temp_Day",
+      "gibs_date": "2025-01-15",
+      "sar_granule_id": "S1A_EW_GRDM_1SDH_20250115T102215"
+    }
+  ],
+  "illusion_summary": "When temperatures plunge below 0°C, liquid meltwater inside snow freezes solid, collapsing radar dielectric constant from 80 to 3.1. Raw SAR plunges -8.5 dB—mimicking flooding or drought unless checked against <0°C thermal data.",
+  "causal_summary": "Warm Subsurface Fjord Inflow -> Terminus Undercut & Calving -> 42 m/day Ice Surge in Polar Night -> Flash Freeze (-14°C) -> Dielectric SAR Drop Illusion (-8.5 dB).",
+  "event_dates": [
+    "2024-12-02",
+    "2024-12-06",
+    "2024-12-10",
+    "2024-12-14",
+    "2024-12-18",
+    "2024-12-22",
+    "2024-12-26",
+    "2024-12-30",
+    "2025-01-03",
+    "2025-01-07",
+    "2025-01-11",
+    "2025-01-15"
+  ],
+  "geo_features": [
+    {
+      "id": "jakobshavn-fjord-flow",
+      "kind": "storm_track",
+      "label": "Iceberg Discharge & Katabatic Corridor",
+      "detail": "Calved icebergs & 12 m/s katabatic winds stream westward toward Baffin Bay.",
+      "geometry_type": "polyline",
+      "coordinates": [
+        [
+          69.18,
+          -49.55
+        ],
+        [
+          69.17,
+          -49.85
+        ],
+        [
+          69.19,
+          -50.45
+        ],
+        [
+          69.21,
+          -51.1
+        ]
+      ],
+      "radius_km": null,
+      "color": "#38bdf8",
+      "scene_indices": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "jakobshavn-calving-front",
+      "kind": "glacier_front",
+      "label": "Jakobshavn Active Calving Terminus (42 m/day)",
+      "detail": "SAR pierces 24-hour polar darkness to track terminus retreat and crevasse slip.",
+      "geometry_type": "polygon",
+      "coordinates": [
+        [
+          69.14,
+          -49.7
+        ],
+        [
+          69.21,
+          -49.7
+        ],
+        [
+          69.21,
+          -49.95
+        ],
+        [
+          69.14,
+          -49.95
+        ]
+      ],
+      "radius_km": null,
+      "color": "#22d3ee",
+      "scene_indices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "jakobshavn-freeze-illusion",
+      "kind": "illusion_freeze_zone",
+      "label": "< 0°C Dielectric Freeze Illusion Zone",
+      "detail": "Temperature drops to -14°C, collapsing wet-snow permittivity & mimicking water loss unless MODIS LST corrects it.",
+      "geometry_type": "polygon",
+      "coordinates": [
+        [
+          69.12,
+          -49.55
+        ],
+        [
+          69.23,
+          -49.55
+        ],
+        [
+          69.23,
+          -49.82
+        ],
+        [
+          69.12,
+          -49.82
+        ]
+      ],
+      "radius_km": null,
+      "color": "#a78bfa",
+      "scene_indices": [
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

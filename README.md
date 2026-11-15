@@ -1,45 +1,82 @@
----
-title: SPHEREx Discovery Flipbook (KurinjiKumaraN)
-emoji: 🔭
-colorFrom: blue
-colorTo: pink
-sdk: docker
-app_port: 7860
-pinned: false
-license: apache-2.0
+# SAR Symphony: Dancing with Earth's Signals
+
+**NASA Space Apps Challenge — *Dancing with the SARs***  
+**Team:** KurinjiKumaraN (Kandy, Sri Lanka)  
+**License:** Apache-2.0 (`LICENSE`, `NOTICE`)  
+**Pitch Deck:** [SAR_Symphony_Dancing_With_The_SARs_Pitch.pptx](pitch/SAR_Symphony_Dancing_With_The_SARs_Pitch.pptx)
+
 ---
 
-# SPHEREx Discovery Flipbook — Team KurinjiKumaraN
+## Overview
 
-Interactive epoch-aligned astronomical flipbook and 0.75–5.0 µm spectroscopic explorer built for **NASA Space Apps 2026 Challenge 12: *Planet X and SPHEREx*** (Kandy, Sri Lanka).
+Synthetic Aperture Radar (SAR) sees through darkness, wildfire smoke, and dense monsoon clouds — yet single-snapshot SAR intensity maps are easily misread. Wind chop over open water mimics dry land (`+13.5 dB` backscatter), flash freezes collapse wet-snow dielectric permittivity (`-8.5 dB`), and mountain slopes trigger radar layover.
 
-Instead of flattening SPHEREx exposures into static blurry stacks that wash out moving worlds, this workbench automatically groups NASA/IPAC IRSA **DR1 + QR3 Level-2** data by **6-month survey pass**, removes per-exposure zodiacal foreground (`ZODI`), masks fatal quality bits (`FLAGS`), reprojects every exposure onto a common **North-Up ICRS** sky grid (`6.15"/px`), and streams compact binary Float32 stacks (`SFP1`) for instant interactive discovery.
+**SAR Symphony** turns multi-sensor Earth observations into an **AI-directed Domino Story-Map Studio** backed by synchronized `64×64×12` binary `SFP1` cubes and `uint16` illusion bitmasks. Instead of inspecting isolated pixels in the dark, users watch how upstream atmospheric pressure, wind jets, and heat domes trigger downstream extreme rainfall, floods, wildfires, crop cycles, glacier surges, and human power outages across space and time.
 
-## Features
-- **Guided Discovery Missions (Instant Offline Presets):**
-  1. **Barnard's Star** — Textbook `10.4"/yr` fast mover leaving a razor-sharp red/cyan dipole between 2025–2026 passes.
-  2. **epsilon Indi B** — Nearby bright-star companion testbed (~`6.7'` ESE of `eps Ind`, `4.7"/yr` motion).
-  3. **WISE 0855-0714** — Coldest known Y-dwarf brown dwarf (`~250 K`) sampled across **Cold Glow (`D5+D6: 3.8–5.0 µm`)** while moving `8.1"/yr` West of its 2010 WISE discovery circle.
-  4. **RW Aurigae** — Accreting T Tauri young binary fluctuating in infrared brightness across SPHEREx passes.
-  5. **R Draconis** — Large-amplitude Mira variable star pulsing smoothly over 6-month intervals.
-- **Free Sky Explorer (`?ra=&dec=&fov=&lens=`):** Point at *any* sky coordinate (`0.05°`, `0.10°`, or `0.25°`), fetch only minimal 2D cutouts via HTTP `Range` requests against full IRSA MEFs (skipping multi-megabyte `EPSF` tables and decoding row-compressed Rice `FLAGS` tiles cleanly), and watch live 5-stage SSE progress.
-- **Click-to-Spectrum (`WCS-WAVE`):** Click any pixel on the sky canvas to extract background-subtracted calibrated brightness (`MJy/sr`) across all six SPHEREx LVF detectors (`D1–D6`, `0.75–5.0 µm`).
-- **Cross-Mission Anchors:** Proper-motion-propagated **Gaia DR3** crosses (IRSA Gator & ESA TAP), **AllWISE** (`2010–2011`) circles (IRSA Gator), and an **Aladin Lite v3** wide-sky modal.
+---
 
-## Quick Local Start
+## Key Capabilities
+
+### 1. Three Ways to Explore Earth Events
+- **5 Flagship Benchmark Presets** (pre-baked in `cache/presets/` for zero-wait offline exploration):
+  1. **Bay of Bengal Cyclone to Kandy Floods** (`kandy-floods`, Sri Lanka, Nov 2024) — Upstream `996 hPa` low & `29.4°C` SST → `18.8 m/s` wind jet → `54 mm/hr` cloudburst (`185 mm/day` under `88%` clouds) → `-24.1 dB` Mahaweli floodplains (`1,420 ha`) + `+13.5 dB` wind-ripple illusion at `14.6 m/s` on Victoria Reservoir → `-78%` Black Marble outage (`42.5` to `9.2 nW/cm²/sr`).
+  2. **Pacific Gradient to Lahaina Fire & Blackout** (`maui-wildfire`, Hawaii, Aug 2023) — Hurricane Dora gradient → `35.0 m/s` katabatic downslope winds → `-85%` Black Marble grid collapse → `+58°C` thermal anomaly & `-5.2 dB` SAR building damage across `870 ha`, plus `+12 dB` harbor wave chop illusion.
+  3. **Amazon Heat Dome to Drought & Fire** (`amazon-drought-fire`, Brazil, Aug 2024) — `+38.2–39.2°C` heat dome → `-4.5 dB` SAR canopy moisture drop ~21 days early while optical NDVI remains `0.68` → `+46°C` fire front through smoke → post-fire NDVI crash to `0.16` and `38 nW/cm²/sr` night glow.
+  4. **Mahaweli Irrigation to Rice Heartbeat** (`mahaweli-rice`, Polonnaruwa, Sri Lanka, May–Aug 2025) — `-14.0 dB` tilled soil → `-22.5 dB` 10 cm paddy flood mirror → `+2.2 dB` vertical rice stalk double-bounce at `0.62` NDVI → `0.84` NDVI cooling canopy → `0.38` NDVI / `-13.0 dB` dry harvest.
+  5. **Disko Inflow to Polar Glacier Surge** (`jakobshavn-glacier`, Greenland, Dec 2024–Jan 2025) — `0` sun hours polar night → `1.2 km²` terminus calving retreat → `-14.0°C` flash freeze collapsing wet-snow permittivity (`~80` to `3.1`) and causing a `-8.5 dB` dielectric SAR drop illusion → `42 m/day` glacier surge.
+- **Live NASA EONET v3 Feed** (`GET /api/eonet`) — Click `Explore Cause` to browse real-time active disasters (wildfires, severe storms, floods, volcanoes) with automatic offline fallback.
+- **Custom Place, Coordinate & Historical Event Search** (`GET /api/story/live` & `GET /api/explore`) — Search any city, `(lat, lon)` coordinate, or major disaster (including the built-in Historical Disaster Catalog: *Dubai 2024 Floods*, *Valencia DANA 2024*, *Pakistan 2022 Monsoon*, *Hurricane Helene 2024*, *Derna 2023 Floods*, *Cyclone Remal 2024*) using Open-Meteo Geocoding + Historical Archive (`archive-api.open-meteo.com`), NASA ASF DAAC Sentinel-1 search, NASA POWER Daily, and NASA EONET v3.
+
+### 2. Six Synchronized Earth Signals (`SFP1` Framepacks)
+| Signal ID | Unit | Mission / Dataset Reference |
+| --- | --- | --- |
+| `radar` | `dB` | NASA-ISRO NISAR & Copernicus Sentinel-1 (NASA ASF DAAC) |
+| `rain` | `mm/hr` | NASA GPM IMERG |
+| `wind` | `m/s` | NASA MERRA-2 / CYGNSS / Open-Meteo |
+| `temp` | `°C` | NASA MODIS / ECOSTRESS Land Surface Temperature |
+| `optical` | `NDVI` | Copernicus Sentinel-2 & NASA VIIRS NDVI |
+| `nightlights` | `nW/cm²/sr` | NASA Black Marble VNP46A2 |
+
+### 3. Visuals-First Domino Story-Map Studio & 4-Bit Radar Illusion Guard
+- **5-Step Color-Coded Domino Director (`StoryDirectorBar.tsx`)**: Displays 5 chronological cause-and-effect Domino cards (`Orange`, `Teal`, `Blue`, `Purple`, `Rose`), a 3×2 NASA telemetry gauge grid (`Temp`, `Wind`, `Rain`, `NDVI`, `SAR Radar`, `Night Lights`), and one-click `Play Story` progression. Each scene highlights only the **2–3 relevant signals** driving that phase.
+- **Interactive Geo-Causal Map (`StoryMapCanvas.tsx`)**: Powered by Leaflet over Esri World Dark Gray & World Topo basemaps, layered with NASA GIBS WMTS satellite imagery (`IMERG_Precipitation_Rate`, `VIIRS_SNPP_DayNightBand_At_Sensor_Radiance`, `MODIS_Terra_CorrectedReflectance_TrueColor`, `MODIS_Terra_Land_Surface_Temp_Day`), calibrated `64×64` SAR/signal heatmaps, interactive **Before / Peak split-curtain swipe**, animated upwind-to-impact vector arrows, and clickable map sampling.
+- **Domino Flow & Causal Bridge (`PatternFinderCard.tsx`)**: Visual 5-node pipeline (`HEAT → WIND → RAIN → SAR → IMPACT`), side-by-side `Cause → Effect` vector bridge with lead-lag hours and Pearson `r` correlation bar, 2×2 Hotspot pills (`onset`, `peak_impact`, `blackout`, `illusion`), and an on-demand `Ask AI` drawer (`POST /api/ai/explain`).
+- **6-Signal Timeline (`SpectrumChart.tsx`)**: Compact interactive Plotly chart with clickable frame markers and CSV export.
+- **4-Bit `uint16` Radar Illusion Guard (`backend/app/core/flags.py`)**: Flags pixels affected by `FLAG_WIND_RIPPLE` (`0x0001`), `FLAG_SUBZERO_FREEZE` (`0x0002`), `FLAG_STEEP_SLOPE` (`0x0004`), and `FLAG_CLOUD_COVER` (`0x0008`).
+- **60s Tour & SAR Guide (`TrainingDirectorBar.tsx`, `GlossaryModal.tsx`)**: Built-in 5-step interactive walkthrough and illustrated physical glossary.
+
+---
+
+## Running Locally
 
 ```powershell
-# 1. Backend tests (offline suite)
-.\Makefile.ps1 test
+# Run all 48 offline backend tests
+uv run --project backend pytest -v
 
-# 2. Build React UI into frontend/dist
-.\Makefile.ps1 build
+# Build the frontend production bundle
+npm --prefix frontend run build
 
-# 3. Serve unified app on http://127.0.0.1:7860
-.\Makefile.ps1 serve
+# Start the unified FastAPI + built SPA server on http://127.0.0.1:7860
+uv run --project backend uvicorn app.main:create_app --factory --host 127.0.0.1 --port 7860 --app-dir backend
 ```
 
-See [docs/SCIENCE.md](docs/SCIENCE.md), [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), and [docs/AI_DISCLOSURE.md](docs/AI_DISCLOSURE.md) for methodology, archive citations, and AI transparency.
+Or use `.\Makefile.ps1 -Task dev` to run the FastAPI backend alongside Vite hot-reload during development. Optional `GEMINI_API_KEY` enables Tier 2 generative scientific summaries on `POST /api/ai/explain`; everything works out-of-the-box with zero API keys.
 
-## License
-Apache License 2.0 — see [LICENSE](LICENSE) and [NOTICE](NOTICE).
+---
+
+## Documentation
+
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — FastAPI + React/TypeScript/Leaflet system design, API routers, `SFP1` binary format, and AI Domino Director.
+- [docs/SCIENCE.md](docs/SCIENCE.md) — Multi-sensor physics, SAR backscatter mechanisms, 4-bit Radar Illusion Guard bitmasks, and resolution boundaries.
+- [docs/DATA_SOURCES.md](docs/DATA_SOURCES.md) — Zero-API-key NASA, Copernicus, Open-Meteo, and Esri endpoints, DOIs, and deterministic fallback behavior.
+- [docs/AI_DISCLOSURE.md](docs/AI_DISCLOSURE.md) — Disclosure of Tier 1 deterministic statistical causality, optional Tier 2 Gemini 2.5 Flash prose synthesis, and AI development tooling.
+
+---
+
+## Repository Layout
+
+- `backend/` — Python (`>=3.11,<3.13`) FastAPI backend (`app/main.py`, `app/api/`, `app/core/`, `app/data/`, `app/pipeline/`, `app/science/`, `tests/`).
+- `frontend/` — React 18 + TypeScript + Vite + React Context (`src/state/`) + Leaflet + Plotly UI (`src/components/`, `src/content/`, `src/engine/`, `src/styles/`).
+- `cache/presets/` — Pre-baked 12-frame `SFP1` archives (`manifest.json`, `spectrum.json`, `overlays.json`, `thumb.webp`, and 10 `.sfp` framepacks per flagship event).
+- `pitch/` — Updated 7-slide presentation (`SAR_Symphony_Dancing_With_The_SARs_Pitch.pptx`).
+- `Dockerfile` — Unified single-container deployment serving both the FastAPI API and built frontend SPA on port `7860`.

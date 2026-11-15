@@ -1,47 +1,154 @@
 [
   {
-    "slug": "barnards-star",
-    "name": "Barnard's Star",
-    "passes": 3,
-    "spectrum_pts": 56,
-    "gaia": 0,
-    "allwise": 80,
-    "bytes": 4263174
+    "slug": "kandy-floods",
+    "name": "Bay of Bengal Cyclone to Kandy Floods",
+    "title": "Bay of Bengal Cyclone to Kandy Floods & Blackout",
+    "category": "Flood & Cyclone",
+    "region_label": "Bay of Bengal -> Kandy, Sri Lanka",
+    "lon": 80.6337,
+    "lat": 7.2906,
+    "passes": 12,
+    "products": [
+      "radar",
+      "rain",
+      "wind",
+      "temp",
+      "optical",
+      "nightlights",
+      "pass_coadds",
+      "diffs",
+      "rgb",
+      "coldglow"
+    ],
+    "sensors_used": [
+      "Sentinel-1 / NISAR SAR",
+      "NASA GPM IMERG",
+      "NASA MERRA-2",
+      "MODIS LST & Clouds",
+      "NASA Black Marble"
+    ],
+    "story_scenes_count": 5,
+    "bytes": 3454747
   },
   {
-    "slug": "eps-indi-b",
-    "name": "Epsilon Indi B (Ba/Bb)",
-    "passes": 4,
-    "spectrum_pts": 104,
-    "gaia": 0,
-    "allwise": 64,
-    "bytes": 6449188
+    "slug": "maui-wildfire",
+    "name": "Pacific Gradient to Lahaina Fire & Blackout",
+    "title": "Pacific Pressure Gradient to Lahaina Firestorm",
+    "category": "Wildfire",
+    "region_label": "Central Pacific -> West Maui, Hawaii",
+    "lon": -156.6825,
+    "lat": 20.8783,
+    "passes": 12,
+    "products": [
+      "radar",
+      "rain",
+      "wind",
+      "temp",
+      "optical",
+      "nightlights",
+      "pass_coadds",
+      "diffs",
+      "rgb",
+      "coldglow"
+    ],
+    "sensors_used": [
+      "Sentinel-1 SAR",
+      "MODIS / ECOSTRESS",
+      "NASA Black Marble",
+      "NASA MERRA-2"
+    ],
+    "story_scenes_count": 5,
+    "bytes": 3449384
   },
   {
-    "slug": "wise-0855",
-    "name": "WISE 0855",
-    "passes": 3,
-    "spectrum_pts": 82,
-    "gaia": 0,
-    "allwise": 65,
-    "bytes": 4869349
+    "slug": "amazon-drought-fire",
+    "name": "Amazon Heat Dome to Drought & Fire",
+    "title": "Tropical Atlantic Block to Amazon Drought & Fire",
+    "category": "Drought & Wildfire",
+    "region_label": "Rio Negro & Manaus, Brazil",
+    "lon": -60.0217,
+    "lat": -3.119,
+    "passes": 12,
+    "products": [
+      "radar",
+      "rain",
+      "wind",
+      "temp",
+      "optical",
+      "nightlights",
+      "pass_coadds",
+      "diffs",
+      "rgb",
+      "coldglow"
+    ],
+    "sensors_used": [
+      "Sentinel-1 / NISAR SAR",
+      "MODIS / ECOSTRESS",
+      "NASA MERRA-2",
+      "Sentinel-2 NDVI",
+      "NASA Black Marble"
+    ],
+    "story_scenes_count": 5,
+    "bytes": 3444255
   },
   {
-    "slug": "rw-aurigae",
-    "name": "RW Aurigae",
-    "passes": 3,
-    "spectrum_pts": 7,
-    "gaia": 0,
-    "allwise": 48,
-    "bytes": 4486426
+    "slug": "mahaweli-rice",
+    "name": "Mahaweli Irrigation to Rice Heartbeat",
+    "title": "Mahaweli Rice Phenology & Food Security",
+    "category": "Agriculture",
+    "region_label": "Central Reservoirs -> Polonnaruwa, Sri Lanka",
+    "lon": 81.0188,
+    "lat": 7.9403,
+    "passes": 12,
+    "products": [
+      "radar",
+      "rain",
+      "wind",
+      "temp",
+      "optical",
+      "nightlights",
+      "pass_coadds",
+      "diffs",
+      "rgb",
+      "coldglow"
+    ],
+    "sensors_used": [
+      "Sentinel-1 / NISAR SAR",
+      "Sentinel-2 NDVI",
+      "NASA GPM IMERG",
+      "MODIS LST"
+    ],
+    "story_scenes_count": 5,
+    "bytes": 3443610
   },
   {
-    "slug": "r-draconis",
-    "name": "R Draconis",
-    "passes": 3,
-    "spectrum_pts": 2,
-    "gaia": 0,
-    "allwise": 39,
-    "bytes": 12899970
+    "slug": "jakobshavn-glacier",
+    "name": "Disko Inflow to Polar Glacier Surge",
+    "title": "Jakobshavn Polar Night Glacier Surge & Freeze",
+    "category": "Cryosphere",
+    "region_label": "Disko Bay -> Ilulissat Fjord, Greenland",
+    "lon": -49.8333,
+    "lat": 69.1667,
+    "passes": 12,
+    "products": [
+      "radar",
+      "rain",
+      "wind",
+      "temp",
+      "optical",
+      "nightlights",
+      "pass_coadds",
+      "diffs",
+      "rgb",
+      "coldglow"
+    ],
+    "sensors_used": [
+      "Sentinel-1 / NISAR SAR",
+      "MODIS LST",
+      "NASA MERRA-2",
+      "Viability Night Context"
+    ],
+    "story_scenes_count": 5,
+    "bytes": 3449199
   }
 ]

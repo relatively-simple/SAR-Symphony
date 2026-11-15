@@ -18,3 +18,8 @@ runtime_cache/
 Thumbs.db
 *.log
 .env
+*.tsbuildinfo
+.gemini/
+**/.agents/
+TEST_INFRA.md
+TEST_READY.md

@@ -1,263 +1,238 @@
-import React from "react";
-import { TRAINING_TESTS } from "../../content/training";
+import React, { useState } from "react";
 import { useAppState } from "../../state/store";
+import { Spinner } from "../common/Spinner";
 
-const CHOICE_BUTTONS = [
-  { id: "mover", label: "Moving World" },
-  { id: "variable", label: "Flickering Star" },
-  { id: "cold_ir", label: "Cold Heat World" },
-  { id: "artifact", label: "Static / Artifact" },
+const STEP_NODES = [
+  { color: "#f97316", icon: "🌡️", short: "Heat" },
+  { color: "#14b8a6", icon: "💨", short: "Wind" },
+  { color: "#3b82f6", icon: "🌧️", short: "Rain" },
+  { color: "#a855f7", icon: "📡", short: "SAR" },
+  { color: "#f43f5e", icon: "💡", short: "Impact" },
+];
+
+const HOTSPOT_ACCENTS: Record<string, string> = {
+  onset: "#f97316",
+  peak_impact: "#a855f7",
+  blackout: "#eab308",
+  illusion: "#10b981",
+};
+
+const QUICK_CHIPS = [
+  { label: "⚡ Sequence", prompt: "Why did these datasets change in this sequence?" },
+  { label: "🌊 Upwind Cause", prompt: "What triggered this disaster upwind?" },
+  { label: "🛡️ Radar Guard", prompt: "How does Illusion Guard prevent false radar conclusions?" },
 ];
 
 export const PatternFinderCard: React.FC = () => {
   const {
     manifest,
-    trainingPhase,
-    autoDemoStep,
-    demoDone,
-    testChecklist,
-    submitTrainingVerdict,
-    submitSoloVerdict,
-    verdicts,
+    activeSceneIndex,
+    selectStoryScene,
+    aiExplanation,
+    aiLoading,
+    askAiDirector,
     patterns,
-    patternsLoading,
     activePatternId,
     selectPattern,
-    soloRevealOverride,
-    toggleSoloReveal,
-    advanceFromDemoToTest1,
-    advanceFromTest1ToTest2,
-    graduateToSolo,
   } = useAppState();
 
-  // 1. ROUND 1: AUTOMATIC DEMO READOUT
-  if (trainingPhase === "round1-demo") {
-    const highlighted = autoDemoStep >= 3;
-    return (
-      <section className="panel-card pattern-card" aria-label="Round 1 Automatic Classification">
-        <div className="panel-header" style={{ marginBottom: "0.45rem" }}>
-          <div>
-            <h2 className="panel-title">Auto Demo: Inspect &amp; Classify</h2>
-            <div style={{ fontSize: "0.74rem", color: "var(--text-muted)" }}>
-              Watch how we confirm a pattern on Barnard&apos;s Star
-            </div>
-          </div>
-          <span className="status-pill" style={{ color: "var(--accent-cyan)", fontWeight: 700 }}>
-            {demoDone ? "+25 pts Demo" : `Step ${autoDemoStep + 1}/4`}
-          </span>
-        </div>
+  const [question, setQuestion] = useState("");
+  const [showAnswerDrawer, setShowAnswerDrawer] = useState(false);
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.38rem", marginBottom: "0.6rem" }}>
-          {CHOICE_BUTTONS.map((btn) => (
-            <button
-              key={btn.id}
-              type="button"
-              disabled
-              className={`detector-chip ${highlighted && btn.id === "mover" ? "active" : ""}`}
-            >
-              {btn.label}
-              {highlighted && btn.id === "mover" ? " ✓" : ""}
-            </button>
-          ))}
-        </div>
+  const scenes = manifest?.story_scenes ?? [];
+  const activeScene = scenes[activeSceneIndex] ?? scenes[0] ?? null;
+  const activeLink = activeScene?.causal_chain?.[0] ?? null;
+  const candidates = patterns?.candidates ?? [];
+  const stepColor = STEP_NODES[activeSceneIndex % STEP_NODES.length].color;
+  const corrPct = activeLink ? Math.min(100, Math.round(Math.abs(activeLink.correlation) * 100)) : 75;
 
-        {highlighted ? (
-          <div className="callout-box callout-success" style={{ fontSize: "0.8rem" }}>
-            <strong>Demo Classification: Moving World (+25 pts)</strong>
-            <div style={{ marginTop: "0.25rem" }}>
-              Red &apos;now&apos; sat ~25&quot; north of Cyan &apos;before&apos; in Difference Only,
-              and clicking it plotted a bright cool red dwarf spectrum.
-            </div>
-            <button
-              type="button"
-              className="btn btn-primary"
-              style={{ marginTop: "0.55rem", width: "100%" }}
-              onClick={advanceFromDemoToTest1}
-            >
-              Start Round 2: Hands-On Check (2 Targets) &rarr;
-            </button>
-          </div>
-        ) : (
-          <div className="callout-box" style={{ fontSize: "0.8rem" }}>
-            Demonstrating automatic comparison &amp; spectrum click first — verdict will be shown on
-            Step 4/4.
-          </div>
-        )}
-      </section>
-    );
-  }
+  const handleAsk = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!question.trim()) return;
+    setShowAnswerDrawer(true);
+    void askAiDirector(question.trim());
+  };
 
-  // 2. ROUND 2: HANDS-ON SKILL TEST (NO SPOILERS!)
-  if (trainingPhase === "round2-test1" || trainingPhase === "round2-test2") {
-    const spec = TRAINING_TESTS[trainingPhase];
-    const checksReady = testChecklist.action1Done && testChecklist.action2Done;
-
-    return (
-      <section className="panel-card pattern-card" aria-label={`Training Check ${spec.testNumber} Verdict`}>
-        <div className="panel-header" style={{ marginBottom: "0.45rem" }}>
-          <div>
-            <h2 className="panel-title">
-              Check {spec.testNumber} of 2: Classify {spec.targetName}
-            </h2>
-            <div style={{ fontSize: "0.74rem", color: "var(--text-muted)" }}>
-              Complete viewer Steps 1 &amp; 2 first, then select what you found
-            </div>
-          </div>
-          <span
-            className="status-pill"
-            style={{
-              color: testChecklist.testPassed ? "var(--accent-emerald)" : "var(--accent-amber)",
-              fontWeight: 700,
-            }}
-          >
-            {testChecklist.testPassed ? "Passed (+50 pts)" : checksReady ? "Ready to Classify" : "Inspect Image First"}
-          </span>
-        </div>
-
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-          {CHOICE_BUTTONS.map((btn) => {
-            const isSolvedBtn = testChecklist.testPassed && btn.id === spec.expectedKind;
-            return (
-              <button
-                key={btn.id}
-                type="button"
-                disabled={testChecklist.testPassed}
-                className={`detector-chip ${isSolvedBtn ? "active" : ""}`}
-                onClick={() => submitTrainingVerdict(btn.id)}
-              >
-                {btn.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {!checksReady && !testChecklist.testPassed && (
-          <div className="callout-box" style={{ marginTop: "0.6rem", fontSize: "0.78rem" }}>
-            Waiting for you to inspect the viewer above: complete Steps 1 &amp; 2 so we verify
-            you checked the image pixels &amp; spectrum!
-          </div>
-        )}
-
-        {testChecklist.testPassed && (
-          <div className="callout-box callout-success" style={{ marginTop: "0.6rem", fontSize: "0.8rem" }}>
-            <div>{spec.successNote}</div>
-            <button
-              type="button"
-              className="btn btn-primary"
-              style={{ marginTop: "0.55rem", width: "100%" }}
-              onClick={
-                trainingPhase === "round2-test1" ? advanceFromTest1ToTest2 : graduateToSolo
-              }
-            >
-              {trainingPhase === "round2-test1"
-                ? "Continue to Check 2 of 2 (RW Aurigae) ->"
-                : "Enter Solo Discovery Mode (No Hints) ->"}
-            </button>
-          </div>
-        )}
-      </section>
-    );
-  }
-
-  // 3. SOLO MODE: UNASSISTED CITIZEN DISCOVERY LOG (NO TUTORIAL HINTS / NO PRE-SPOILERS!)
-  const saved = manifest ? verdicts[manifest.session_id] : undefined;
-  const isRevealed = Boolean(saved || soloRevealOverride);
+  const handleQuickChip = (prompt: string) => {
+    setQuestion(prompt);
+    setShowAnswerDrawer(true);
+    void askAiDirector(prompt);
+  };
 
   return (
-    <section className="panel-card pattern-card" aria-label="Citizen Discovery Log">
-      <div className="panel-header" style={{ marginBottom: "0.45rem" }}>
-        <div>
-          <h2 className="panel-title">Your Discovery Log</h2>
-          <div style={{ fontSize: "0.74rem", color: "var(--text-muted)" }}>
-            Inspect freely on your own, then log what this field contains
+    <section className="panel-card causal-card" aria-label="Visual Cause-to-Effect Diagram">
+      {/* Compact Header */}
+      <div className="panel-header-compact">
+        <div className="panel-head-text">
+          <h2 className="panel-title-sm">⚡ Cause → Effect Diagram</h2>
+          <div className="panel-sub-sm">
+            {manifest?.category || "Earth Event"} · {manifest?.target.name || "Loading..."}
           </div>
         </div>
-        {saved && (
-          <span className="status-pill" style={{ color: "var(--accent-emerald)", fontWeight: 700 }}>
-            Logged +{saved.points} pts
-          </span>
-        )}
+        <span
+          className="mode-badge mono"
+          style={{ borderColor: `${stepColor}80`, color: stepColor }}
+        >
+          {aiExplanation?.mode === "gemini_enhanced" ? "✨ Gemini" : "⚡ Live Graph"}
+        </span>
       </div>
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-        {CHOICE_BUTTONS.map((btn) => {
-          const isChosen = saved?.choice === btn.id;
+      {/* 1. Interactive 5-Node Domino Flow SVG Pipeline */}
+      <div className="causal-pipeline-diagram" role="group" aria-label="5-step causal flow">
+        {scenes.slice(0, 5).map((sc, idx) => {
+          const node = STEP_NODES[idx % STEP_NODES.length];
+          const isActive = idx === activeSceneIndex;
+          const isPast = idx < activeSceneIndex;
           return (
-            <button
-              key={btn.id}
-              type="button"
-              disabled={Boolean(saved)}
-              className={`detector-chip ${isChosen ? "active" : ""}`}
-              onClick={() => submitSoloVerdict(btn.id)}
-            >
-              {btn.label}
-            </button>
+            <React.Fragment key={sc.index ?? idx}>
+              <button
+                type="button"
+                className={`pipeline-node ${isActive ? "active" : ""} ${isPast ? "past" : ""}`}
+                style={{
+                  borderColor: isActive || isPast ? node.color : undefined,
+                  backgroundColor: isActive ? `${node.color}28` : undefined,
+                  boxShadow: isActive ? `0 0 12px ${node.color}55` : undefined,
+                }}
+                onClick={() => selectStoryScene(idx)}
+                title={`${idx + 1}. ${sc.phase}: ${sc.title}`}
+              >
+                <span className="pn-icon" aria-hidden="true">{node.icon}</span>
+                <span className="pn-label" style={{ color: isActive ? "#fff" : node.color }}>
+                  {node.short}
+                </span>
+              </button>
+              {idx < Math.min(5, scenes.length) - 1 && (
+                <div
+                  className="pipeline-bridge"
+                  style={{
+                    background: isPast
+                      ? `linear-gradient(90deg, ${node.color}, ${STEP_NODES[(idx + 1) % 5].color})`
+                      : undefined,
+                  }}
+                  aria-hidden="true"
+                />
+              )}
+            </React.Fragment>
           );
         })}
       </div>
 
-      {saved && (
-        <div
-          className={`callout-box ${saved.matched ? "callout-success" : ""}`}
-          style={{ marginTop: "0.6rem", fontSize: "0.8rem" }}
-        >
-          {saved.matched
-            ? `Logged (+${saved.points} pts)! Matches quantitative SPHEREx pixel measurements (${saved.expectedSummary}).`
-            : `Observation logged (+${saved.points} pts). Quantitative pixel analysis detects: ${saved.expectedSummary}.`}
-        </div>
-      )}
-
-      {!saved && (
-        <div style={{ marginTop: "0.55rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <button
-            type="button"
-            className="btn btn-ghost"
-            style={{ fontSize: "0.74rem", padding: "0.25rem 0.55rem" }}
-            onClick={toggleSoloReveal}
-          >
-            {soloRevealOverride ? "Hide Pixel Math Check" : "Compare vs Pixel Math"}
-          </button>
-        </div>
-      )}
-
-      {isRevealed && (
-        <div style={{ marginTop: "0.65rem", borderTop: "1px solid var(--border-subtle)", paddingTop: "0.6rem" }}>
-          <div style={{ fontSize: "0.73rem", fontWeight: 700, color: "var(--text-muted)", marginBottom: "0.4rem" }}>
-            QUANTITATIVE PIXEL CROSS-CHECK
-          </div>
-          {patternsLoading ? (
-            <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>Checking pixels...</div>
-          ) : !patterns || patterns.candidates.length === 0 ? (
-            <div style={{ fontSize: "0.78rem", color: "var(--text-secondary)" }}>
-              No &gt;4.5&sigma; moving dipole or strong thermal anomaly detected above background noise.
+      {/* 2. Visual Cause -> Effect Coupling Bridge */}
+      {activeLink && (
+        <div className="causal-bridge-card" style={{ borderLeftColor: stepColor }}>
+          <div className="bridge-nodes-row">
+            <div className="bridge-node cause-node">
+              <span className="bn-tag">CAUSE</span>
+              <span className="bn-name">{activeLink.from_signal}</span>
             </div>
-          ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-              <div className="pattern-pills" style={{ marginBottom: 0 }}>
-                {patterns.candidates.map((cand, idx) => (
-                  <button
-                    key={cand.id}
-                    type="button"
-                    className={`pattern-pill ${activePatternId === cand.id ? "active" : ""}`}
-                    onClick={() => selectPattern(cand)}
-                  >
-                    <span className="mono">#{idx + 1}</span>
-                    <span>{cand.title}</span>
-                  </button>
-                ))}
+
+            <div className="bridge-vector">
+              <span className="bv-lag mono">
+                {activeLink.lag_hours > 0 ? `+${activeLink.lag_hours}h` : "0h"}
+              </span>
+              <div className="bv-arrow-line" aria-hidden="true">
+                <span className="bv-arrow-head">▶</span>
               </div>
-              {(() => {
-                const c =
-                  patterns.candidates.find((x) => x.id === activePatternId) ??
-                  patterns.candidates[0];
-                return c ? (
-                  <div style={{ fontSize: "0.77rem", color: "var(--text-secondary)" }}>
-                    {c.summary} ({c.snr.toFixed(1)}&sigma;)
-                  </div>
-                ) : null;
-              })()}
+              <div className="bv-corr-wrap">
+                <div className="bv-corr-track">
+                  <div
+                    className="bv-corr-fill"
+                    style={{ width: `${corrPct}%`, backgroundColor: stepColor }}
+                  />
+                </div>
+                <span className="bv-corr-label mono">r={activeLink.correlation.toFixed(2)}</span>
+              </div>
             </div>
-          )}
+
+            <div className="bridge-node effect-node">
+              <span className="bn-tag">EFFECT</span>
+              <span className="bn-name">{activeLink.to_signal}</span>
+            </div>
+          </div>
+
+          <div className="causal-link-one-liner">{activeLink.explanation}</div>
+        </div>
+      )}
+
+      {/* 3. 2x2 Color-Coded Map Hotspots */}
+      {candidates.length > 0 && (
+        <div className="hotspot-pills-row">
+          {candidates.slice(0, 4).map((cand) => {
+            const isSel = activePatternId === cand.id;
+            const accent = HOTSPOT_ACCENTS[cand.kind] || "#38bdf8";
+            return (
+              <button
+                key={cand.id}
+                type="button"
+                className={`hotspot-pill ${isSel ? "active" : ""}`}
+                style={{
+                  borderColor: isSel ? accent : `${accent}50`,
+                  backgroundColor: isSel ? `${accent}1e` : undefined,
+                }}
+                onClick={() => selectPattern(cand)}
+                title={cand.summary}
+              >
+                <span className="hp-top">
+                  <span className="hp-dot" style={{ backgroundColor: accent }} aria-hidden="true" />
+                  <span className="hp-label">{cand.suggested_label}</span>
+                </span>
+                <span className="hp-coord mono">
+                  {cand.dec.toFixed(2)}°, {cand.ra.toFixed(2)}°
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* 4. Compact AI Chips & On-Demand Ask AI Drawer */}
+      <div className="ai-compact-controls">
+        <div className="ai-quick-chips">
+          {QUICK_CHIPS.map((c) => (
+            <button
+              key={c.label}
+              type="button"
+              className="chip-btn"
+              onClick={() => handleQuickChip(c.prompt)}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+
+        <form onSubmit={handleAsk} className="ai-ask-form">
+          <input
+            type="text"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            placeholder="Ask AI why..."
+            aria-label="Ask AI Causal Director"
+          />
+          <button type="submit" className="btn btn-coral btn-xs" disabled={aiLoading}>
+            Ask AI
+          </button>
+        </form>
+      </div>
+
+      {/* Expandable concise AI Answer Drawer (Hidden by default to keep visuals front & center) */}
+      {showAnswerDrawer && (
+        <div className="ai-popover-answer" role="region" aria-label="AI explanation">
+          <div className="ai-pop-head">
+            <span className="mono">AI Causal Insight</span>
+            <button
+              type="button"
+              className="ai-pop-close"
+              onClick={() => setShowAnswerDrawer(false)}
+              aria-label="Close AI explanation"
+            >
+              ✕
+            </button>
+          </div>
+          {aiLoading ? (
+            <Spinner label="Computing couplings..." />
+          ) : aiExplanation ? (
+            <p className="ai-answer-clamped">{aiExplanation.answer}</p>
+          ) : null}
         </div>
       )}
     </section>

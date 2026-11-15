@@ -10,7 +10,7 @@ _DEFAULT_ROOT = Path(__file__).resolve().parents[2]
 
 
 class Settings(BaseSettings):
-    """Runtime settings for KurinjiKumaraN SPHEREx Discovery Flipbook."""
+    """Runtime settings for KurinjiKumaraN SAR Symphony: Dancing with Earth's Signals."""
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
@@ -18,7 +18,10 @@ class Settings(BaseSettings):
     app_version: str = "0.1.0"
     pipeline_version: str = "v1"
 
-    spx_collections: str = Field(default="spherex_dr1,spherex_qr3", alias="SPX_COLLECTIONS")
+    spx_collections: str = Field(
+        default="sentinel1_grd,nisar_sim,gpm_imerg,merra2,modis_lst,black_marble",
+        alias="SPX_COLLECTIONS",
+    )
     spx_fetch_mode: str = Field(default="auto", alias="SPX_FETCH_MODE")
     spx_max_workers: int = Field(default=8, alias="SPX_MAX_WORKERS")
     spx_frames_per_pass_det: int = Field(default=4, alias="SPX_FRAMES_PER_PASS_DET")
@@ -40,7 +43,7 @@ class Settings(BaseSettings):
 
     @property
     def collections(self) -> list[str]:
-        """Return configured IRSA collections in query priority order."""
+        """Return configured Earth observation collections in priority order."""
         return [c.strip() for c in self.spx_collections.split(",") if c.strip()]
 
 

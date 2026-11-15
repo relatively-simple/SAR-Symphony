@@ -1,4 +1,4 @@
-# KurinjiKumaraN — SPHEREx Discovery Flipbook
+# KurinjiKumaraN — SAR Symphony: Dancing with Earth's Signals
 # Single unified multi-stage Docker build targeting Hugging Face Spaces (port 7860)
 
 FROM node:20-slim AS frontend-build

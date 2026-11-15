@@ -57,7 +57,7 @@ export function startExploreSse(
     } catch {
       // network error fallback
     }
-    handlers.onError("Connection to SPHEREx server interrupted. Please retry.");
+    handlers.onError("Connection to SAR Symphony server interrupted. Please retry.");
   });
 
   return () => {

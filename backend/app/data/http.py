@@ -7,7 +7,7 @@ import httpx
 
 
 DEFAULT_HEADERS = {
-    "User-Agent": "KurinjiKumaraN-SPHEREx/0.1 (NASA-Space-Apps-2026)",
+    "User-Agent": "KurinjiKumaraN-SAR-Symphony/1.0 (NASA-Space-Apps-2026)",
 }
 
 

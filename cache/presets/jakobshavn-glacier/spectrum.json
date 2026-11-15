@@ -1,0 +1,229 @@
+{
+  "ra": -49.8333,
+  "dec": 69.1667,
+  "lon": -49.8333,
+  "lat": 69.1667,
+  "series": {
+    "radar": [
+      -11.0,
+      -11.0,
+      -19.5,
+      -19.5,
+      -21.0,
+      -21.0,
+      -21.0,
+      -21.0,
+      -21.0,
+      -21.0,
+      -21.0,
+      -21.0
+    ],
+    "rain": [
+      1.0,
+      0.9,
+      0.8,
+      0.7,
+      0.6,
+      0.5,
+      0.4,
+      0.3,
+      0.2,
+      0.1,
+      0.0,
+      0.0
+    ],
+    "wind": [
+      8.462,
+      10.721,
+      12.191,
+      12.358,
+      11.164,
+      9.027,
+      6.692,
+      4.976,
+      4.478,
+      5.371,
+      7.345,
+      9.709
+    ],
+    "temp": [
+      2.453,
+      0.953,
+      -0.547,
+      -2.047,
+      -3.547,
+      -5.047,
+      -6.547,
+      -8.047,
+      -9.547,
+      -11.047,
+      -12.547,
+      -14.047
+    ],
+    "optical": [
+      0.68,
+      0.68,
+      0.68,
+      0.68,
+      0.68,
+      0.68,
+      0.68,
+      0.68,
+      0.68,
+      0.68,
+      0.68,
+      0.68
+    ],
+    "nightlights": [
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3
+    ]
+  },
+  "dates": [
+    "2024-12-02 06:00 UTC",
+    "2024-12-06 06:00 UTC",
+    "2024-12-10 06:00 UTC",
+    "2024-12-14 06:00 UTC",
+    "2024-12-18 06:00 UTC",
+    "2024-12-22 06:00 UTC",
+    "2024-12-26 06:00 UTC",
+    "2024-12-30 06:00 UTC",
+    "2025-01-03 06:00 UTC",
+    "2025-01-07 06:00 UTC",
+    "2025-01-11 06:00 UTC",
+    "2025-01-15 06:00 UTC"
+  ],
+  "units": {
+    "radar": "dB",
+    "rain": "mm/hr",
+    "wind": "m/s",
+    "temp": "°C",
+    "optical": "NDVI",
+    "nightlights": "nW/cm²/sr"
+  },
+  "location_story": "Location (69.167° N, 49.833° W): Baseline radar starts at -11.0 dB with vegetation greenness 0.68 NDVI and night lights 0.3 nW/cm²/sr. AI Illusion Guard detected: Sub-Zero Freeze Illusion (bit 2: dielectric drop lowered SAR returns).",
+  "points": [
+    {
+      "wavelength_um": 1.0,
+      "flux_mjysr": -11.0,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 60997.0,
+      "obs_id": "T00",
+      "flagged": false
+    },
+    {
+      "wavelength_um": 2.0,
+      "flux_mjysr": -11.0,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 60999.0,
+      "obs_id": "T01",
+      "flagged": false
+    },
+    {
+      "wavelength_um": 3.0,
+      "flux_mjysr": -19.5,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61001.0,
+      "obs_id": "T02",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 4.0,
+      "flux_mjysr": -19.5,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61003.0,
+      "obs_id": "T03",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 5.0,
+      "flux_mjysr": -21.0,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61005.0,
+      "obs_id": "T04",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 6.0,
+      "flux_mjysr": -21.0,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61007.0,
+      "obs_id": "T05",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 7.0,
+      "flux_mjysr": -21.0,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61009.0,
+      "obs_id": "T06",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 8.0,
+      "flux_mjysr": -21.0,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61011.0,
+      "obs_id": "T07",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 9.0,
+      "flux_mjysr": -21.0,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61013.0,
+      "obs_id": "T08",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 10.0,
+      "flux_mjysr": -21.0,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61015.0,
+      "obs_id": "T09",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 11.0,
+      "flux_mjysr": -21.0,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61017.0,
+      "obs_id": "T10",
+      "flagged": true
+    },
+    {
+      "wavelength_um": 12.0,
+      "flux_mjysr": -21.0,
+      "err": 0.1,
+      "detector": 1,
+      "mjd": 61019.0,
+      "obs_id": "T11",
+      "flagged": true
+    }
+  ],
+  "aperture_arcsec": 33.75,
+  "n_used": 12,
+  "n_rejected": 0,
+  "note": "Sampled at basin cell (31, 31) across 12 multi-sensor passes."
+}

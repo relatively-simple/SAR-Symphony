@@ -11,14 +11,16 @@ export const GlossaryModal: React.FC = () => {
       className="modal-backdrop"
       role="dialog"
       aria-modal="true"
-      aria-label="SPHEREx Science Guide"
+      aria-label="SAR Science Guide"
       onClick={() => setGlossaryOpen(false)}
     >
-      <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-card" onClick={(e) => e.stopPropagation()} style={{ maxWidth: "800px" }}>
         <div className="panel-header">
-          <h2 className="panel-title">SPHEREx Discovery Flipbook &mdash; Plain-Language Guide</h2>
+          <h2 className="panel-title">
+            SAR Symphony &mdash; Synthetic Aperture Radar &amp; Earth Observation Guide
+          </h2>
           <button type="button" className="btn btn-ghost" onClick={() => setGlossaryOpen(false)}>
-            Close
+            ✕ Close
           </button>
         </div>
 
@@ -26,7 +28,7 @@ export const GlossaryModal: React.FC = () => {
           {DATA_CAVEAT}
         </div>
 
-        <div style={{ display: "grid", gap: "0.85rem" }}>
+        <div style={{ display: "grid", gap: "0.85rem", maxHeight: "65vh", overflowY: "auto" }}>
           {GLOSSARY_ENTRIES.map((g) => (
             <div
               key={g.id}
@@ -45,7 +47,7 @@ export const GlossaryModal: React.FC = () => {
                 {g.definition}
               </p>
               <p style={{ margin: 0, fontSize: "0.8rem", color: "var(--accent-cyan)" }}>
-                Why it helps find discoveries: {g.whyItMatters}
+                Physical Relevance: {g.whyItMatters}
               </p>
             </div>
           ))}

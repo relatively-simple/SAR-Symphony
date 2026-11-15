@@ -1,6 +1,6 @@
 """API endpoints for NASA Challenge 12 benchmark presets."""
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from fastapi.responses import FileResponse
 
 from app.config import Settings, get_settings
@@ -14,13 +14,27 @@ router = APIRouter(prefix="/api/targets", tags=["targets"])
 
 
 @router.get("", response_model=list[TargetPreset])
-def get_targets(settings: Settings = Depends(get_settings)) -> list[TargetPreset]:
-    """Return official NASA benchmark targets with pre-baked cache status."""
+def get_targets(
+    q: str | None = Query(None, description="Search query filtering by title, slug, or category"),
+    settings: Settings = Depends(get_settings),
+) -> list[TargetPreset]:
+    """Return official NASA benchmark targets with pre-baked cache status and optional search filtering."""
     ready = set(list_ready_presets(settings.spx_preset_dir))
     items = []
     for preset in list_presets():
         copy = preset.model_copy(update={"has_preset_bundle": preset.slug in ready})
         items.append(copy)
+    if q:
+        needle = q.strip().lower()
+        items = [
+            p
+            for p in items
+            if needle in p.slug.lower()
+            or needle in (p.title or "").lower()
+            or needle in (p.name or "").lower()
+            or needle in (p.category or "").lower()
+            or needle in (p.region_label or "").lower()
+        ]
     return items
 
 

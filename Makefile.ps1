@@ -15,7 +15,7 @@ switch ($Task) {
         Pop-Location
     }
     "prewarm" {
-        & $Py (Join-Path $Root "backend\scripts\prewarm.py") --per-pass-det 5
+        & $Py (Join-Path $Root "backend\scripts\prewarm.py")
     }
     "build" {
         Push-Location (Join-Path $Root "frontend")

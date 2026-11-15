@@ -1,22 +1,56 @@
-# Scientific Methodology & Data Processing
+# SAR Symphony Science & Physics Guide
 
-## 1. Per-Exposure Calibration & Cleaning (`app/science/clean.py`)
-Each SPHEREx Level-2 Multi-Extension FITS (`MEF`) file contains pixel radiance in `MJy/sr` (`IMAGE`), the mission zodiacal light model (`ZODI`), pixel variance (`VARIANCE`), bitmask flags (`FLAGS`), and spectral wavelength calibration (`WCS-WAVE`). Before combining any frame:
-1. Subtract `ZODI` directly from `IMAGE` (`net = IMAGE - ZODI`) to suppress bright seasonal interplanetary dust glow.
-2. Mask fatal SPHEREx bit flags (`TRANSIENT=0`, `OVERFLOW=1`, `SUR_ERROR=2`, `NONFUNC=15`, `DICHROIC=19`, `MISSING_DATA=21` in the Level-2 bitmask) to `NaN` for coadds while preserving compact 6-bit mask flags for interactive Pro-Control inspection.
+## Core Scientific Idea
 
-## 2. Proper-Motion Coordinate Accuracy (`app/core/coords.py`)
-SPHEREx observes ~26 years after **J2000** (`2000.0`). Fast nearby stars and brown dwarfs move many pixels over a quarter-century (`WISE 0855` moves ~212 arcsec; `Barnard's Star` moves ~270 arcsec; `epsilon Indi B` moves ~122 arcsec). We propagate official Gaia DR3 / SIMBAD ICRS coordinates and proper motions strictly to the midpoint epoch of each target's SPHEREx passes before querying IRSA SIAv2. For `R Draconis`, we use verified ICRS J2000 coordinates (`248.167611°, +66.754979°`) rather than typo'd legacy tables, and for `epsilon Indi B` we target the brown dwarf itself (`331.044147°, -56.782844°`) rather than parent star `eps Ind`.
+No catastrophic or seasonal Earth event belongs to a single sensor. Atmospheric pressure gradients drive winds; winds steer atmospheric moisture into extreme rain; surface water, burning vegetation, or freezing snowpack alter synthetic aperture radar (SAR) microwave backscatter; and infrastructure failures register immediately as drops in nighttime radiance.
 
-## 3. Temporal Pass Grouping & Lenses (`app/data/planner.py`, `app/science/products.py`)
-IRSA results sorted across **DR1 + QR3** are partitioned whenever consecutive observation midpoints (`MJD`) differ by >45 days, separating SPHEREx's ~6-month sky visits.
-- **Motion Finder (`diffs`):** Outlier-clipped inverse-variance median per pass minus Pass 0 (`Pass_n - Pass_0`), scaled diverging red/cyan.
-- **Cold Glow (`coldglow`):** Inverse-variance stack combining only SPHEREx's longest thermal detectors (`D5 + D6`, `3.8–5.0 µm`) per pass, maximizing signal-to-noise on cold methane-bearing Y/T dwarfs (`WISE 0855`, `eps Indi B`) that fade at shorter wavelengths.
-- **Variable Watch (`pass_coadds`):** Per-pass calibrated brightness (`MJy/sr`) across 6-month intervals.
-- **False-Color IR (`rgb`):** Continuous wavelength mapping `B = D1+D2`, `G = D3+D4`, `R = D5+D6`.
+**SAR Symphony** couples **6 complementary Earth signals** across **12 synchronized time steps** so cause, surface effect, illusion artifact, and human impact can be read side by side.
 
-## 4. Click-to-Spectrum (`app/science/spectrum.py`)
-Clicking any sky coordinate maps `(RA, Dec)` through each exposure's `-SIP` astrometric WCS and evaluates the native SPHEREx linear variable filter dispersion (`WCS-WAVE`) directly at `(px, py)`. Local median sky background in an annular ring (`3–6 px`) is subtracted per exposure. For bright saturated cores (`OVERFLOW`) such as Barnard's Star, if zero strict core exposures remain unmasked, the extractor samples unmasked PSF wing halo pixels (`r <= 3.2 px`) and marks all points as PSF-halo lower limits.
+| Signal ID | Unit | Observable Physical Quantity |
+| --- | --- | --- |
+| `radar` | `dB` | C-/L-band SAR calibrated backscatter ($\sigma^0$) |
+| `rain` | `mm/hr` | Precipitation rate (NASA GPM IMERG / atmospheric model) |
+| `wind` | `m/s` | Near-surface wind speed (NASA MERRA-2 / CYGNSS / Open-Meteo) |
+| `temp` | `°C` | Land surface / boundary thermal state (MODIS / ECOSTRESS LST) |
+| `optical` | `NDVI` | Normalized Difference Vegetation Index (Sentinel-2 / VIIRS) |
+| `nightlights` | `nW/cm²/sr` | Nighttime visible radiance (NASA Black Marble VNP46A2) |
 
-## 5. Honest Detection Boundaries
-SPHEREx's ~6.2" pixels and single-pass noise floor (~mJy regime per exposure) cleanly reveal fast brown dwarfs down to `WISE 0855` (`W2 ~ 14 mag`), luminous variable giants, and nearby high-PM stars, whereas ultra-faint theoretical outer Solar System objects (`V > 22 mag`) remain below unstacked per-pass sensitivity and require dedicated multi-exposure shift-and-stack searches.
+---
+
+## How SAR Sees What Optical Misses (Physical Signatures Modeled)
+
+Across the 5 Flagship Presets (`backend/app/core/presets.py`), the system demonstrates five distinct SAR & multi-sensor regimes:
+
+1. **Flood Specular Reflection (`kandy-floods`, Sri Lanka):**
+   - Smooth standing floodwater acts like a radar mirror, reflecting C-/L-band pulses away from the sensor and dropping SAR backscatter sharply (`-24.1 dB` across `1,420 ha` of Mahaweli floodplains), even beneath `88%` dense monsoon cloud cover that blocks optical satellites.
+   - Upstream triggers: `996 hPa` Bay of Bengal low over `29.4°C` SST drives `18.8 m/s` wind jets and `54 mm/hr` (`185 mm/day`) rainfall, followed by a `-78%` NASA Black Marble grid outage (`42.5` → `9.2 nW/cm²/sr`).
+2. **Cyclone Winds, Urban Fire Damage & Blackout (`maui-wildfire`, Hawaii):**
+   - Hurricane Dora's pressure gradient drives `35.0 m/s` katabatic downslope winds, collapsing the power grid (`-85%` Black Marble), igniting `+58°C` thermal fire fronts, and dropping urban SAR backscatter (`-5.2 dB` over `870 ha`) as upright walls with strong double-bounce corner reflections collapse into rubble.
+3. **Sub-Canopy Moisture Early Warning (`amazon-drought-fire`, Brazil):**
+   - Intense heat domes (`+38.2–39.2°C`) dry woody stems and sub-canopy moisture ~21 days before chlorophyll collapses: SAR detects a `-4.5 dB` dielectric drop while optical NDVI still reads healthy green (`0.68`). When fire breaks out (`+46°C` thermal signal through smoke), NDVI collapses to `0.16` and fire glow peaks at `38 nW/cm²/sr`.
+4. **Crop Phenology Double-Bounce Heartbeat (`mahaweli-rice`, Polonnaruwa):**
+   - SAR directly tracks rice cultivation phases through monsoon clouds: `-14.0 dB` tilled soil → `-22.5 dB` `10 cm` flooded paddy mirror → `+2.2 dB` vertical rice stalk **double-bounce** resonance (`0.62` NDVI) → `0.84` NDVI peak cooling canopy → `0.38` NDVI / `-13.0 dB` dry harvest.
+5. **Polar Night & Dielectric Permittivity Collapse (`jakobshavn-glacier`, Greenland):**
+   - With `0` sun hours in polar darkness, optical imagery is blind while SAR tracks a `1.2 km²` calving retreat and `42 m/day` ice flow surge.
+
+---
+
+## The 4-Bit `uint16` Radar Illusion Guard (`backend/app/core/flags.py`)
+
+Raw SAR intensity drops or spikes can be **physically real illusions** rather than flood extension or dry ground. Every `64×64` pixel carries a compact `uint16` QA bitmask so users can toggle **Illusion Guard ON/OFF** and avoid misinterpretation:
+
+| Bitmask Constant | Value | Physical Illusion Mechanism | Concrete Flagship Example |
+| --- | --- | --- | --- |
+| `FLAG_WIND_RIPPLE` | `0x0001` | Strong surface wind creates Bragg capillary waves on open water, raising SAR backscatter so flooded reservoirs look like dry rough land. | `+13.5 dB` wind-ripple boost at `14.6 m/s` on Victoria Reservoir (`kandy-floods`); `+12 dB` harbor chop (`maui-wildfire`). |
+| `FLAG_SUBZERO_FREEZE` | `0x0002` | Freezing collapses liquid water dielectric permittivity ($\varepsilon_r$ from `~80` to `~3.1` in ice), plunging SAR backscatter without water disappearing. | `-8.5 dB` dielectric freeze drop during `-14.0°C` flash freeze (`jakobshavn-glacier`). |
+| `FLAG_STEEP_SLOPE` | `0x0004` | Steep mountain relief causes foreshortening, radar layover, and shadow slip unrelated to flooding. | Knuckles / hill-country slopes in `kandy-floods`; West Maui slopes in `maui-wildfire`. |
+| `FLAG_CLOUD_COVER` | `0x0008` | Heavy clouds or thick smoke block visible/NIR sensors, leaving optical NDVI stale or dark while SAR penetrates unimpeded. | `88%` monsoon cloud cover during Kandy cloudburst (`kandy-floods`); dense smoke over Amazon fires (`amazon-drought-fire`). |
+
+---
+
+## Lead-Lag Causal Correlation & Resolution Boundaries
+
+- **Deterministic Causal Graph (`_best_lag_corr` in `backend/app/science/ai_director.py`):** Evaluates Pearson cross-correlations across lags `0..3` time steps (converted to hours) along domain-grounded causal edges:
+  `(temp → wind)`, `(wind → rain)`, `(rain → radar)`, `(temp → optical)`, and `(radar → nightlights)`.
+- **Spatial & Temporal Normalization (`64×64 × 12`):** Both curated presets (`cache/presets/`) and live EONET/coordinate scans normalize heterogeneous multi-sensor signatures onto aligned `64×64` float32 `SFP1` grids across `12` frames so frame-by-frame playback, map sampling, interactive Before/Peak split-curtain map swipe, multi-layer causal vector overlays, and Hotspot detection operate at sub-second speed even offline.
+- **Honest Calibration Caveat:** Curated flagship presets synthesize peer-reviewed event magnitudes and NASA data characteristics into compact `64×64` grids rather than shipping gigabyte GeoTIFF/GRD rasters in-repo; live scans couple real NASA ASF Sentinel-1 granule metadata, NASA EONET event locations, and Open-Meteo/NASA POWER meteorology with physics-consistent multi-signal grids.

@@ -7,7 +7,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-from app.api import explore, frames, health, overlays, sessions, spectrum, targets
+from app.api import ai_story, eonet, explore, frames, health, overlays, sessions, spectrum, targets
 from app.config import Settings, get_settings
 from app.core.errors import ExploreError
 from app.pipeline.session import list_ready_presets
@@ -23,11 +23,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(_app: FastAPI):
         ready = list_ready_presets(cfg.spx_preset_dir)
-        logger.info("KurinjiKumaraN SPHEREx backend ready; %d pre-baked presets: %s", len(ready), ready)
+        logger.info("SAR Symphony Earth backend ready; %d pre-baked presets: %s", len(ready), ready)
         yield
 
     app = FastAPI(
-        title="KurinjiKumaraN — SPHEREx Discovery Flipbook",
+        title="SAR Symphony — Dancing with Earth's Signals",
         version=cfg.app_version,
         lifespan=lifespan,
     )
@@ -44,11 +44,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     app.include_router(health.router)
     app.include_router(targets.router)
+    app.include_router(eonet.router)
     app.include_router(explore.router)
     app.include_router(sessions.router)
     app.include_router(frames.router)
     app.include_router(spectrum.router)
     app.include_router(overlays.router)
+    app.include_router(ai_story.router)
 
     dist_dir = cfg.spx_frontend_dist
     if dist_dir.exists() and (dist_dir / "index.html").exists():
