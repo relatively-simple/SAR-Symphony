@@ -33,6 +33,13 @@ import type {
   ViewLayout,
 } from "../api/types";
 import { LENS_SPECS } from "../content/lenses";
+import {
+  SOLO_PRIMARY_SLUGS,
+  TRAINING_DEMO_SLUG,
+  TRAINING_STORAGE_KEY_V2,
+  TRAINING_TESTS,
+  type TrainingPhase,
+} from "../content/training";
 import { decodeFramepack, type DecodedFramepack } from "../engine/framepack";
 import { useFlipbookPlayback } from "../engine/player";
 import { buildSimpleCompare, type SimpleCompareData } from "../engine/simpleCompare";
@@ -44,9 +51,23 @@ export interface SavedVerdict {
   choice: string;
   matched: boolean;
   points: number;
+  expectedSummary?: string;
 }
 
-const TUTORIAL_STORAGE_KEY = "kkn_tutorial_v1";
+export interface TestChecklist {
+  action1Done: boolean;
+  action2Done: boolean;
+  testPassed: boolean;
+  feedback: { ok: boolean; text: string } | null;
+}
+
+interface StoredTrainingState {
+  phase: TrainingPhase;
+  demoRewarded: boolean;
+  test1Passed: boolean;
+  test2Passed: boolean;
+}
+
 const PROGRESS_STORAGE_KEY = "kkn_progress_v1";
 
 function loadSavedProgress(): { points: number; verdicts: Record<string, SavedVerdict> } {
@@ -63,20 +84,49 @@ function loadSavedProgress(): { points: number; verdicts: Record<string, SavedVe
   }
 }
 
-function loadTutorialDone(): boolean {
+function loadSavedTraining(): StoredTrainingState {
   try {
-    return localStorage.getItem(TUTORIAL_STORAGE_KEY) === "done";
+    const raw = localStorage.getItem(TRAINING_STORAGE_KEY_V2);
+    if (!raw) {
+      return {
+        phase: "round1-demo",
+        demoRewarded: false,
+        test1Passed: false,
+        test2Passed: false,
+      };
+    }
+    const parsed = JSON.parse(raw);
+    const validPhases: TrainingPhase[] = ["round1-demo", "round2-test1", "round2-test2", "solo"];
+    const phase = validPhases.includes(parsed.phase) ? parsed.phase : "round1-demo";
+    return {
+      phase,
+      demoRewarded: Boolean(parsed.demoRewarded),
+      test1Passed: Boolean(parsed.test1Passed),
+      test2Passed: Boolean(parsed.test2Passed),
+    };
   } catch {
-    return false;
+    return {
+      phase: "round1-demo",
+      demoRewarded: false,
+      test1Passed: false,
+      test2Passed: false,
+    };
   }
 }
 
 export function getHunterRank(points: number): string {
-  if (points >= 200) return "Planet X Pioneer";
-  if (points >= 110) return "Pattern Analyst";
+  if (points >= 220) return "Planet X Pioneer";
+  if (points >= 120) return "Pattern Analyst";
   if (points >= 50) return "Sky Spotter";
   return "Curious Explorer";
 }
+
+const EMPTY_CHECKLIST: TestChecklist = {
+  action1Done: false,
+  action2Done: false,
+  testPassed: false,
+  feedback: null,
+};
 
 interface AppContextValue {
   targets: TargetPreset[];
@@ -132,10 +182,24 @@ interface AppContextValue {
   glossaryOpen: boolean;
   setGlossaryOpen: (v: boolean) => void;
 
-  tutorialDone: boolean;
-  tutorialOpen: boolean;
-  setTutorialOpen: (v: boolean) => void;
-  completeTutorial: (awardBonus?: boolean) => void;
+  // 2-Round Real-Data Training & Unassisted Solo Mode
+  trainingPhase: TrainingPhase;
+  autoDemoStep: 0 | 1 | 2 | 3;
+  setAutoDemoStep: (step: 0 | 1 | 2 | 3) => void;
+  demoPaused: boolean;
+  setDemoPaused: (p: boolean) => void;
+  demoDone: boolean;
+  testChecklist: TestChecklist;
+  canRevealPattern: boolean;
+  soloRevealOverride: boolean;
+  toggleSoloReveal: () => void;
+  replayTraining: () => void;
+  skipTraining: () => void;
+  advanceFromDemoToTest1: () => void;
+  advanceFromTest1ToTest2: () => void;
+  graduateToSolo: () => void;
+  submitTrainingVerdict: (choice: string) => void;
+  submitSoloVerdict: (choice: string) => SavedVerdict | null;
 
   discoveryPoints: number;
   hunterRank: string;
@@ -144,10 +208,16 @@ interface AppContextValue {
   patternsLoading: boolean;
   activePatternId: string | null;
   selectPattern: (cand: PatternCandidate) => Promise<void>;
-  submitVerdict: (cand: PatternCandidate, choice: string) => SavedVerdict;
 
   selectedCoord: { ra: number; dec: number; x?: number; y?: number } | null;
-  pickCoordinate: (ra: number, dec: number, x?: number, y?: number) => Promise<void>;
+  pickCoordinate: (
+    ra: number,
+    dec: number,
+    x?: number,
+    y?: number,
+    isUserClick?: boolean,
+    panelKind?: "past" | "present" | "diff"
+  ) => Promise<void>;
   spectrum: SpectrumResult | null;
   spectrumLoading: boolean;
   spectrumError: string | null;
@@ -163,12 +233,16 @@ const AppContext = createContext<AppContextValue | null>(null);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const initialProgress = useMemo(() => loadSavedProgress(), []);
-  const initialTutorialDone = useMemo(() => loadTutorialDone(), []);
+  const initialTraining = useMemo(() => loadSavedTraining(), []);
   const initialUrl = useMemo(() => readUrlState(), []);
+
+  // Direct Explorer URL deep-links bypass the landing training gate
+  const bypassToExplorer =
+    initialUrl.mode === "explorer" && Boolean(initialUrl.ra) && Boolean(initialUrl.dec);
 
   const [targets, setTargets] = useState<TargetPreset[]>([]);
   const [health, setHealth] = useState<HealthStatus | null>(null);
-  const [mode, setModeState] = useState<AppMode>("missions");
+  const [mode, setModeState] = useState<AppMode>(bypassToExplorer ? "explorer" : "missions");
   const [activeMissionSlug, setActiveMissionSlug] = useState<string | null>(null);
   const [manifest, setManifest] = useState<SessionManifest | null>(null);
   const [sessionLoading, setSessionLoading] = useState(false);
@@ -178,7 +252,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [productLoading, setProductLoading] = useState(false);
 
   const [lens, setLensState] = useState<LensId>("blink");
-  const [viewLayout, setViewLayout] = useState<ViewLayout>("compare");
+  const [viewLayout, setViewLayoutState] = useState<ViewLayout>("compare");
   const [frameIndex, setFrameIndexState] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [fps, setFps] = useState(2);
@@ -192,17 +266,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [crispPixels, setCrispPixels] = useState(true);
   const [detectorFilter, setDetectorFilter] = useState<number | null>(null);
 
-  // Decluttered by default: let citizen scientists toggle Gaia/AllWISE clutter on when desired
   const [overlayGaia, setOverlayGaia] = useState(false);
   const [overlayWise, setOverlayWise] = useState(false);
   const [overlays, setOverlays] = useState<OverlaySet | null>(null);
   const [aladinOpen, setAladinOpen] = useState(false);
   const [glossaryOpen, setGlossaryOpen] = useState(false);
 
-  const [tutorialDone, setTutorialDone] = useState<boolean>(initialTutorialDone);
-  const [tutorialOpen, setTutorialOpen] = useState<boolean>(
-    !initialTutorialDone && !(initialUrl.mode === "explorer" && initialUrl.ra && initialUrl.dec)
+  const [trainingState, setTrainingState] = useState<StoredTrainingState>(() =>
+    bypassToExplorer ? { ...initialTraining, phase: "solo" } : initialTraining
   );
+  const trainingPhase = trainingState.phase;
+
+  const [autoDemoStep, setAutoDemoStepState] = useState<0 | 1 | 2 | 3>(0);
+  const [demoPaused, setDemoPaused] = useState(false);
+  const [demoDone, setDemoDone] = useState(false);
+  const [testChecklist, setTestChecklist] = useState<TestChecklist>(EMPTY_CHECKLIST);
+  const [soloRevealOverride, setSoloRevealOverride] = useState(false);
+
   const [discoveryPoints, setDiscoveryPoints] = useState<number>(initialProgress.points);
   const [verdicts, setVerdicts] = useState<Record<string, SavedVerdict>>(initialProgress.verdicts);
 
@@ -238,31 +318,31 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           JSON.stringify({ points: nextPoints, verdicts: nextVerdicts })
         );
       } catch {
-        // ignore storage quota failure
+        // ignore quota errors
       }
     },
     []
   );
 
-  const completeTutorial = useCallback(
-    (awardBonus = false) => {
-      setTutorialDone(true);
-      setTutorialOpen(false);
-      try {
-        localStorage.setItem(TUTORIAL_STORAGE_KEY, "done");
-      } catch {
-        // ignore storage failure
-      }
-      if (awardBonus && !verdicts["tutorial_practice"]) {
-        const nextV = {
-          ...verdicts,
-          tutorial_practice: { choice: "mover", matched: true, points: 50 },
-        };
-        const nextPts = discoveryPoints + 50;
-        setVerdicts(nextV);
-        setDiscoveryPoints(nextPts);
-        persistProgress(nextPts, nextV);
-      }
+  const persistTraining = useCallback((next: StoredTrainingState) => {
+    setTrainingState(next);
+    try {
+      localStorage.setItem(TRAINING_STORAGE_KEY_V2, JSON.stringify(next));
+    } catch {
+      // ignore quota errors
+    }
+  }, []);
+
+  const awardPointsOnce = useCallback(
+    (key: string, choice: string, matched: boolean, points: number, expectedSummary?: string) => {
+      if (verdicts[key]) return verdicts[key];
+      const record: SavedVerdict = { choice, matched, points, expectedSummary };
+      const nextVerdicts = { ...verdicts, [key]: record };
+      const nextPts = discoveryPoints + points;
+      setVerdicts(nextVerdicts);
+      setDiscoveryPoints(nextPts);
+      persistProgress(nextPts, nextVerdicts);
+      return record;
     },
     [discoveryPoints, persistProgress, verdicts]
   );
@@ -300,68 +380,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setLoOverride(lo);
     setHiOverride(hi);
   }, []);
-
-  const pickCoordinate = useCallback(
-    async (ra: number, dec: number, x?: number, y?: number) => {
-      if (!manifest || !Number.isFinite(ra) || !Number.isFinite(dec)) return;
-      const specReq = ++spectrumReqRef.current;
-      setSelectedCoord({ ra, dec, x, y });
-      setSpectrumLoading(true);
-      setSpectrumError(null);
-      try {
-        const res = await fetchSpectrum(manifest.session_id, ra, dec);
-        if (specReq !== spectrumReqRef.current) return;
-        setSpectrum(res);
-      } catch (err) {
-        if (specReq !== spectrumReqRef.current) return;
-        setSpectrumError(err instanceof Error ? err.message : "Failed extracting spectrum.");
-      } finally {
-        if (specReq === spectrumReqRef.current) {
-          setSpectrumLoading(false);
-        }
-      }
-    },
-    [manifest]
-  );
-
-  const selectPattern = useCallback(
-    async (cand: PatternCandidate) => {
-      setActivePatternId(cand.id);
-      if (cand.kind === "cold_ir") {
-        setLensState("coldglow");
-        setViewLayout("single");
-      } else if (cand.kind === "mover") {
-        setLensState("blink");
-        setViewLayout("compare");
-      } else if (cand.kind === "variable") {
-        setLensState("blink");
-        setViewLayout("compare");
-      }
-      await pickCoordinate(cand.ra, cand.dec, cand.fits_x, cand.fits_y);
-    },
-    [pickCoordinate]
-  );
-
-  const submitVerdict = useCallback(
-    (cand: PatternCandidate, choice: string): SavedVerdict => {
-      const key = `${manifest?.session_id ?? "session"}:${cand.id}`;
-      const existing = verdicts[key];
-      if (existing) return existing;
-
-      const normalizedExpected =
-        cand.kind === "archive_drift" ? "mover" : cand.kind;
-      const matched = choice === normalizedExpected;
-      const points = matched ? 35 : 15;
-      const record: SavedVerdict = { choice, matched, points };
-      const nextVerdicts = { ...verdicts, [key]: record };
-      const nextPts = discoveryPoints + points;
-      setVerdicts(nextVerdicts);
-      setDiscoveryPoints(nextPts);
-      persistProgress(nextPts, nextVerdicts);
-      return record;
-    },
-    [discoveryPoints, manifest?.session_id, persistProgress, verdicts]
-  );
 
   const ensureProductLoaded = useCallback(
     async (sess: SessionManifest, productKey: string) => {
@@ -404,6 +422,122 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     []
   );
 
+  const pickCoordinate = useCallback(
+    async (
+      ra: number,
+      dec: number,
+      x?: number,
+      y?: number,
+      isUserClick = false,
+      panelKind?: "past" | "present" | "diff"
+    ) => {
+      if (!manifest || !Number.isFinite(ra) || !Number.isFinite(dec)) return;
+      const specReq = ++spectrumReqRef.current;
+      setSelectedCoord({ ra, dec, x, y });
+
+      // Validate hands-on actions during Round 2 training tests
+      if (isUserClick && (trainingPhase === "round2-test1" || trainingPhase === "round2-test2")) {
+        const spec = TRAINING_TESTS[trainingPhase];
+        if (activeMissionSlug === spec.slug) {
+          const dist =
+            typeof x === "number" && typeof y === "number"
+              ? Math.hypot(x - spec.targetX, y - spec.targetY)
+              : 0;
+          const nearTarget = dist <= spec.tolerancePx;
+
+          if (trainingPhase === "round2-test1") {
+            if (lens !== "coldglow") {
+              setTestChecklist((prev) =>
+                prev.testPassed
+                  ? prev
+                  : {
+                      ...prev,
+                      feedback: {
+                        ok: false,
+                        text: "First switch to Cold Glow (3.8–5.0 µm) in the lens bar so cold thermal sources appear clearly!",
+                      },
+                    }
+              );
+            } else if (nearTarget) {
+              setTestChecklist((prev) => ({
+                ...prev,
+                action1Done: true,
+                action2Done: true,
+                feedback: prev.testPassed
+                  ? prev.feedback
+                  : {
+                      ok: true,
+                      text: "Target locked in Cold Glow! Inspect the rising 4.5 µm spectrum on the right, then classify what you found below.",
+                    },
+              }));
+            } else {
+              setTestChecklist((prev) =>
+                prev.action2Done || prev.testPassed
+                  ? prev
+                  : {
+                      ...prev,
+                      feedback: {
+                        ok: false,
+                        text: "Close — click inside the faint white dashed circle near the center of Cold Glow to inspect the cold suspect.",
+                      },
+                    }
+              );
+            }
+          } else if (trainingPhase === "round2-test2") {
+            const inspectedByPanel = panelKind === "diff";
+            if (nearTarget) {
+              setTestChecklist((prev) => {
+                const act1 = prev.action1Done || inspectedByPanel;
+                return {
+                  ...prev,
+                  action1Done: act1,
+                  action2Done: true,
+                  feedback: prev.testPassed
+                    ? prev.feedback
+                    : {
+                        ok: true,
+                        text: act1
+                          ? "Both viewer checks done! Review the sparkline & spectrum, then classify what happened below."
+                          : "Nice click on the central star! Now also click Variable Watch or Difference Only (Step 1) to confirm brightness vs motion.",
+                      },
+                };
+              });
+            } else {
+              setTestChecklist((prev) =>
+                prev.action2Done || prev.testPassed
+                  ? prev
+                  : {
+                      ...prev,
+                      action1Done: prev.action1Done || inspectedByPanel,
+                      feedback: {
+                        ok: false,
+                        text: "Click directly on the bright central star inside the faint white dashed circle.",
+                      },
+                    }
+              );
+            }
+          }
+        }
+      }
+
+      setSpectrumLoading(true);
+      setSpectrumError(null);
+      try {
+        const res = await fetchSpectrum(manifest.session_id, ra, dec);
+        if (specReq !== spectrumReqRef.current) return;
+        setSpectrum(res);
+      } catch (err) {
+        if (specReq !== spectrumReqRef.current) return;
+        setSpectrumError(err instanceof Error ? err.message : "Failed extracting spectrum.");
+      } finally {
+        if (specReq === spectrumReqRef.current) {
+          setSpectrumLoading(false);
+        }
+      }
+    },
+    [activeMissionSlug, lens, manifest, trainingPhase]
+  );
+
   const applySessionManifest = useCallback(
     async (
       sess: SessionManifest,
@@ -420,6 +554,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setPatterns(null);
       setActivePatternId(null);
       setPatternsLoading(true);
+      setSoloRevealOverride(false);
       setFrameIndexState(0);
       setPlaying(false);
       setLoOverride(null);
@@ -437,7 +572,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         }
       }
       setLensState(effectiveLens);
-      setViewLayout(
+      setViewLayoutState(
         desiredLayout ?? (effectiveLens === "blink" ? "compare" : "single")
       );
 
@@ -517,8 +652,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     [ensureProductLoaded]
   );
 
-  const selectMission = useCallback(
-    async (slug: string) => {
+  const selectMissionInternal = useCallback(
+    async (slug: string, updateUrl = true) => {
       cancelSseRef.current?.();
       const reqId = ++sessionReqRef.current;
       setExploring(false);
@@ -528,14 +663,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setSessionLoading(true);
       setSessionError(null);
       try {
-        const presetMeta = targets.find((t) => t.slug === slug);
         const sess = await fetchTargetSession(slug);
         if (reqId !== sessionReqRef.current) return;
-        // Default citizen-friendly lens: Cold Heat for brown dwarf optical-dropouts, Past vs Present Compare for movers/variables
-        const defaultLens: LensId =
-          presetMeta?.default_lens === "coldglow" ? "coldglow" : "blink";
-        await applySessionManifest(sess, defaultLens, slug, reqId);
-        if (reqId === sessionReqRef.current) {
+        // Start every test & solo target cleanly on Past vs Present side-by-side without pre-spoiling the lens
+        const defaultLens: LensId = "blink";
+        await applySessionManifest(sess, defaultLens, slug, reqId, "compare");
+        if (reqId === sessionReqRef.current && updateUrl) {
           writeUrlState({ mode: "missions", mission: slug, lens: defaultLens });
         }
       } catch (err) {
@@ -548,7 +681,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         }
       }
     },
-    [applySessionManifest, targets]
+    [applySessionManifest]
+  );
+
+  const selectMission = useCallback(
+    async (slug: string) => {
+      await selectMissionInternal(slug, true);
+    },
+    [selectMissionInternal]
   );
 
   const runExplore = useCallback(
@@ -604,6 +744,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const setMode = useCallback(
     (nextMode: AppMode) => {
+      if (trainingPhase !== "solo" && nextMode === "explorer") return;
       setModeState(nextMode);
       if (nextMode === "explorer") {
         writeUrlState({
@@ -617,7 +758,31 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         writeUrlState({ mode: "missions", mission: activeMissionSlug, lens });
       }
     },
-    [activeMissionSlug, lens, manifest]
+    [activeMissionSlug, lens, manifest, trainingPhase]
+  );
+
+  const setViewLayout = useCallback(
+    (v: ViewLayout) => {
+      setViewLayoutState(v);
+      if (
+        trainingPhase === "round2-test2" &&
+        activeMissionSlug === TRAINING_TESTS["round2-test2"].slug &&
+        v === "single"
+      ) {
+        setTestChecklist((prev) => ({
+          ...prev,
+          action1Done: true,
+          feedback:
+            prev.action2Done || prev.testPassed
+              ? prev.feedback
+              : {
+                  ok: true,
+                  text: "Good — watching the star blink in place! Now click the central bright star (Step 2) to inspect it.",
+                },
+        }));
+      }
+    },
+    [activeMissionSlug, trainingPhase]
   );
 
   const setLens = useCallback(
@@ -628,8 +793,41 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setHiOverride(null);
       setPlaying(false);
       if (nextLens !== "blink") {
-        setViewLayout("single");
+        setViewLayoutState("single");
       }
+
+      if (
+        trainingPhase === "round2-test1" &&
+        activeMissionSlug === TRAINING_TESTS["round2-test1"].slug &&
+        nextLens === "coldglow"
+      ) {
+        setTestChecklist((prev) => ({
+          ...prev,
+          action1Done: true,
+          feedback: prev.action2Done || prev.testPassed
+            ? prev.feedback
+            : {
+                ok: true,
+                text: "Cold Glow active (3.8–5.0 µm)! Now click inside the faint white dashed circle near center to inspect the warm object.",
+              },
+        }));
+      } else if (
+        trainingPhase === "round2-test2" &&
+        activeMissionSlug === TRAINING_TESTS["round2-test2"].slug &&
+        (nextLens === "variable" || nextLens === "motion")
+      ) {
+        setTestChecklist((prev) => ({
+          ...prev,
+          action1Done: true,
+          feedback: prev.action2Done || prev.testPassed
+            ? prev.feedback
+            : {
+                ok: true,
+                text: "Comparing brightness over time! Notice the central star doesn't jump across pixels. Now click it (Step 2) to inspect its spectrum.",
+              },
+        }));
+      }
+
       if (manifest) {
         if (nextLens === "blink") {
           ensureProductLoaded(manifest, "pass_coadds");
@@ -650,8 +848,245 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         writeUrlState({ mode: "missions", mission: activeMissionSlug, lens: nextLens });
       }
     },
-    [activeMissionSlug, ensureProductLoaded, manifest, mode]
+    [activeMissionSlug, ensureProductLoaded, manifest, mode, trainingPhase]
   );
+
+  // Automatic Step Sequence for Training Round 1 ("completely automatic")
+  const applyDemoStepVisuals = useCallback(
+    (step: 0 | 1 | 2 | 3) => {
+      if (!manifest) return;
+      if (step === 0) {
+        setLensState("blink");
+        setViewLayoutState("compare");
+      } else if (step === 1) {
+        ensureProductLoaded(manifest, "diffs");
+        setLensState("motion");
+        setViewLayoutState("single");
+        setFrameIndexState(0);
+      } else if (step === 2) {
+        setLensState("blink");
+        setViewLayoutState("compare");
+        const cand = patterns?.candidates[0];
+        if (cand) {
+          pickCoordinate(cand.ra, cand.dec, cand.fits_x, cand.fits_y, false);
+        } else {
+          pickCoordinate(manifest.target.ra, manifest.target.dec, 13, 16, false);
+        }
+      } else if (step === 3) {
+        setLensState("blink");
+        setViewLayoutState("compare");
+        setDemoDone(true);
+        if (!trainingState.demoRewarded) {
+          awardPointsOnce(
+            "training:round1_demo",
+            "mover",
+            true,
+            25,
+            "Auto Demo Completed (Moving World)"
+          );
+          persistTraining({ ...trainingState, demoRewarded: true });
+        }
+      }
+    },
+    [
+      awardPointsOnce,
+      ensureProductLoaded,
+      manifest,
+      patterns?.candidates,
+      persistTraining,
+      pickCoordinate,
+      trainingState,
+    ]
+  );
+
+  const setAutoDemoStep = useCallback(
+    (step: 0 | 1 | 2 | 3) => {
+      setAutoDemoStepState(step);
+      applyDemoStepVisuals(step);
+    },
+    [applyDemoStepVisuals]
+  );
+
+  useEffect(() => {
+    if (
+      trainingPhase !== "round1-demo" ||
+      demoPaused ||
+      demoDone ||
+      activeMissionSlug !== TRAINING_DEMO_SLUG ||
+      sessionLoading ||
+      !manifest ||
+      !simpleCompare
+    ) {
+      return;
+    }
+
+    if (autoDemoStep >= 3) return;
+    if (autoDemoStep === 0) {
+      applyDemoStepVisuals(0);
+    }
+    const nextStep = Math.min(3, autoDemoStep + 1) as 1 | 2 | 3;
+    const timer = window.setTimeout(() => {
+      setAutoDemoStepState(nextStep);
+      applyDemoStepVisuals(nextStep);
+    }, 3400);
+
+    return () => window.clearTimeout(timer);
+  }, [
+    activeMissionSlug,
+    applyDemoStepVisuals,
+    autoDemoStep,
+    demoDone,
+    demoPaused,
+    manifest,
+    sessionLoading,
+    simpleCompare,
+    trainingPhase,
+  ]);
+
+  // Training transition actions
+  const replayTraining = useCallback(() => {
+    setAutoDemoStepState(0);
+    setDemoPaused(false);
+    setDemoDone(false);
+    setTestChecklist(EMPTY_CHECKLIST);
+    persistTraining({ ...trainingState, phase: "round1-demo" });
+    selectMissionInternal(TRAINING_DEMO_SLUG, true);
+  }, [persistTraining, selectMissionInternal, trainingState]);
+
+  const advanceFromDemoToTest1 = useCallback(() => {
+    setDemoPaused(true);
+    setTestChecklist(EMPTY_CHECKLIST);
+    persistTraining({ ...trainingState, phase: "round2-test1" });
+    selectMissionInternal(TRAINING_TESTS["round2-test1"].slug, true);
+  }, [persistTraining, selectMissionInternal, trainingState]);
+
+  const advanceFromTest1ToTest2 = useCallback(() => {
+    setTestChecklist(EMPTY_CHECKLIST);
+    persistTraining({ ...trainingState, phase: "round2-test2" });
+    selectMissionInternal(TRAINING_TESTS["round2-test2"].slug, true);
+  }, [persistTraining, selectMissionInternal, trainingState]);
+
+  const graduateToSolo = useCallback(() => {
+    setTestChecklist(EMPTY_CHECKLIST);
+    setSoloRevealOverride(false);
+    persistTraining({ ...trainingState, phase: "solo" });
+    const firstSolo = SOLO_PRIMARY_SLUGS[0];
+    selectMissionInternal(firstSolo, true);
+  }, [persistTraining, selectMissionInternal, trainingState]);
+
+  const skipTraining = useCallback(() => {
+    setDemoPaused(true);
+    setTestChecklist(EMPTY_CHECKLIST);
+    setSoloRevealOverride(false);
+    persistTraining({ ...trainingState, phase: "solo" });
+    selectMissionInternal(SOLO_PRIMARY_SLUGS[0], true);
+  }, [persistTraining, selectMissionInternal, trainingState]);
+
+  const submitTrainingVerdict = useCallback(
+    (choice: string) => {
+      if (trainingPhase !== "round2-test1" && trainingPhase !== "round2-test2") return;
+      const spec = TRAINING_TESTS[trainingPhase];
+
+      if (!testChecklist.action1Done || !testChecklist.action2Done) {
+        setTestChecklist((prev) => ({
+          ...prev,
+          feedback: {
+            ok: false,
+            text: "Finish Steps 1 & 2 on the image viewer above before classifying so we confirm you inspected the target!",
+          },
+        }));
+        return;
+      }
+
+      if (choice !== spec.expectedKind) {
+        setTestChecklist((prev) => ({
+          ...prev,
+          feedback: {
+            ok: false,
+            text:
+              spec.wrongHint[choice] ??
+              "Not quite right — recheck the image panels and spectrum curve, then choose again!",
+          },
+        }));
+        return;
+      }
+
+      // Passed!
+      const isT1 = trainingPhase === "round2-test1";
+      awardPointsOnce(
+        isT1 ? "training:round2_test1" : "training:round2_test2",
+        choice,
+        true,
+        50,
+        spec.expectedLabel
+      );
+      persistTraining({
+        ...trainingState,
+        test1Passed: isT1 ? true : trainingState.test1Passed,
+        test2Passed: !isT1 ? true : trainingState.test2Passed,
+      });
+      setTestChecklist({
+        action1Done: true,
+        action2Done: true,
+        testPassed: true,
+        feedback: { ok: true, text: spec.successNote },
+      });
+    },
+    [awardPointsOnce, persistTraining, testChecklist.action1Done, testChecklist.action2Done, trainingPhase, trainingState]
+  );
+
+  const submitSoloVerdict = useCallback(
+    (choice: string): SavedVerdict | null => {
+      if (!manifest) return null;
+      const key = manifest.session_id;
+      if (verdicts[key]) return verdicts[key];
+
+      const cands = patterns?.candidates ?? [];
+      const accepted = new Set<string>();
+      for (const c of cands) {
+        accepted.add(c.kind === "archive_drift" ? "mover" : c.kind);
+      }
+      if (accepted.size === 0) accepted.add("artifact");
+
+      const matched = accepted.has(choice);
+      const pts = matched ? 35 : 15;
+      const expectedSummary =
+        cands.length > 0
+          ? cands.map((c) => c.suggested_label).filter((v, i, a) => a.indexOf(v) === i).join(" / ")
+          : "Static Sky / No Major Anomaly";
+
+      return awardPointsOnce(key, choice, matched, pts, expectedSummary);
+    },
+    [awardPointsOnce, manifest, patterns?.candidates, verdicts]
+  );
+
+  const selectPattern = useCallback(
+    async (cand: PatternCandidate) => {
+      setActivePatternId(cand.id);
+      await pickCoordinate(cand.ra, cand.dec, cand.fits_x, cand.fits_y, false);
+    },
+    [pickCoordinate]
+  );
+
+  const toggleSoloReveal = useCallback(() => {
+    setSoloRevealOverride((v) => !v);
+  }, []);
+
+  const canRevealPattern = useMemo(() => {
+    if (trainingPhase === "round1-demo") return autoDemoStep >= 1;
+    if (trainingPhase === "round2-test1" || trainingPhase === "round2-test2") {
+      return testChecklist.testPassed;
+    }
+    if (!manifest) return false;
+    return Boolean(verdicts[manifest.session_id]) || soloRevealOverride;
+  }, [
+    autoDemoStep,
+    manifest,
+    soloRevealOverride,
+    testChecklist.testPassed,
+    trainingPhase,
+    verdicts,
+  ]);
 
   const setFrameIndex = useCallback(
     (idx: number) => {
@@ -694,23 +1129,31 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           return;
         }
 
-        const chosenSlug =
-          url.mission && presetList.some((p) => p.slug === url.mission)
-            ? url.mission
-            : presetList.find((p) => p.has_preset_bundle)?.slug ?? presetList[0]?.slug;
+        let startSlug: string | undefined;
+        if (trainingState.phase === "round1-demo") {
+          startSlug = TRAINING_DEMO_SLUG;
+        } else if (trainingState.phase === "round2-test1") {
+          startSlug = TRAINING_TESTS["round2-test1"].slug;
+        } else if (trainingState.phase === "round2-test2") {
+          startSlug = TRAINING_TESTS["round2-test2"].slug;
+        } else {
+          // Solo mode: prioritize remaining unassisted examples (Epsilon Indi B, R Draconis) unless URL explicitly chose one
+          startSlug =
+            url.mission && presetList.some((p) => p.slug === url.mission)
+              ? url.mission
+              : SOLO_PRIMARY_SLUGS.find((s) => presetList.some((p) => p.slug === s)) ??
+                presetList[0]?.slug;
+        }
 
-        if (chosenSlug) {
-          const presetMeta = presetList.find((p) => p.slug === chosenSlug);
+        if (startSlug) {
           const reqId = ++sessionReqRef.current;
           setModeState("missions");
-          setActiveMissionSlug(chosenSlug);
+          setActiveMissionSlug(startSlug);
           setSessionLoading(true);
           try {
-            const sess = await fetchTargetSession(chosenSlug);
+            const sess = await fetchTargetSession(startSlug);
             if (!alive || reqId !== sessionReqRef.current) return;
-            const defaultLens: LensId =
-              url.lens ?? (presetMeta?.default_lens === "coldglow" ? "coldglow" : "blink");
-            await applySessionManifest(sess, defaultLens, chosenSlug, reqId);
+            await applySessionManifest(sess, "blink", startSlug, reqId, "compare");
           } catch (err) {
             if (alive && reqId === sessionReqRef.current) {
               setSessionError(err instanceof Error ? err.message : "Failed initializing target.");
@@ -730,7 +1173,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       alive = false;
       cancelSseRef.current?.();
     };
-  }, [applySessionManifest, runExplore]);
+    // Run once on initial mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const hunterRank = useMemo(() => getHunterRank(discoveryPoints), [discoveryPoints]);
 
@@ -784,10 +1229,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setAladinOpen,
       glossaryOpen,
       setGlossaryOpen,
-      tutorialDone,
-      tutorialOpen,
-      setTutorialOpen,
-      completeTutorial,
+      trainingPhase,
+      autoDemoStep,
+      setAutoDemoStep,
+      demoPaused,
+      setDemoPaused,
+      demoDone,
+      testChecklist,
+      canRevealPattern,
+      soloRevealOverride,
+      toggleSoloReveal,
+      replayTraining,
+      skipTraining,
+      advanceFromDemoToTest1,
+      advanceFromTest1ToTest2,
+      graduateToSolo,
+      submitTrainingVerdict,
+      submitSoloVerdict,
       discoveryPoints,
       hunterRank,
       verdicts,
@@ -795,7 +1253,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       patternsLoading,
       activePatternId,
       selectPattern,
-      submitVerdict,
       selectedCoord,
       pickCoordinate,
       spectrum,
@@ -820,6 +1277,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       lens,
       setLens,
       viewLayout,
+      setViewLayout,
       simpleCompare,
       activePack,
       activeFrames,
@@ -843,9 +1301,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       overlays,
       aladinOpen,
       glossaryOpen,
-      tutorialDone,
-      tutorialOpen,
-      completeTutorial,
+      trainingPhase,
+      autoDemoStep,
+      setAutoDemoStep,
+      demoPaused,
+      demoDone,
+      testChecklist,
+      canRevealPattern,
+      soloRevealOverride,
+      toggleSoloReveal,
+      replayTraining,
+      skipTraining,
+      advanceFromDemoToTest1,
+      advanceFromTest1ToTest2,
+      graduateToSolo,
+      submitTrainingVerdict,
+      submitSoloVerdict,
       discoveryPoints,
       hunterRank,
       verdicts,
@@ -853,7 +1324,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       patternsLoading,
       activePatternId,
       selectPattern,
-      submitVerdict,
       selectedCoord,
       pickCoordinate,
       spectrum,

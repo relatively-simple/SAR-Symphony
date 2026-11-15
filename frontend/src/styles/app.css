@@ -856,4 +856,116 @@ select {
   .progress-stages {
     grid-template-columns: repeat(2, 1fr);
   }
+  .test-checklist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 2-Round Citizen Scientist Training Bar */
+.training-bar {
+  background: linear-gradient(135deg, rgba(16, 29, 54, 0.96), rgba(14, 22, 42, 0.96));
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: var(--radius-lg);
+  padding: 0.95rem 1.1rem;
+  box-shadow: var(--shadow-card);
+}
+
+.training-test-bar {
+  border-color: rgba(251, 191, 36, 0.5);
+}
+
+.training-bar-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.clue-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+}
+
+.clue-chip {
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.24rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-input);
+}
+
+.clue-chip.cyan {
+  color: var(--accent-cyan);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.clue-chip.amber {
+  color: var(--accent-amber);
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
+.clue-chip.emerald {
+  color: var(--accent-emerald);
+  border-color: rgba(52, 211, 153, 0.35);
+}
+
+.test-checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+}
+
+.test-step-pill {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.48rem;
+  padding: 0.52rem 0.68rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-panel-elevated);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.test-step-pill.done {
+  border-color: rgba(52, 211, 153, 0.55);
+  background: rgba(52, 211, 153, 0.1);
+  color: #a7f3d0;
+}
+
+.test-step-pill.pending {
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
+.training-route-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.route-pill {
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.24rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-input);
+  color: var(--text-muted);
+}
+
+.route-pill.current {
+  border-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.16);
+  color: var(--accent-cyan);
+}
+
+.route-pill.done {
+  border-color: rgba(52, 211, 153, 0.45);
+  color: var(--accent-emerald);
 }

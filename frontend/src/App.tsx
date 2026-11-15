@@ -11,7 +11,7 @@ import { MissionBriefingCard } from "./components/side/MissionBriefingCard";
 import { OverlayControlsCard } from "./components/side/OverlayControlsCard";
 import { PatternFinderCard } from "./components/side/PatternFinderCard";
 import { SpectrumChart } from "./components/side/SpectrumChart";
-import { OnboardingTutorial } from "./components/tutorial/OnboardingTutorial";
+import { TrainingDirectorBar } from "./components/tutorial/TrainingDirectorBar";
 import { CompareTriptych } from "./components/viewer/CompareTriptych";
 import { FlipbookCanvas } from "./components/viewer/FlipbookCanvas";
 import { LensBar } from "./components/viewer/LensBar";
@@ -33,6 +33,7 @@ const Workbench: React.FC = () => {
     <>
       <TopNav />
       <main className="app-shell">
+        <TrainingDirectorBar />
         {mode === "missions" ? <MissionsView /> : <ExplorerView />}
 
         {sessionError && (
@@ -76,11 +77,11 @@ const Workbench: React.FC = () => {
             <ProDrawer />
           </section>
 
-          {/* Right: Automated Pattern Finder, Spectrum, Briefing & Overlays */}
+          {/* Right: Classification Verdict, Spectrum, Reference & Overlays */}
           <aside className="side-stack" aria-label="Discovery Context and Spectrum">
             <PatternFinderCard />
-            <MissionBriefingCard />
             <SpectrumChart />
+            <MissionBriefingCard />
             <OverlayControlsCard />
           </aside>
         </div>
@@ -88,7 +89,6 @@ const Workbench: React.FC = () => {
         <CitationsBar />
       </main>
 
-      <OnboardingTutorial />
       <GlossaryModal />
       <AladinInsetModal />
     </>

@@ -6,11 +6,14 @@ export const TopNav: React.FC = () => {
     mode,
     setMode,
     setGlossaryOpen,
-    setTutorialOpen,
+    trainingPhase,
+    replayTraining,
     discoveryPoints,
     hunterRank,
     health,
   } = useAppState();
+
+  const isSolo = trainingPhase === "solo";
 
   return (
     <header className="topbar">
@@ -28,21 +31,36 @@ export const TopNav: React.FC = () => {
           className={`nav-tab ${mode === "missions" ? "active" : ""}`}
           onClick={() => setMode("missions")}
         >
-          Sample Sky Patches
+          {isSolo ? "Discovery Examples" : "Training Missions"}
         </button>
         <button
           type="button"
           className={`nav-tab ${mode === "explorer" ? "active" : ""}`}
+          disabled={!isSolo}
+          title={
+            isSolo
+              ? "Scan any sky coordinate directly from NASA IRSA archives"
+              : "Complete 2-round training (or click Skip Training) to unlock Free Sky Explorer"
+          }
           onClick={() => setMode("explorer")}
         >
-          Free Sky Explorer
+          Free Sky Explorer {!isSolo ? " (Solo)" : ""}
         </button>
       </nav>
 
       <div className="nav-actions">
+        {!isSolo && (
+          <span className="status-pill" style={{ borderColor: "rgba(251, 191, 36, 0.45)", color: "var(--accent-amber)" }}>
+            {trainingPhase === "round1-demo"
+              ? "Round 1/2 · Demo"
+              : trainingPhase === "round2-test1"
+              ? "Round 2/2 · Check 1"
+              : "Round 2/2 · Check 2"}
+          </span>
+        )}
         <span
           className="status-pill score-pill"
-          title="Earn points by completing the tutorial practice & verifying auto-detected sky patterns"
+          title="Earn points from training and independent sky discoveries"
         >
           &#9733; {discoveryPoints} pts &middot; {hunterRank}
         </span>
@@ -54,13 +72,11 @@ export const TopNav: React.FC = () => {
             {health.irsa_ok ? "IRSA Live" : "Offline"}
           </span>
         )}
-        <button
-          type="button"
-          className="btn btn-ghost"
-          onClick={() => setTutorialOpen(true)}
-        >
-          Tutorial
-        </button>
+        {isSolo && (
+          <button type="button" className="btn btn-ghost" onClick={replayTraining}>
+            Replay Training
+          </button>
+        )}
         <button
           type="button"
           className="btn btn-ghost"

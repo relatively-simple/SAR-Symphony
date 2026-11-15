@@ -35,6 +35,7 @@ export const FlipbookCanvas: React.FC = () => {
     crispPixels,
     patterns,
     activePatternId,
+    canRevealPattern,
     overlays,
     overlayGaia,
     overlayWise,
@@ -92,7 +93,7 @@ export const FlipbookCanvas: React.FC = () => {
     const xPx = ((e.clientX - rect.left) / rect.width) * canvas.width;
     const yPx = ((e.clientY - rect.top) / rect.height) * canvas.height;
     const res = canvasToSky(xPx, yPx, canvas.width, canvas.height, manifest.grid);
-    pickCoordinate(res.ra, res.dec, res.fitsX, res.fitsY);
+    pickCoordinate(res.ra, res.dec, res.fitsX, res.fitsY, true);
   };
 
   const npix = manifest?.grid.npix ?? 1;
@@ -200,7 +201,7 @@ export const FlipbookCanvas: React.FC = () => {
               );
             })}
 
-          {patternOverlay && (
+          {canRevealPattern && patternOverlay && (
             <g fill="none">
               {patternOverlay.pastX !== null && patternOverlay.pastY !== null && (
                 <>

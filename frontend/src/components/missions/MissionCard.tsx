@@ -10,10 +10,16 @@ const KIND_BADGE: Record<TargetPreset["kind"], string> = {
 interface MissionCardProps {
   preset: TargetPreset;
   active: boolean;
+  roleTag?: string;
   onSelect: (slug: string) => void;
 }
 
-export const MissionCard: React.FC<MissionCardProps> = ({ preset, active, onSelect }) => {
+export const MissionCard: React.FC<MissionCardProps> = ({
+  preset,
+  active,
+  roleTag,
+  onSelect,
+}) => {
   return (
     <button
       type="button"
@@ -32,7 +38,9 @@ export const MissionCard: React.FC<MissionCardProps> = ({ preset, active, onSele
           }}
         />
         <div>
-          <span className="mission-tag">{KIND_BADGE[preset.kind]}</span>
+          <span className="mission-tag">
+            {roleTag ? `${roleTag} · ${KIND_BADGE[preset.kind]}` : KIND_BADGE[preset.kind]}
+          </span>
           <div className="mission-name">{preset.name}</div>
           <div className="mission-sub">{preset.mission_title}</div>
         </div>

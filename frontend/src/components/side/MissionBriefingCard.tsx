@@ -2,18 +2,21 @@ import React, { useMemo } from "react";
 import { useAppState } from "../../state/store";
 
 export const MissionBriefingCard: React.FC = () => {
-  const { activePreset, manifest } = useAppState();
+  const { activePreset, manifest, trainingPhase } = useAppState();
+  // Show step-by-step inspection notes only during Round 1 Auto Demo; keep Round 2 Tests and Solo Mode unspoiled ("no tutorial help required")
+  const showWalkthroughSteps = trainingPhase === "round1-demo";
 
   const sparkline = useMemo(() => {
     const coadds = manifest?.frames.pass_coadds;
     if (!coadds || !manifest || manifest.passes.length < 2) return null;
 
-    // Pick a detector present in all (or most) passes so flux compares apples-to-apples
     const nPasses = manifest.passes.length;
     let bestDet: number | null = null;
     let bestCount = -1;
     for (const det of [3, 4, 2, 5, 1, 6]) {
-      const pts = coadds.filter((f) => f.detector === det && f.mean_flux_center !== null && f.mean_flux_center !== undefined);
+      const pts = coadds.filter(
+        (f) => f.detector === det && f.mean_flux_center !== null && f.mean_flux_center !== undefined
+      );
       if (pts.length > bestCount) {
         bestCount = pts.length;
         bestDet = det;
@@ -38,11 +41,11 @@ export const MissionBriefingCard: React.FC = () => {
   }, [manifest]);
 
   return (
-    <section className="panel-card" aria-label="Mission Briefing">
+    <section className="panel-card" aria-label="Target Reference Data">
       <div className="panel-header" style={{ marginBottom: "0.45rem" }}>
         <h2 className="panel-title">
           {activePreset
-            ? `${activePreset.name} — ${activePreset.mission_title}`
+            ? activePreset.name
             : manifest?.target.name || "Custom Sky Region"}
         </h2>
         {manifest && (
@@ -54,33 +57,38 @@ export const MissionBriefingCard: React.FC = () => {
 
       {activePreset ? (
         <>
-          <p style={{ margin: "0 0 0.5rem", fontSize: "0.84rem", color: "var(--text-secondary)" }}>
-            {activePreset.summary}
-          </p>
+          {trainingPhase === "solo" && (
+            <p style={{ margin: "0 0 0.5rem", fontSize: "0.84rem", color: "var(--text-secondary)" }}>
+              {activePreset.summary}
+            </p>
+          )}
 
           {activePreset.coord_note && (
             <div className="callout-box" style={{ fontSize: "0.76rem", marginBottom: "0.55rem" }}>
-              <strong>Astrometry Note:</strong> {activePreset.coord_note}
+              <strong>Astrometry:</strong> {activePreset.coord_note}
             </div>
           )}
 
-          <div style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--text-muted)", marginTop: "0.4rem" }}>
-            HOW TO INSPECT THIS DISCOVERY
-          </div>
-          <ol className="briefing-steps">
-            {activePreset.mission_steps.map((step, i) => (
-              <li key={i}>{step}</li>
-            ))}
-          </ol>
-
-          <div className="callout-box" style={{ marginTop: "0.65rem" }}>
-            <strong>What to expect:</strong> {activePreset.what_to_expect}
-          </div>
+          {showWalkthroughSteps && (
+            <>
+              <div style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--text-muted)", marginTop: "0.4rem" }}>
+                DEMO NOTES
+              </div>
+              <ol className="briefing-steps">
+                {activePreset.mission_steps.map((step, i) => (
+                  <li key={i}>{step}</li>
+                ))}
+              </ol>
+              <div className="callout-box" style={{ marginTop: "0.65rem" }}>
+                <strong>What this demo shows:</strong> {activePreset.what_to_expect}
+              </div>
+            </>
+          )}
 
           {sparkline && (
             <div
               style={{
-                marginTop: "0.65rem",
+                marginTop: "0.55rem",
                 padding: "0.55rem 0.7rem",
                 borderRadius: "var(--radius-sm)",
                 background: "var(--bg-panel-elevated)",
@@ -125,7 +133,7 @@ export const MissionBriefingCard: React.FC = () => {
           )}
 
           {activePreset.caveat && (
-            <div className="callout-box callout-warn">
+            <div className="callout-box callout-warn" style={{ marginTop: "0.55rem" }}>
               <strong>Science caveat:</strong> {activePreset.caveat}
             </div>
           )}
@@ -133,8 +141,8 @@ export const MissionBriefingCard: React.FC = () => {
       ) : (
         <p style={{ margin: 0, fontSize: "0.84rem", color: "var(--text-secondary)" }}>
           {manifest
-            ? `Custom sky stack centered at RA ${manifest.grid.ra0.toFixed(5)}°, Dec ${manifest.grid.dec0.toFixed(5)}° (${manifest.passes.length} SPHEREx passes). Switch lenses on the left or click any pixel to extract its 0.75-5.0 um infrared spectrum.`
-            : "Choose a Discovery Mission above or switch to Free Sky Explorer to query any sky coordinate."}
+            ? `Custom sky stack centered at RA ${manifest.grid.ra0.toFixed(5)}°, Dec ${manifest.grid.dec0.toFixed(5)}° (${manifest.passes.length} SPHEREx passes). Click any pixel to extract its 0.75–5.0 µm spectrum.`
+            : "Choose a discovery target above or switch to Free Sky Explorer to query any coordinate."}
         </p>
       )}
 

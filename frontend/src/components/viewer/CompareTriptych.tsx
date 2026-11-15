@@ -15,6 +15,8 @@ export const CompareTriptych: React.FC = () => {
     pickCoordinate,
     patterns,
     activePatternId,
+    canRevealPattern,
+    trainingPhase,
     setLens,
     setViewLayout,
   } = useAppState();
@@ -96,6 +98,12 @@ export const CompareTriptych: React.FC = () => {
     y: ((npix - 0.5 - fy) / npix) * 100,
   });
 
+  const targetPt = (() => {
+    const [fx, fy] = skyToFitsPixel(manifest.target.ra, manifest.target.dec, manifest.grid);
+    if (!Number.isFinite(fx) || !Number.isFinite(fy)) return null;
+    return toPct(fx, fy);
+  })();
+
   const clickedPt = (() => {
     if (!selectedCoord) return null;
     const [fx, fy] = skyToFitsPixel(selectedCoord.ra, selectedCoord.dec, manifest.grid);
@@ -103,18 +111,23 @@ export const CompareTriptych: React.FC = () => {
     return toPct(fx, fy);
   })();
 
-  const handlePanelClick = (e: React.MouseEvent<HTMLDivElement>, refCanvas: HTMLCanvasElement | null) => {
+  const handlePanelClick = (
+    e: React.MouseEvent<HTMLDivElement>,
+    refCanvas: HTMLCanvasElement | null,
+    panelKind: "past" | "present" | "diff"
+  ) => {
     if (!refCanvas) return;
     const rect = refCanvas.getBoundingClientRect();
     const xPx = ((e.clientX - rect.left) / rect.width) * refCanvas.width;
     const yPx = ((e.clientY - rect.top) / rect.height) * refCanvas.height;
     const res = canvasToSky(xPx, yPx, refCanvas.width, refCanvas.height, manifest.grid);
-    pickCoordinate(res.ra, res.dec, res.fitsX, res.fitsY);
+    pickCoordinate(res.ra, res.dec, res.fitsX, res.fitsY, true, panelKind);
   };
 
   const renderOverlaySvg = (kind: "past" | "present" | "diff") => (
     <svg className="canvas-overlay-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-      {activePattern &&
+      {canRevealPattern &&
+        activePattern &&
         Number.isFinite(activePattern.fits_x) &&
         Number.isFinite(activePattern.fits_y) && (() => {
           const nowP = toPct(activePattern.fits_x, activePattern.fits_y);
@@ -183,6 +196,18 @@ export const CompareTriptych: React.FC = () => {
           );
         })()}
 
+      {!canRevealPattern && targetPt && (
+        <circle
+          cx={targetPt.x}
+          cy={targetPt.y}
+          r="3.6"
+          fill="none"
+          stroke="rgba(248, 250, 252, 0.5)"
+          strokeWidth="0.45"
+          strokeDasharray="1.0 0.8"
+        />
+      )}
+
       {clickedPt && (
         <g stroke="#38bdf8" strokeWidth="0.55" fill="none">
           <circle cx={clickedPt.x} cy={clickedPt.y} r="2.6" strokeDasharray="0.9 0.7" />
@@ -235,7 +260,7 @@ export const CompareTriptych: React.FC = () => {
             <div
               className="canvas-stage"
               style={{ maxHeight: "360px" }}
-              onClick={(e) => handlePanelClick(e, p.ref.current)}
+              onClick={(e) => handlePanelClick(e, p.ref.current, p.key)}
               title="Click any pixel across Past, Present, or Difference to plot its infrared spectrum"
             >
               <canvas ref={p.ref} width={360} height={360} />
@@ -247,9 +272,15 @@ export const CompareTriptych: React.FC = () => {
 
       <div className="compare-footer-note">
         <span>
-          <strong>How to read:</strong> Stationary stars stay at the same pixel in{" "}
-          <strong>1. PAST</strong> and <strong>2. PRESENT</strong>, so they erase to pitch black in{" "}
-          <strong>3. DIFFERENCE ONLY</strong>. Only true motion or brightness shifts survive!
+          {trainingPhase === "solo" ? (
+            "Click any source across Past, Present, or Difference Only to extract its 0.75–5.0 µm spectrum."
+          ) : (
+            <>
+              <strong>How to read:</strong> Stationary stars stay fixed in{" "}
+              <strong>1. PAST</strong> and <strong>2. PRESENT</strong>, so they erase to pitch black in{" "}
+              <strong>3. DIFFERENCE ONLY</strong>.
+            </>
+          )}
         </span>
         <div style={{ display: "flex", gap: "0.45rem", flexWrap: "wrap" }}>
           <button
